@@ -7,6 +7,89 @@
         mc:Ignorable="d"
         Title="UserScreen" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Grid.Column="0" Source="/sprites/characters/mage/mage_1_idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+
+        <Grid Grid.Row="1" Grid.Column="0" Margin="10px">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Nazwa użytkownika" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="username" />
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Punkty Życia" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="hp" />
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Atak" />
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="atk" />
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Obrona" />
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="def" />
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Aktualny poziom" />
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="level" />
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Punkty Doświadczenia" />
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="exp" />
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Ilość złota" />
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="gold" />
+        </Grid>
+
+        <ListView Grid.Row="0" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn x:Name="current_equipment" >
+                            <GridViewColumn.Header>
+                                <TextBlock Text="Założone przedmioty"/>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView Grid.Row="1" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn x:Name="equipment">
+                            <GridViewColumn.Header>
+                                <TextBlock Text="Ekwipunek"/>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <UniformGrid Rows="2" Grid.Column="2" Grid.Row="1">
+            <Button Content="Przejdź do sklepu"/>
+            <Button Content="Przejdź do walki"/>
+        </UniformGrid>
+        <!--
         <Image HorizontalAlignment="Left" Height="138" Margin="26,35,0,0" VerticalAlignment="Top" Width="164" Source="/sprites/characters/mage/mage_1_atack.png"/>
         <Label Content="Nazwa" HorizontalAlignment="Left" Margin="20,191,0,0" VerticalAlignment="Top"/>
         <Label Content="HP:" HorizontalAlignment="Left" Margin="29,222,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.613,-1.036"/>
@@ -18,7 +101,7 @@
         <TextBox HorizontalAlignment="Left" Margin="270,141,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="48"/>
         <TextBox HorizontalAlignment="Left" Margin="251,261,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="96"/>
         <Label Content="Uzbrojenie" HorizontalAlignment="Left" Margin="290,104,0,0" VerticalAlignment="Top"/>
-        <Label Content="Ekwipunek" HorizontalAlignment="Left" Margin="270,230,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ekwipunek" HorizontalAlignment="Left" Margin="270,230,0,0" VerticalAlignment="Top"/> -->
 
     </Grid>
 </Window>

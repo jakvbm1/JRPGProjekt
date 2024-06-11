@@ -63,7 +63,7 @@
                 <ComboBox Grid.Column="1" Grid.Row="3"/>
 
             </Grid>
-            <Button Content="Zaloguj" Margin="10px"/>
+            <Button Content="Zarejestruj" Margin="10px" Click="Button_Click"/>
         </UniformGrid>
 
 
