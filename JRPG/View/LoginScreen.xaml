@@ -7,22 +7,64 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="Logowanie" HorizontalAlignment="Left" Margin="115,87,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="Rejestracja" HorizontalAlignment="Left" Margin="537,87,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="Email:" HorizontalAlignment="Left" Margin="46,157,0,0" VerticalAlignment="Top"/>
-        <Label Content="Hasło:" HorizontalAlignment="Left" Margin="46,199,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="108,161,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="108,203,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <Label Content="Email" HorizontalAlignment="Left" Margin="500,152,0,0" VerticalAlignment="Top"/>
-        <Label Content="Hasło" HorizontalAlignment="Left" Margin="500,191,0,0" VerticalAlignment="Top"/>
-        <Label Content="Nazwa Użytkownika" HorizontalAlignment="Left" Margin="461,229,0,0" VerticalAlignment="Top"/>
-        <Label Content="Klasa" HorizontalAlignment="Left" Margin="500,268,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.581,0.036"/>
-        <Button Content="Zaloguj się" HorizontalAlignment="Left" Margin="188,253,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Button Content="Zarejestruj się" HorizontalAlignment="Left" Margin="662,318,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="602,156,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="602,195,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="602,229,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="602,268,0,0" VerticalAlignment="Top" Width="120"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <UniformGrid Grid.Column="0"  Rows="3" Margin="40px">
+            <TextBlock Text="Logowanie" TextAlignment="Center" FontSize="24"/>
+            <Grid Margin="10px">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Email" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="email_log" />
+
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Hasło" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="1" x:Name="password_log"/>
+
+            </Grid>
+            <Button Content="Zaloguj" Margin="10px"/>
+        </UniformGrid>
+
+        <UniformGrid Grid.Column="1"  Rows="3" Margin="40px">
+            <TextBlock Text="Logowanie" TextAlignment="Center" FontSize="24"/>
+            <Grid Margin="10px">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Email" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="email_reg" />
+
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Hasło" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="1" x:Name="password_reg"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Nazwa użytkownika" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="2" x:Name="username_reg"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Klasa postaci" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="1" Grid.Row="3"/>
+
+            </Grid>
+            <Button Content="Zaloguj" Margin="10px"/>
+        </UniformGrid>
 
 
     </Grid>
