@@ -36,7 +36,7 @@
         </UniformGrid>
 
         <UniformGrid Grid.Column="1"  Rows="3" Margin="40px">
-            <TextBlock Text="Logowanie" TextAlignment="Center" FontSize="24"/>
+            <TextBlock Text="Rejestracja" TextAlignment="Center" FontSize="24"/>
             <Grid Margin="10px">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
