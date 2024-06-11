@@ -7,12 +7,24 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\BattleScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ShopScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\UserScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\BattleScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\LoginScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ShopScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserScreen.xaml">
