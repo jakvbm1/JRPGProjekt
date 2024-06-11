@@ -13,7 +13,7 @@ Create table Items(
  ItemID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     Sprite VARCHAR(30),
     Cost INT,
-    Kind ENUM('weapon', 'armor', 'Accessory', 'Consumable') NOT NULL,
+    Kind ENUM('weapon', 'armor', 'accessory', 'consumable') NOT NULL,
     EquipableFor ENUM('mage', 'warrior', 'ranger', 'everyone'),
     PRIMARY KEY (ItemID)
 );

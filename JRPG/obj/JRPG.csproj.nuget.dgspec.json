@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MSI\\Desktop\\Projekt\\JRPGProjekt\\JRPG\\JRPG.csproj": {}
+    "C:\\Users\\damia\\Desktop\\programowanie 4\\JRPGProjekt\\JRPG\\JRPG.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MSI\\Desktop\\Projekt\\JRPGProjekt\\JRPG\\JRPG.csproj": {
+    "C:\\Users\\damia\\Desktop\\programowanie 4\\JRPGProjekt\\JRPG\\JRPG.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MSI\\Desktop\\Projekt\\JRPGProjekt\\JRPG\\JRPG.csproj",
+        "projectUniqueName": "C:\\Users\\damia\\Desktop\\programowanie 4\\JRPGProjekt\\JRPG\\JRPG.csproj",
         "projectName": "JRPG",
-        "projectPath": "C:\\Users\\MSI\\Desktop\\Projekt\\JRPGProjekt\\JRPG\\JRPG.csproj",
-        "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MSI\\Desktop\\Projekt\\JRPGProjekt\\JRPG\\obj\\",
+        "projectPath": "C:\\Users\\damia\\Desktop\\programowanie 4\\JRPGProjekt\\JRPG\\JRPG.csproj",
+        "packagesPath": "C:\\Users\\damia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\damia\\Desktop\\programowanie 4\\JRPGProjekt\\JRPG\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\damia\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,7 +77,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
