@@ -38,7 +38,15 @@
                 <TextBox Grid.Column="1" Grid.Row="1" x:Name="password_log" Text="{Binding Registering.LoginPassword}"/>
 
             </Grid>
-            <Button Content="Zaloguj" Margin="10px" Click="Button_Click" Command="{Binding Registering.Login}"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Content="Zaloguj" Margin="10px" Click="Button_Click" Command="{Binding Registering.Login}"/>
+                <Button Grid.Row="1" Content="Wejdź do gry" Margin="5px" />
+            </Grid>
+            
             
         </UniformGrid>
 
