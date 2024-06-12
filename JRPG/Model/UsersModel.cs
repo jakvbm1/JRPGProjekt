@@ -15,14 +15,21 @@ namespace JRPG.Model
     
     
     public UsersModel() { 
-        var allusers = RepoUsers.GetAllAnswers();
+        var allusers = RepoUsers.GetAllUsers();
             foreach (var user in allusers)
             {
             AllUsers.Add(user);
-            Console.WriteLine(user);    
+              
             }
         
         }
-    
+    public bool AddUserToDatabase(Users user)
+        {
+            if (RepoUsers.AddUserToDatabase(user)) {
+                AllUsers.Add(user);
+                return true;
+            }
+        
+        return false;}
     }
 }

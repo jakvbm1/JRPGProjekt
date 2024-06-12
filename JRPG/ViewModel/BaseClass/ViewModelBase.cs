@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QUIZ.ViewModel.BaseClass
+namespace JRPG.ViewModel.BaseClass
 {
     class ViewModelBase : INotifyPropertyChanged
     {

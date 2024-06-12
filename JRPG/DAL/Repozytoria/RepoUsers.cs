@@ -13,7 +13,7 @@ namespace JRPG.DAL.Repozytoria
         private const string ALL_USERS = "SELECT * FROM users";
         private const string ADD_USER = "INSERT INTO `users` VALUES ";
 
-        public static List<Users> GetAllAnswers()
+        public static List<Users> GetAllUsers()
         {
             List<Users> users = new List<Users>();
 
@@ -29,6 +29,28 @@ namespace JRPG.DAL.Repozytoria
             }
 
             return users;
+        }
+        public static bool AddUserToDatabase(Users user)
+        {
+            bool check = false;
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command =
+                    new MySqlCommand($"{ADD_USER} {user.ToInsert()}", connection);
+                connection.Open();
+                try { var n = command.ExecuteNonQuery(); }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
+                    
+                }
+                check = true;
+                
+                connection.Close();
+            }
+            return check;
         }
 
 

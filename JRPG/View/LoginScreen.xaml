@@ -12,7 +12,7 @@
         <Window.Resources>
             <vm:MainViewModel x:Key="mainVM"/>
         </Window.Resources>
-    <Grid>
+    <Grid DataContext="{StaticResource mainVM}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -57,19 +57,19 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Email" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="0" x:Name="email_reg" />
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="email_reg" Text="{Binding Registering.Email}" />
 
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Hasło" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="1" x:Name="password_reg"/>
+                <TextBox Grid.Column="1" Grid.Row="1" x:Name="password_reg" Text="{Binding Registering.Password}"/>
 
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="Nazwa użytkownika" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="2" x:Name="username_reg"/>
+                <TextBox Grid.Column="1" Grid.Row="2" x:Name="username_reg" Text="{Binding Registering.Username}"/>
 
                 <TextBlock Grid.Column="0" Grid.Row="3" Text="Klasa postaci" VerticalAlignment="Center"/>
                 <ComboBox Grid.Column="1" Grid.Row="3"/>
 
             </Grid>
-            <Button Content="Zarejestruj" Margin="10px" Click="Button_Click"/>
+            <Button Content="Zarejestruj" Margin="10px" Command="{Binding Registering.AddUser}"/>
         </UniformGrid>
 
 

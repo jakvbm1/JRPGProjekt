@@ -25,7 +25,7 @@ unique(Username)
 
 
 
-Drop table if exists `Characters`;
+
 CREATE TABLE Characters(
 CharId INT UNSIGNED NOT NULL auto_increment,
 userMail varchar(25) not null,
@@ -39,13 +39,16 @@ FOREIGN KEY(userMail) REFERENCES Users(Email)
 
 
 
-
+Drop table if exists `Items`;
 Create table Items(
  ItemID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     Sprite VARCHAR(30),
     Cost INT,
     Kind ENUM('weapon', 'armor', 'accessory', 'consumable') NOT NULL,
     EquipableFor ENUM('mage', 'warrior', 'ranger', 'everyone'),
+    ATK INT,
+    DEF INT, 
+    reg_hp INT,
     PRIMARY KEY (ItemID)
 );
 

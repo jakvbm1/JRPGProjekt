@@ -9,9 +9,17 @@ namespace JRPG.ViewModel
     using DAL.Encje;
     using DAL.Repozytoria;
     using Model;
+    using BaseClass;
 
     class MainViewModel
     {
-    private UsersModel UsersModel = new UsersModel();
+    private MainModel mainModel;
+    public Register Registering { get; set; }
+    
+    public MainViewModel()
+        {
+            mainModel = new MainModel();
+            Registering = new Register(mainModel);
+        }
     }
 }

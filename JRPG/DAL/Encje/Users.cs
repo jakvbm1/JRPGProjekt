@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace JRPG.DAL.Encje
 {
@@ -27,6 +28,11 @@ namespace JRPG.DAL.Encje
             Username = reader.GetString("Username");
             IsAdmin = reader.GetBoolean("PlayerOrAdmin");
 
+        }
+        public string ToInsert()
+        {
+            if (IsAdmin) return $"('{Email}', '{Password}', '{Username}', '1')";
+            else return $"('{Email}', '{Password}', '{Username}', '0')";
         }
     }
 }
