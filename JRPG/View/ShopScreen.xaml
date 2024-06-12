@@ -7,6 +7,54 @@
         mc:Ignorable="d"
         Title="ShopScreen" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <UniformGrid Rows="2" Columns="4" Grid.Column="1" Grid.Row="0">
+            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/sword_common.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/sword_uncommon.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/sword_rare.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/staff_common.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/staff_uncommon.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/staff_rare.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/bow_common.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/bow_rare.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+        </UniformGrid>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="Opis zaznaczonego itemku"/>
+            <TextBlock Text="NAZWA"/>
+            <TextBlock Text="CENA"/>
+            <TextBlock Text="ATAK"/>
+            <TextBlock Text="OBRONA"/>
+            <TextBlock Text="HP"/>
+            <TextBlock Text="LECZENIE"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Aktualny stan funduszy: "/>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="1" Grid.Row="1" Content="Zakup wybrany przedmiot"/>
+        </Grid>
     </Grid>
 </Window>
