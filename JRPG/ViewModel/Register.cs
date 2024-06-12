@@ -19,9 +19,12 @@ namespace JRPG.ViewModel
         private MainModel model;
         private ObservableCollection<Users> users;
         private string? email;
+        private string? Loginemail;
+        private string? Loginpassword;
         private string? password;
         private string? username;
         private string? isadmin;
+        public static Boolean logged;
 
         public Register(MainModel mainModel)
         {
@@ -39,6 +42,29 @@ namespace JRPG.ViewModel
                 onPropertyChanged(nameof(Email));
             }
         }
+
+        public string? LoginEmail
+        {
+            get { return Loginemail; }
+            set
+            {
+                Loginemail = value;
+
+                onPropertyChanged(nameof(LoginEmail));
+            }
+        }
+
+        public string? LoginPassword
+        {
+            get { return Loginpassword; }
+            set
+            {
+                Loginpassword = value;
+
+                onPropertyChanged(nameof(LoginPassword));
+            }
+        }
+
         public string? Password
         {
             get { return password; }
@@ -82,8 +108,8 @@ namespace JRPG.ViewModel
                             if (!string.IsNullOrEmpty(Email) & !string.IsNullOrEmpty(Password) & !string.IsNullOrEmpty(Username))
                             {
                                 var user = new Users(Email, Password, Username, false);
-                                Console.WriteLine(Email);
 
+                                
                                 if (model.usersModel.AddUserToDatabase(user))
                                 {
                                     System.Windows.MessageBox.Show("User was added to database!");
@@ -93,7 +119,9 @@ namespace JRPG.ViewModel
                                     IsAdmin = "";
                                 }
                             }
-                            else { System.Windows.MessageBox.Show("Every box needs to be filled"); }
+                            else {
+                                
+                                System.Windows.MessageBox.Show("Every box needs to be filled"); }
                             
                             
                         },
@@ -103,6 +131,43 @@ namespace JRPG.ViewModel
                 return addUser;
             }
         }
+        private ICommand login = null;
+        public ICommand Login
+        {
+            get
+            {
+                if (login == null)
+                    login = new RelayCommand(
+                        arg =>
+                        {
+                            foreach(var user in users)
+                            {
+                               
+                                if (user.Email == LoginEmail)
+                                {
+                                
+                                    if (user.Password == LoginPassword) {
+                                        Console.WriteLine(LoginEmail);
+                                        logged = true;
+                                        break;
+                                    }
+                                    
+                                        
+                                    else logged = false;
+                                }
+                            }
+                            
+
+
+                        },
+                        arg => (1 > 0)
+                        );
+
+                return login;
+            }
+        }
+
+
 
     }
     }

@@ -32,13 +32,14 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Email" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="0" x:Name="email_log" />
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="email_log" Text="{Binding Registering.LoginEmail}" />
 
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Hasło" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Grid.Row="1" x:Name="password_log"/>
+                <TextBox Grid.Column="1" Grid.Row="1" x:Name="password_log" Text="{Binding Registering.LoginPassword}"/>
 
             </Grid>
-            <Button Content="Zaloguj" Margin="10px"/>
+            <Button Content="Zaloguj" Margin="10px" Click="Button_Click" Command="{Binding Registering.Login}"/>
+            
         </UniformGrid>
 
         <UniformGrid Grid.Column="1"  Rows="3" Margin="40px">

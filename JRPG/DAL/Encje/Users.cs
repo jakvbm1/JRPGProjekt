@@ -8,12 +8,16 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace JRPG.DAL.Encje
 {
-      class Users
+    using DAL.Encje;
+    using Fantasia.DAL.Encje;
+
+    class Users
     {
         public string Email;
         public string Password;
         public string Username;
         public bool IsAdmin;
+        public Characters current_user;
     
         public Users(string email, string password, string username, bool isAdmin)
         {
