@@ -23,5 +23,13 @@ namespace JRPG.DAL.Encje
             else if (IsEquip == "0") IsEquipped = false;
             Username = reader["Username"].ToString();
         }
+        public Equipment(int itemID, int quantity, bool isEquipped, string username)
+        {
+            ItemID=itemID;
+            Quantity = quantity;
+            IsEquipped = isEquipped;
+            Username = username;
+
+        }
     }
 }

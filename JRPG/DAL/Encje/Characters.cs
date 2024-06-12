@@ -21,5 +21,15 @@ namespace Fantasia.DAL.Encje
             Gold = int.Parse(reader["Gold"].ToString());
             Class_Name = reader["Class_Name"].ToString();
         }
+
+        public Characters(string Username, int ExpLevel, int Gold, string Class_Name)
+        {
+            this.Username = Username;
+            this.ExpLevel = ExpLevel;
+            this.Gold = Gold;
+            this.Class_Name = Class_Name;
+        }
+        
+    
     }
 }

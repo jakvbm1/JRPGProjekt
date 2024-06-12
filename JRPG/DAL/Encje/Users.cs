@@ -1,0 +1,32 @@
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JRPG.DAL.Encje
+{
+      class Users
+    {
+        public string Email;
+        public string Password;
+        public string Username;
+        public bool IsAdmin;
+    
+        public Users(string email, string password, string username, bool isAdmin)
+        {
+            Email = email;
+            Password = password;
+            Username = username;
+            IsAdmin = isAdmin;
+        }
+        public Users(MySqlDataReader reader) { 
+            Email = reader.GetString("Email");
+            Password = reader.GetString("Password");
+            Username = reader.GetString("Username");
+            IsAdmin = reader.GetBoolean("PlayerOrAdmin");
+
+        }
+    }
+}

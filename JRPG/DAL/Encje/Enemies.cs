@@ -35,5 +35,14 @@ namespace JRPG.DAL.Encje
             else if (Diff == "medium") Difficulty = Difficulty.medium;
             else if (Diff == "hard") Difficulty = Difficulty.hard;
         }
+        public Enemies(string enemyName, int health, int attack, string spriteSet, int defense, Difficulty difficulty)
+        {
+            EnemyName=enemyName;
+            Health=health;
+            Attack=attack;
+            SpriteSet = spriteSet;
+            Defense = defense;
+            Difficulty = difficulty;
+        }
     }
 }

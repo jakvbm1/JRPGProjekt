@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JRPG.View"
+         xmlns:vm ="clr-namespace:JRPG.ViewModel"
         mc:Ignorable="d"
         Title="UserScreen" Height="450" Width="800">
-    <Grid>
+        <Window.Resources>
+         <vm:MainViewModel x:Key="mainVM"/>
+        </Window.Resources>
+
+    <Grid DataContext="{StaticResource mainVM}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>

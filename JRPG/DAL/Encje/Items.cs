@@ -43,5 +43,12 @@ namespace JRPG.DAL.Encje
             else if (Equip == "ranger") EquipableFor = EquipableFor.ranger;
             else if (Equip == "everyone") EquipableFor = EquipableFor.everyone;
         }
+        public Items(int itemID, int cost, Kind kind, EquipableFor equipableFor)
+        {
+            ItemID = itemID;
+            Cost = cost;
+            Kind = kind;
+            EquipableFor = equipableFor;
+        }
     }
 }

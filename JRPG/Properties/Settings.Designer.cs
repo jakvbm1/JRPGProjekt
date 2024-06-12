@@ -52,7 +52,7 @@ namespace JRPG.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("123456")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1234567")]
         public string paswd {
             get {
                 return ((string)(this["paswd"]));

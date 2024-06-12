@@ -34,5 +34,14 @@ namespace Fantasia.DAL.Encje
             else if (Diff == "medium") Difficulty = Difficulty.medium;
             else if (Diff == "hard") Difficulty = Difficulty.hard;
         }
+        public Classes(string className, int health, int attack, string spriteSet, int defense, Difficulty difficulty)
+        {
+            ClassName = className;
+            Health = health;
+            Attack = attack;
+            SpriteSet = spriteSet;
+            Defense = defense;
+            Difficulty = difficulty;
+        }
     }
 }

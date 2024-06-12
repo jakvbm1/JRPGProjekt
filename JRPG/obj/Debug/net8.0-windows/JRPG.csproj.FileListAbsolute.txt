@@ -88,3 +88,8 @@ C:\Users\damia\Desktop\programowanie 4\JRPGProjekt\JRPG\obj\Debug\net8.0-windows
 C:\Users\damia\Desktop\programowanie 4\JRPGProjekt\JRPG\obj\Debug\net8.0-windows\JRPG.pdb
 C:\Users\damia\Desktop\programowanie 4\JRPGProjekt\JRPG\obj\Debug\net8.0-windows\JRPG.genruntimeconfig.cache
 C:\Users\damia\Desktop\programowanie 4\JRPGProjekt\JRPG\obj\Debug\net8.0-windows\ref\JRPG.dll
+C:\Users\MSI\Desktop\Projekt\JRPGProjekt\JRPG\obj\Debug\net8.0-windows\View\BattleScreen.g.cs
+C:\Users\MSI\Desktop\Projekt\JRPGProjekt\JRPG\obj\Debug\net8.0-windows\View\ShopScreen.g.cs
+C:\Users\MSI\Desktop\Projekt\JRPGProjekt\JRPG\obj\Debug\net8.0-windows\View\BattleScreen.baml
+C:\Users\MSI\Desktop\Projekt\JRPGProjekt\JRPG\obj\Debug\net8.0-windows\View\ShopScreen.baml
+C:\Users\MSI\Desktop\Projekt\JRPGProjekt\JRPG\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
