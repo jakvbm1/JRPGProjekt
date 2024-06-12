@@ -25,7 +25,7 @@ namespace JRPG.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("jrpg_control")]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
         public string server {
             get {
                 return ((string)(this["server"]));
@@ -43,7 +43,7 @@ namespace JRPG.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("root")]
+        [global::System.Configuration.DefaultSettingValueAttribute("jrpg_control")]
         public string userID {
             get {
                 return ((string)(this["userID"]));
