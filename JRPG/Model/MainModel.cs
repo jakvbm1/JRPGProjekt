@@ -12,11 +12,12 @@ namespace JRPG.Model
     class MainModel
     {
         public UsersModel usersModel;
-    
+        public CharactersModel charactersModel;
     
     public MainModel()
         {
             usersModel = new UsersModel();
+            charactersModel = new CharactersModel();
         }
     }
 }

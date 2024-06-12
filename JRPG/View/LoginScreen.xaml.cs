@@ -26,17 +26,13 @@ namespace JRPG
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
-            if (Register.logged)
-            {
+           
                 UserScreen userScreen = new UserScreen();
                 this.Visibility = Visibility.Hidden;
                 userScreen.Show();
-                Register.logged = false;
+               
                 
-            }
-            else { System.Windows.MessageBox.Show("Wrong credentials, try again");
-                
-            }  
+            
         }
 
         

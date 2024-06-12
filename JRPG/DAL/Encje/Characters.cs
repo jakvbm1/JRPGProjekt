@@ -9,22 +9,25 @@ namespace Fantasia.DAL.Encje
 {
     class Characters
     {
-        public string Username { get; set; }
+        public int CharId { get; set; }
+        public string Usermail { get; set; }
         public int ExpLevel { get; set; }
         public int Gold { get; set; }
         public string Class_Name { get; set; }
 
+
         public Characters(MySqlDataReader reader)
         {
-            Username = reader["Username"].ToString();
+            CharId = int.Parse(reader["CharId"].ToString());
+            Usermail = reader["userMail"].ToString();
             ExpLevel = int.Parse(reader["Exp_Level"].ToString());
             Gold = int.Parse(reader["Gold"].ToString());
             Class_Name = reader["Class_Name"].ToString();
         }
 
-        public Characters(string Username, int ExpLevel, int Gold, string Class_Name)
+        public Characters(string Usermail, int ExpLevel, int Gold, string Class_Name)
         {
-            this.Username = Username;
+            this.Usermail = Usermail;
             this.ExpLevel = ExpLevel;
             this.Gold = Gold;
             this.Class_Name = Class_Name;

@@ -13,11 +13,14 @@ namespace JRPG.ViewModel
     using BaseClass;
     using System.Windows.Input;
     using System.Runtime.CompilerServices;
+    using System.Windows;
+    using Fantasia.DAL.Encje;
 
     class Register: ViewModelBase
     {
         private MainModel model;
         private ObservableCollection<Users> users;
+        private ObservableCollection<Characters> characters;
         private string? email;
         private string? Loginemail;
         private string? Loginpassword;
@@ -25,11 +28,23 @@ namespace JRPG.ViewModel
         private string? username;
         private string? isadmin;
         public static Boolean logged;
-
+        private Visibility visible=Visibility.Hidden;
         public Register(MainModel mainModel)
         {
            model = mainModel;
            users = model.usersModel.AllUsers;
+           characters = model.charactersModel.AllCharacters; 
+        }
+
+        public Visibility Visible
+        {
+            get { return visible; }
+            set
+            {
+                visible = value;
+
+                onPropertyChanged(nameof(Visible));
+            }
         }
 
         public string? Email
@@ -147,9 +162,19 @@ namespace JRPG.ViewModel
                                 {
                                 
                                     if (user.Password == LoginPassword) {
-                                        Console.WriteLine(LoginEmail);
-                                        logged = true;
+                                        foreach(var charakt in characters)
+                                            {
+                                           if(charakt.Usermail == LoginEmail)
+                                            {
+                                                Users.current_user = charakt;
+                                            }
+                                        }
+                                        
+                                        
+                                        Visible = Visibility.Visible;
+
                                         break;
+                                        
                                     }
                                     
                                         
