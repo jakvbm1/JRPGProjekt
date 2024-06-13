@@ -13,17 +13,27 @@ namespace JRPG.Model
     using System.Collections.ObjectModel;
     class ClassesModel
     {
-    
-    public ObservableCollection<Classes>AllClasses {  get; set; } = new ObservableCollection<Classes>();
 
-    public ClassesModel() { 
-        var allclasses = RepoClasses.GetAllClasses();
+        public ObservableCollection<Classes> AllClasses { get; set; } = new ObservableCollection<Classes>();
+
+        public ClassesModel()
+        {
+            var allclasses = RepoClasses.GetAllClasses();
             foreach (var c in allclasses)
             {
-                AllClasses.Add(c);            
+                AllClasses.Add(c);
             }
         }
-    
-    
+
+        public Classes getUsersClass(string classname)
+        {
+            foreach (var c in AllClasses)
+            {
+                if (c.ClassName == classname)
+                    return c;
+            }
+            return null;
+        }
+
     }
 }

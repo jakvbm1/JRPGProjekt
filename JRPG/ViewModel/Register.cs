@@ -15,6 +15,7 @@ namespace JRPG.ViewModel
     using System.Runtime.CompilerServices;
     using System.Windows;
     using Fantasia.DAL.Encje;
+    using JRPG.DAL.Repozytoria;
 
     class Register: ViewModelBase
     {
@@ -209,7 +210,8 @@ namespace JRPG.ViewModel
                                             {
                                            if(charakt.Usermail == LoginEmail)
                                             {
-                                                Users.current_user = charakt;
+                                                GlobalVariables.current_user = new Characters(charakt);
+                                               // Users.current_user = charakt;
                                             }
                                         }
                                         

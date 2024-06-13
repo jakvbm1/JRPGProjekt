@@ -17,7 +17,6 @@ namespace JRPG.DAL.Encje
         public string Password;
         public string Username;
         public bool IsAdmin;
-        public static Characters current_user;
     
         public Users(string email, string password, string username, bool isAdmin)
         {

@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="sprites\characters\mage\mage_1_atack.png" />
+    <None Remove="sprites\characters\mage\atack.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="sprites\characters\mage\mage_1_atack.png">
+    <Content Include="sprites\characters\mage\atack.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

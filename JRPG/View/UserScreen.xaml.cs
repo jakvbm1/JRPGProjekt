@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 namespace JRPG.View
 {
     using DAL.Encje;
+    using JRPG.DAL.Repozytoria;
+
     /// <summary>
     /// Logika interakcji dla klasy UserScreen.xaml
     /// </summary>
@@ -22,7 +24,7 @@ namespace JRPG.View
     {
         public UserScreen()
         {
-            Console.WriteLine(Users.current_user.Class_Name);
+            Console.WriteLine(GlobalVariables.current_user);
             InitializeComponent();
         }
 

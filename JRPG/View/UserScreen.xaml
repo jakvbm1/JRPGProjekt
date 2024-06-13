@@ -23,7 +23,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="0" Grid.Column="0" Source="/sprites/characters/mage/mage_1_idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+        <Image Grid.Row="0" Grid.Column="0" Source="/sprites/characters/mage/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
 
         <Grid Grid.Row="1" Grid.Column="0" Margin="10px">
             <Grid.ColumnDefinitions>
@@ -41,16 +41,16 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Nazwa użytkownika" />
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="username" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CSVM.User_char.Usermail}" />
 
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Punkty Życia" />
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="hp" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CSVM.HP}" />
 
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Atak" />
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="atk" />
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CSVM.ATK}" />
 
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Obrona" />
-            <TextBlock Grid.Row="3" Grid.Column="1" Text="def" />
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CSVM.DEF}" />
 
             <TextBlock Grid.Row="4" Grid.Column="0" Text="Aktualny poziom" />
             <TextBlock Grid.Row="4" Grid.Column="1" Text="level" />
@@ -95,7 +95,6 @@
             <Button Content="Przejdź do walki"/>
         </UniformGrid>
         <!--
-        <Image HorizontalAlignment="Left" Height="138" Margin="26,35,0,0" VerticalAlignment="Top" Width="164" Source="/sprites/characters/mage/mage_1_atack.png"/>
         <Label Content="Nazwa" HorizontalAlignment="Left" Margin="20,191,0,0" VerticalAlignment="Top"/>
         <Label Content="HP:" HorizontalAlignment="Left" Margin="29,222,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.613,-1.036"/>
         <Label Content="ATK" HorizontalAlignment="Left" Margin="26,248,0,0" VerticalAlignment="Top"/>

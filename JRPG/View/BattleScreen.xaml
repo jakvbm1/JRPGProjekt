@@ -22,13 +22,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image Grid.Row="1" Source="/sprites/characters/mage/mage_1_idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="1" Source="/sprites/characters/mage/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
         </Grid>
 
         <UniformGrid Grid.Row="0" Grid.Column="1" Rows="3">
-            <Image Grid.Row="1" Source="/sprites/characters/warrior/warrior_1_idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-            <Image Grid.Row="1" Source="/sprites/characters/ranger/ranger_1_idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-            <Image Grid.Row="1" Source="/sprites/characters/mage/mage_1_idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="1" Source="/sprites/characters/warrior/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="1" Source="/sprites/characters/ranger/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="1" Source="/sprites/characters/mage/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
         </UniformGrid>
 
         <Grid Grid.Row="1" Grid.Column="0" Background="Black">

@@ -25,6 +25,15 @@ namespace Fantasia.DAL.Encje
             Class_Name = reader["Class_Name"].ToString();
         }
 
+        public Characters(Characters character)
+        {
+            this.CharId = character.CharId;
+            this.Usermail = character.Usermail;
+            ExpLevel = character.ExpLevel;
+            Gold = character.Gold;
+            Class_Name = character.Class_Name;
+        }
+
         public Characters(string Usermail, int ExpLevel, int Gold, string Class_Name)
         {
             this.Usermail = Usermail;

@@ -15,11 +15,14 @@ namespace JRPG.ViewModel
     {
     private MainModel mainModel;
     public Register Registering { get; set; }
+    public CharScreenVM CSVM { get; set; }
     
+
     public MainViewModel()
         {
             mainModel = new MainModel();
             Registering = new Register(mainModel);
+            CSVM = new CharScreenVM(mainModel);
         }
     }
 }
