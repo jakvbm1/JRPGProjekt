@@ -11,7 +11,7 @@ namespace JRPG.DAL.Repozytoria
     static class GlobalVariables
     {
 
-        static public Characters current_user;
+        public static Characters current_user {  get; set; }
 
     }
 }

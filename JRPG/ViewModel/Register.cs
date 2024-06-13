@@ -211,6 +211,7 @@ namespace JRPG.ViewModel
                                            if(charakt.Usermail == LoginEmail)
                                             {
                                                 GlobalVariables.current_user = new Characters(charakt);
+                                                //GlobalVariables.current_user = charakt;
                                                // Users.current_user = charakt;
                                             }
                                         }
