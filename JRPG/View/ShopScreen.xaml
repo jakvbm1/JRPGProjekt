@@ -23,7 +23,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <ItemsControl Grid.Column="1" Grid.Row="0" ItemsSource="{Binding ShopVM.items}">
+        <ItemsControl Grid.Column="1" Grid.Row="0" ItemsSource="{Binding ShopVM.Items}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="10" BorderBrush="LightGray" BorderThickness="1">
@@ -34,7 +34,7 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Text="debil"/>
+                            <TextBlock Grid.Row="0" Text="debil1"/>
                             <TextBlock Grid.Row="1" Text="debil"/>
                             <TextBlock Grid.Row="2" Text="debil"/>
                         </Grid>

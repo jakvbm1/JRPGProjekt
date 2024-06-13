@@ -20,5 +20,7 @@ namespace JRPG.ViewModel
             model = mainModel;
             items = model.itemsModel.AllItems;
         }
+
+        public ObservableCollection<Items> Items { get { return items; } set { value = items; onPropertyChanged(nameof(Items)); } }
     }
 }
