@@ -14,7 +14,6 @@ namespace JRPG.ViewModel
     using System.Windows.Input;
     using System.Runtime.CompilerServices;
     using System.Windows;
-    using Fantasia.DAL.Encje;
     using JRPG.DAL.Repozytoria;
 
     class Register: ViewModelBase
