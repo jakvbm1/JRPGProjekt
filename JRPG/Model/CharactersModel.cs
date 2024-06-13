@@ -22,5 +22,11 @@ namespace JRPG.Model
                 AllCharacters.Add(character);
             }
         }
+        public bool AddCharacterToDatabase(Characters character)
+        {
+            if (RepoCharacters.AddCharacterToDatabase(character)) { return true; }
+            return false;
+        }
+    
     }
 }

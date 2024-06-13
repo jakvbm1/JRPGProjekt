@@ -32,7 +32,9 @@ namespace Fantasia.DAL.Encje
             this.Gold = Gold;
             this.Class_Name = Class_Name;
         }
-        
-    
+        public string ToInsert()
+        {
+            return $"('sf'{CharId}', '{Usermail}', '{ExpLevel}', '{Gold}', '{Class_Name}'";
+        }
     }
 }

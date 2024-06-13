@@ -10,14 +10,10 @@
 
   <ItemGroup>
     <None Remove="sprites\characters\mage\mage_1_atack.png" />
-    <None Remove="sprites\mage_1_atack.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="sprites\characters\mage\mage_1_atack.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="sprites\mage_1_atack.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

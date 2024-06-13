@@ -5,14 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fantasia.DAL.Encje
+namespace JRPG.DAL.Encje
 {
-    public enum Difficulty
-    {
-        easy,
-        medium,
-        hard
-    }
+   
     class Classes
     {
         public string ClassName { get; set; }

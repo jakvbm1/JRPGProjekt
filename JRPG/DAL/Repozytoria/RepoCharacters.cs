@@ -31,5 +31,29 @@ namespace JRPG.DAL.Repozytoria
 
             return characters;
         }
-        }
+        public static bool AddCharacterToDatabase(Characters characters)
+        {
+            bool check = false;
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command =
+                    new MySqlCommand($"{ADD_CHARACTER} ('{characters.CharId}', '{characters.Usermail}', '{characters.ExpLevel}', '{characters.Gold}', '{characters.Class_Name}')", connection);
+                connection.Open();
+                try { var n = command.ExecuteNonQuery(); }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
+
+                }
+                check = true;
+
+                connection.Close();
+            }
+            return check;
+        }    
+    
+    
+    }
 }

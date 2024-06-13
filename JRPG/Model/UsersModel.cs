@@ -26,7 +26,6 @@ namespace JRPG.Model
     public bool AddUserToDatabase(Users user)
         {
             if (RepoUsers.AddUserToDatabase(user)) {
-                AllUsers.Add(user);
                 return true;
             }
         

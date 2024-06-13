@@ -75,7 +75,7 @@
                 <TextBox Grid.Column="1" Grid.Row="2" x:Name="username_reg" Text="{Binding Registering.Username}"/>
 
                 <TextBlock Grid.Column="0" Grid.Row="3" Text="Klasa postaci" VerticalAlignment="Center"/>
-                <ComboBox Grid.Column="1" Grid.Row="3"/>
+                <ComboBox Grid.Column="1" Grid.Row="3" SelectedIndex="0" ItemsSource="{Binding Registering.ClassNames}" SelectedValue="{Binding Registering.SelectedClass}"/>
 
             </Grid>
             <Button Content="Zarejestruj" Margin="10px" Command="{Binding Registering.AddUser}"/>
