@@ -14,12 +14,14 @@ namespace JRPG.Model
         public UsersModel usersModel;
         public CharactersModel charactersModel;
         public ClassesModel classesModel;
+        public ItemsModel itemsModel;
     
     public MainModel()
         {
             usersModel = new UsersModel();
             charactersModel = new CharactersModel();
             classesModel = new ClassesModel();
+            itemsModel = new ItemsModel();
         }
     }
 }
