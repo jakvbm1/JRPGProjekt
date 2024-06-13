@@ -1,5 +1,4 @@
-﻿using Fantasia.DAL.Encje;
-using JRPG.DAL.Encje;
+﻿using JRPG.DAL.Encje;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;

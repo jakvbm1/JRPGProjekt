@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fantasia.DAL.Encje
+namespace JRPG.DAL.Encje
 {
     class Characters
     {

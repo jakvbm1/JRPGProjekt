@@ -8,9 +8,6 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace JRPG.DAL.Encje
 {
-    using DAL.Encje;
-    using Fantasia.DAL.Encje;
-
     class Users
     {
         public string Email;
