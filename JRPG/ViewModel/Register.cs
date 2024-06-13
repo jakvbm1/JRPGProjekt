@@ -214,8 +214,8 @@ namespace JRPG.ViewModel
                                                // Users.current_user = charakt;
                                             }
                                         }
-                                        
-                                        
+
+                                        GlobalVariables.cur_username = user.Username;
                                         Visible = Visibility.Visible;
 
                                         break;
