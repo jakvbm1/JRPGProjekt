@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace JRPG.Model
 {
-    using DAL.Encje;
+    using JRPG.DAL.Encje;
     using DAL.Repozytoria;
-    using Fantasia.DAL.Encje;
     using System.Collections.ObjectModel;
     class CharactersModel
     {
