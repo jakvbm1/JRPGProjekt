@@ -16,6 +16,7 @@ namespace JRPG.Model
 
         public CharactersModel()
         {
+            
             var allcharacters = RepoCharacters.GetAllCharacters();
             foreach (var character in allcharacters)
             {
@@ -24,8 +25,7 @@ namespace JRPG.Model
         }
         public bool AddCharacterToDatabase(Characters character)
         {
-            if (RepoCharacters.AddCharacterToDatabase(character)) { return true; }
-            return false;
+            return RepoCharacters.AddCharacterToDatabase(character);
         }
     
     }

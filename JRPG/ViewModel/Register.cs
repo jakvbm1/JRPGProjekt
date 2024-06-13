@@ -171,7 +171,9 @@ namespace JRPG.ViewModel
 
                                     if (model.charactersModel.AddCharacterToDatabase(character))
                                     {
-                                        System.Windows.MessageBox.Show("character was added do database!");
+                                        model.charactersModel.AddCharacterToDatabase(character);
+                                       System.Windows.MessageBox.Show("character was added do database!");
+                                        
                                     }
                                 }
                             }
