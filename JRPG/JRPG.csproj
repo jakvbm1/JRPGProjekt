@@ -18,6 +18,15 @@
     <None Remove="sprites\characters\warrior\atk.png" />
     <None Remove="sprites\characters\warrior\def.png" />
     <None Remove="sprites\characters\warrior\idle.png" />
+    <None Remove="sprites\items\weapons\bow_common.png" />
+    <None Remove="sprites\items\weapons\bow_rare.png" />
+    <None Remove="sprites\items\weapons\bow_uncommon.png" />
+    <None Remove="sprites\items\weapons\staff_common.png" />
+    <None Remove="sprites\items\weapons\staff_rare.png" />
+    <None Remove="sprites\items\weapons\staff_uncommon.png" />
+    <None Remove="sprites\items\weapons\sword_common.png" />
+    <None Remove="sprites\items\weapons\sword_rare.png" />
+    <None Remove="sprites\items\weapons\sword_uncommon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +50,15 @@
     <Resource Include="sprites\characters\warrior\atk.png" />
     <Resource Include="sprites\characters\warrior\def.png" />
     <Resource Include="sprites\characters\warrior\idle.png" />
+    <Resource Include="sprites\items\weapons\bow_common.png" />
+    <Resource Include="sprites\items\weapons\bow_rare.png" />
+    <Resource Include="sprites\items\weapons\bow_uncommon.png" />
+    <Resource Include="sprites\items\weapons\staff_common.png" />
+    <Resource Include="sprites\items\weapons\staff_rare.png" />
+    <Resource Include="sprites\items\weapons\staff_uncommon.png" />
+    <Resource Include="sprites\items\weapons\sword_common.png" />
+    <Resource Include="sprites\items\weapons\sword_rare.png" />
+    <Resource Include="sprites\items\weapons\sword_uncommon.png" />
   </ItemGroup>
 
   <ItemGroup>
