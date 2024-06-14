@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Tls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,19 @@ namespace JRPG.View
         {
             InitializeComponent();
         }
+
+        private void HiddenBtnClick(object sender, RoutedEventArgs e)
+        {
+
+
+            UserScreen userScreen = new UserScreen();
+            this.Visibility = Visibility.Hidden;
+            userScreen.Show();
+
+
+
+        }
+
+
     }
 }

@@ -23,39 +23,73 @@ namespace JRPG.ViewModel
         private Characters player;
         private Enemies enemy;
         private Difficulty difficult;
-        private string currMaxHP;
+        private string PL_currMaxHP, EN_currMaxHP, ENname;
         private ObservableCollection<Enemies> enemies;
         static Random rnd = new Random();
-        private int max_hp, curr_hp, atk, def;
+        private int PLmax_hp, player_curr_hp, PLatk, PLdef, enemy_curr_hp, ENatk, ENdef, ENmax_hp;
 
 
+        public BattleViewModel(MainModel mainModel)
+        {
+            model = mainModel;
+        }
+        
         public BattleViewModel(MainModel mainModel, string chosen, int hp, int atak, int deff, List<Items> Eq_items)
         {
             model = mainModel;
             if (chosen == "easy") difficult = Difficulty.easy;
             else if (chosen == "medium") difficult = Difficulty.medium;
             else if (chosen == "hard") difficult = Difficulty.hard;
-            max_hp = hp;
-            curr_hp = hp;
-            atk = atak;
-            def = deff;
-            CurrMaxhp();
+            PLmax_hp = hp;
+            player_curr_hp = hp;
+            PLatk = atak;
+            PLdef = deff;
+            PL_CurrMaxhp();
+            player = GlobalVariables.current_user;
+            enemies = model.enemiesModel.GetEnemiesByDifficulty(difficult);
+            Get_Enemy();
+            enemy_curr_hp = enemy.Health;
+            ENmax_hp = enemy.Health;
+            ENdef = enemy.Defense;
+            ENatk = enemy.Attack;
+            Console.WriteLine(EN_ATK);
+            EN_CurrMaxhp();
+            PL_ATK -= 1;
+            ENname = enemy.EnemyName;
+
+            
         }
 
-        public int HP { get { return curr_hp; } set { curr_hp = value; onPropertyChanged(nameof(HP)); } }
-        public int ATK { get { return atk; } set { atk = value; onPropertyChanged(nameof(ATK)); } }
-        public int DEF { get { return def; } set { def = value; onPropertyChanged(nameof(DEF)); } }
-        public string CurrMaxHP { get { return currMaxHP; } set { currMaxHP = value; onPropertyChanged(nameof(CurrMaxHP)); } }
+      
+        public int PL_ATK { get { return PLatk; } set { PLatk = value; onPropertyChanged(nameof(PL_ATK)); } }
+        
+        public int PL_DEF { get { return PLdef; } set { PLdef = value; onPropertyChanged(nameof(PL_DEF)); } }
+        public string PL_CurrMaxHP { get { return PL_currMaxHP; } set { PL_currMaxHP = value; onPropertyChanged(nameof(PL_CurrMaxHP)); } }
 
+        public int EN_ATK { get { return ENatk; } set { ENatk = value; onPropertyChanged(nameof(EN_ATK)); } }
+        public int EN_DEF { get { return ENdef; } set { ENdef = value; onPropertyChanged(nameof(EN_DEF)); } }
+        public string EN_CurrMaxHP { get { return EN_currMaxHP; } set { EN_currMaxHP = value; onPropertyChanged(nameof(EN_CurrMaxHP)); } }
+        public string EN_NAME { get { return ENname; } set { ENname = value; onPropertyChanged(nameof(EN_NAME)); } }
 
-        private void CurrMaxhp()
+        private void PL_CurrMaxhp()
         {
             // Console.WriteLine(max_hp);
             //  Console.WriteLine(curr_hp);
             //   Console.WriteLine("  ");
-            currMaxHP = curr_hp.ToString() + "/" + max_hp.ToString();
+            PL_CurrMaxHP = player_curr_hp.ToString() + "/" + PLmax_hp.ToString();
 
         }
+
+        private void EN_CurrMaxhp()
+        {
+            // Console.WriteLine(max_hp);
+            //  Console.WriteLine(curr_hp);
+            //   Console.WriteLine("  ");
+            EN_CurrMaxHP = enemy_curr_hp.ToString() + "/" + ENmax_hp.ToString();
+
+        }
+
+
         private void Get_Enemy()
         {
             if (enemies.Count > 0)
@@ -71,11 +105,11 @@ namespace JRPG.ViewModel
         {
             if (enemies.Count > 0)
             {
-                Console.WriteLine(enemy.EnemyName);
-                int dif = atk - enemy.Defense;
+               // Console.WriteLine(enemy.EnemyName);
+                int dif = PL_ATK - EN_DEF;
 
-                int chance = 70 + dif;
-                 Console.WriteLine(chance);
+                int chance = 50 +  4* dif;
+                Console.WriteLine(chance);
 
                 int k = rnd.Next(1, 100);
                 Console.WriteLine(k);
@@ -84,45 +118,41 @@ namespace JRPG.ViewModel
                 return false;
             }
             return false;
-
-
         }
-        private ICommand init = null;
-        public ICommand Init
+        private ICommand atakGracza = null;
+        public ICommand AtakGracza
         {
+            get
+            {
+                if (atakGracza == null)
+                    atakGracza = new RelayCommand(
+                      arg =>
+                      {
+                          if (player_attack())
+                          {
+                              enemy_curr_hp -= PL_ATK;
+                              EN_CurrMaxhp();
+                              if (enemy_curr_hp <= 0) { MessageBox.Show("ale mu sprzedałeś bombę"); }
+                          }
+                         
 
-        get {
-                if (init == null)
-                    init = new RelayCommand(
-                        arg => {
-                            player = GlobalVariables.current_user;
-                            enemies = model.enemiesModel.GetEnemiesByDifficulty(difficult);
-                            Get_Enemy();
-                            
-                            if (player_attack())
-                            {
-                                Console.WriteLine("uderzyl");
-                            }
-                        },
-                        arg => (1 > 0)
-
-                        );
-
+                      },
+                       arg => (1 > 0));
 
 
-                return init;
-            } 
-        
-        
-        
-        
+                return atakGracza;
+
+
+
+
+            }
         }
 
 
 
 
 
-       
+
     }
 }
         

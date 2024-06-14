@@ -29,7 +29,6 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Image Grid.Row="1" Source="/sprites/characters/mage/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-            <Button Command="{Binding BattleVM.Init}" Content="Initialize" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="239"/>
 
         </Grid>
 
@@ -50,13 +49,19 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="CUR_HP/MAX_HP" Foreground="White"/>
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding BattleVM.CurrMaxHP}" Foreground="White"/>
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="ATAK" Foreground="White"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="OBRONA" Foreground="White"/>
-            <TextBlock Grid.Row="3" Grid.Column="1" Text="UŻYJ PRZEDMIOTU" Foreground="White"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Gracz" Foreground="White"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="Wartość" Foreground="White"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="CUR_HP/MAX_HP" Foreground="White"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding BattleVM.PL_CurrMaxHP}" Foreground="White"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="ATAK" Foreground="White"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BattleVM.PL_ATK}" Foreground="White"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="OBRONA" Foreground="White"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding BattleVM.PL_DEF}" Foreground="White"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="UŻYJ ATAKU" Foreground="White"/>
+            <Button x:Name="HiddenButton"  Opacity="0" Grid.Row="4" Command="{Binding BattleVM.AtakGracza}" Cursor="Hand" Grid.Column="0"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="UŻYJ PRZEDMIOTU"  Foreground="White"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Background="Black">
             <Grid.ColumnDefinitions>
@@ -69,15 +74,18 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding BattleVM.Difficult}" Foreground="White"/>
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="chlopek 1" Foreground="White"/>
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="chlopek 2" Foreground="White"/>
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="chlopek 3" Foreground="White"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="hp chlopka 1" Foreground="White"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="hp chlopka 2" Foreground="White"/>
-            <TextBlock Grid.Row="3" Grid.Column="1" Text="hp chlopka 3" Foreground="White"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Przeciwnik" Foreground="White"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding BattleVM.EN_NAME }" Foreground="White"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="CUR_HP/MAX_HP" Foreground="White"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding BattleVM.EN_CurrMaxHP }" Foreground="White"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="ATAK" Foreground="White"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BattleVM.EN_ATK}" Foreground="White"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="OBRONA" Foreground="White"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding BattleVM.EN_DEF}" Foreground="White"/>
+     
         </Grid>
     </Grid>
 </Window>

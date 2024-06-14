@@ -27,8 +27,9 @@ namespace JRPG.ViewModel
             CSVM = new CharScreenVM(mainModel);
             ShopVM = new ShopScreenVM(mainModel);
             SelectEnemyVM = new SelectEnemyVM(mainModel);
-            Console.WriteLine(SelectEnemyVM.chosen);
-            BattleVM = new BattleViewModel(mainModel, SelectEnemyVM.chosen, CSVM.HP, CSVM.ATK, CSVM.DEF, CSVM.Eq_items);
+            if (string.IsNullOrEmpty(SelectEnemyVM.chosen))
+                BattleVM = new BattleViewModel(mainModel);
+           else BattleVM = new BattleViewModel(mainModel, SelectEnemyVM.chosen, CSVM.HP, CSVM.ATK, CSVM.DEF, CSVM.Eq_items);
           
             
         }

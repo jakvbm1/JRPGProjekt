@@ -70,7 +70,7 @@ CREATE TABLE `classes` (
 
 LOCK TABLES `classes` WRITE;
 /*!40000 ALTER TABLE `classes` DISABLE KEYS */;
-INSERT INTO `classes` VALUES ('Mage',8,14,'mage',8,'medium'),('Ranger',10,10,'ranger',9,'medium'),('Warrior',12,8,'warrior',11,'medium');
+INSERT INTO `classes` VALUES ('Mage',8,12,'mage',8,'medium'),('Ranger',10,8,'ranger',9,'medium'),('Warrior',12,9,'warrior',11,'medium');
 /*!40000 ALTER TABLE `classes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +96,7 @@ CREATE TABLE `enemies` (
 
 LOCK TABLES `enemies` WRITE;
 /*!40000 ALTER TABLE `enemies` DISABLE KEYS */;
-INSERT INTO `enemies` VALUES('Spider',10,2,'', 0,'easy'),('Lizzard',6,3,'',1,'easy'),('Horse',15,1,'',0,'easy');
+INSERT INTO `enemies` VALUES('Spider',17,5,'', 6,'easy'),('Lizzard',21,4,'',3,'easy'),('Horse',24,2,'',1,'easy');
 /*!40000 ALTER TABLE `enemies` ENABLE KEYS */;
 UNLOCK TABLES;
 
