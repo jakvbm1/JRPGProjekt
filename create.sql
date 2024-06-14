@@ -137,7 +137,7 @@ DROP TABLE IF EXISTS `items`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `items` (
   `ItemID` int unsigned NOT NULL AUTO_INCREMENT,
-  `Sprite` varchar(30) DEFAULT NULL,
+  `Sprite` varchar(70) DEFAULT NULL,
   `Cost` int DEFAULT NULL,
   `Kind` enum('weapon','armor','accessory','consumable') NOT NULL,
   `EquipableFor` enum('mage','warrior','ranger','everyone') DEFAULT NULL,
@@ -145,6 +145,7 @@ CREATE TABLE `items` (
   `Defense` int DEFAULT '0',
   `Max_hp` int DEFAULT '0',
   `Regen_hp` int DEFAULT '0',
+  `Name` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`ItemID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -155,7 +156,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'weapons/sword_common',10,'weapon','warrior',5,1,1,0),(2,'weapons/sword_uncommon',25,'weapon','warrior',8,2,2,0),(3,'weapons/sword_rare',100,'weapon','warrior',12,4,3,0),(4,'weapons/bow_common',10,'weapon','ranger',6,0,1,0),(5,'weapons/bow_uncommon',25,'weapon','ranger',10,1,1,0),(6,'weapons/bow_rare',100,'weapon','ranger',15,2,2,0),(7,'weapons/staff_common',10,'weapon','mage',7,0,0,0),(8,'weapons/staff_uncommon',25,'weapon','mage',12,0,1,0),(9,'weapons/staff_rare',100,'weapon','mage',20,0,2,0);
+INSERT INTO `items` VALUES (1,'/sprites/items/weapons/sword_common.png',10,'weapon','warrior',5,1,1,0,'zwykły miecz'),(2,'/sprites/items/weapons/sword_uncommon.png',25,'weapon','warrior',8,2,2,0,'niezwykły miecz'),(3,'/sprites/items/weapons/sword_rare.png',100,'weapon','warrior',12,4,3,0,'rzadki miecz'),(4,'/sprites/items/weapons/bow_common.png',10,'weapon','ranger',6,0,1,0,'zwykły łuk'),(5,'/sprites/items/weapons/bow_uncommon.png',25,'weapon','ranger',10,1,1,0,'niezwykły łuk'),(6,'/sprites/items/weapons/bow_rare.png',100,'weapon','ranger',15,2,2,0,'rzadki łuk'),(7,'/sprites/items/weapons/staff_common.png',10,'weapon','mage',7,0,0,0,'zwykłe berło'),(8,'/sprites/items/weapons/staff_uncommon.png',25,'weapon','mage',12,0,1,0,'niezwykłe berło'),(9,'/sprites/items/weapons/staff_rare.png',100,'weapon','mage',20,0,2,0,'rzadkie berło');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
