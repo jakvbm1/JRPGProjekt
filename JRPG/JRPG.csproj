@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="sprites\characters\mage\atk.png" />
+
     <None Remove="sprites\characters\mage\def.png" />
     <None Remove="sprites\characters\mage\idle.png" />
     <None Remove="sprites\characters\ranger\atk.png" />
@@ -27,12 +28,22 @@
     <None Remove="sprites\items\weapons\sword_common.png" />
     <None Remove="sprites\items\weapons\sword_rare.png" />
     <None Remove="sprites\items\weapons\sword_uncommon.png" />
+
+    <None Remove="sprites\characters\mage\idle.png" />
+
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="sprites\characters\mage\atk.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+
     </Resource>
+
+   
+    <Content Include="sprites\characters\mage\idle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
   </ItemGroup>
 
   <ItemGroup>

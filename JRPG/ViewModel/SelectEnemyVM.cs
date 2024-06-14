@@ -16,16 +16,20 @@ namespace JRPG.ViewModel
     using System.Windows.Media;
     using System.Collections.ObjectModel;
     using System.Windows.Documents;
-    class SelectEnemyVM
+    class SelectEnemyVM: ViewModelBase
     {
     private MainModel model;
-    public Difficulty difficult;
-    
+   
+        public static string chosen;
+
+
     public SelectEnemyVM(MainModel model)
         {
             this.model = model;
+         
             
         }
+        
         private ICommand easyDifficulty = null;
         public ICommand EasyDifficulty
         {
@@ -35,8 +39,9 @@ namespace JRPG.ViewModel
                     easyDifficulty = new RelayCommand(
                       arg =>
                       {
-                          difficult = Difficulty.easy;
-                          Console.WriteLine(difficult.ToString());
+                          
+                          chosen = "easy";
+                          
                       },
                        arg => (1 > 0));
 
@@ -57,8 +62,9 @@ namespace JRPG.ViewModel
                     mediumDifficulty = new RelayCommand(
                       arg =>
                       {
-                          difficult = Difficulty.medium;
-                          Console.WriteLine(difficult.ToString());
+                      
+                          chosen = "medium";
+
                       },
                        arg => (1 > 0));
 
@@ -79,8 +85,9 @@ namespace JRPG.ViewModel
                     hardDifficulty = new RelayCommand(
                       arg =>
                       {
-                          difficult = Difficulty.hard;
-                          Console.WriteLine(difficult.ToString());
+                     
+                          chosen = "hard";
+
                       },
                        arg => (1 > 0));
 

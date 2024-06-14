@@ -42,7 +42,7 @@ CREATE TABLE `characters` (
 
 LOCK TABLES `characters` WRITE;
 /*!40000 ALTER TABLE `characters` DISABLE KEYS */;
-INSERT INTO `characters` VALUES (4,'tymek@dybal.pl',1,10,'Warrior'),(5,'Kuba@miarka.pl',1,10,'Mage'),(6,'damian@knopek.pl',1,10,'Ranger');
+INSERT INTO `characters` VALUES (4,'tymek@dybal.pl',1,10,'Warrior'),(5,'kuba@miarka.pl',1,10,'Mage'),(6,'damian@knopek.pl',1,10,'Ranger');
 /*!40000 ALTER TABLE `characters` ENABLE KEYS */;
 UNLOCK TABLES;
 

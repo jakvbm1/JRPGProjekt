@@ -29,6 +29,8 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Image Grid.Row="1" Source="/sprites/characters/mage/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Button Command="{Binding BattleVM.Init}" Content="Initialize" HorizontalAlignment="Center" VerticalAlignment="Center" Height="32" Width="239"/>
+
         </Grid>
 
         <UniformGrid Grid.Row="0" Grid.Column="1" Rows="3">
@@ -51,7 +53,8 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="CUR_HP/MAX_HP" Foreground="White"/>
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="ATAK" Foreground="White"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding BattleVM.CurrMaxHP}" Foreground="White"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="ATAK" Foreground="White"/>
             <TextBlock Grid.Row="1" Grid.Column="1" Text="OBRONA" Foreground="White"/>
             <TextBlock Grid.Row="3" Grid.Column="1" Text="UŻYJ PRZEDMIOTU" Foreground="White"/>
         </Grid>

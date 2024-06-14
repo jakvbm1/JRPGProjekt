@@ -30,12 +30,15 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        
+
 
             <Image Grid.Row="0" Grid.Column="0"  Source="{Binding CSVM.Idle_sp}" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor">
 
             </Image>
 
+
+        <Image Grid.Row="0" Grid.Column="0"  RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor" Source="{Binding CSVM.Idle_sp}"></Image>
+       
 
         <Grid Grid.Row="1" Grid.Column="0" Margin="10px">
             <Grid.ColumnDefinitions>

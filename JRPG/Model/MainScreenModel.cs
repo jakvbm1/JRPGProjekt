@@ -22,7 +22,7 @@ namespace JRPG.Model
             foreach (var item in allitems)
             {
                 AllItems.Add(item);
-                Console.WriteLine(item.ItemID);
+                //Console.WriteLine(item.ItemID);
             }
 
             foreach (var eq in alleq)
