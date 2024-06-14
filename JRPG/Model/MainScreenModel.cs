@@ -56,9 +56,9 @@ namespace JRPG.Model
             return null;
         }
 
-        public ObservableCollection<Items> GetEquippedItems(int userId)
+        public List<Items> GetEquippedItems(int userId)
         {
-            var items = new ObservableCollection<Items>();
+            var items = new List<Items>();
             var eq = GetUsersEquipment(userId);
 
             foreach (var item in eq)
@@ -73,9 +73,9 @@ namespace JRPG.Model
             return items;
         }
 
-        public ObservableCollection<Items> GetUnEquippedItems(int userId)
+        public List<Items> GetUnEquippedItems(int userId)
         {
-            var items = new ObservableCollection<Items>();
+            var items = new List<Items>();
             var eq = GetUsersEquipment(userId);
 
             foreach (var item in eq)

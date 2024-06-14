@@ -19,13 +19,12 @@ namespace JRPG.DAL.Encje
         {
             ItemID = int.Parse(reader["ItemID"].ToString());
             Quantity = int.Parse(reader["Quantity"].ToString());
-            string IsEquip = reader["IsEquipped"].ToString();
+            string IsEquip = reader.GetInt32("IsEquipped").ToString();
             if (IsEquip == "1") IsEquipped = true;
-            else if (IsEquip == "0") IsEquipped = false;
-
+            else IsEquipped = false;
             CharID = int.Parse(reader["CharID"].ToString());
         }
-        public Equipment(int itemID, int quantity, bool isEquipped, string username, int charID)
+        public Equipment(int itemID, int quantity, bool isEquipped, int charID)
         {
             ItemID=itemID;
             Quantity = quantity;

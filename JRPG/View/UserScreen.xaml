@@ -67,7 +67,7 @@
             <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding CSVM.User_char.Gold}" />
         </Grid>
 
-        <ListView Grid.Row="0" Grid.Column="1">
+        <ListView Grid.Row="0" Grid.Column="1" ItemsSource="{Binding CSVM.Eq_items}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -75,7 +75,7 @@
 
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding CSVM.Eq_Items.ItemID}"/>
+                                    <TextBlock Text="{Binding Name}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                             
@@ -88,7 +88,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView Grid.Row="1" Grid.Column="1">
+        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding CSVM.Uneq_items}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -96,7 +96,7 @@
 
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding CSVM.Uneq_Items.Name}"/>
+                                    <TextBlock Text="{Binding Name}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
 

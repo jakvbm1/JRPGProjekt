@@ -67,6 +67,7 @@ namespace JRPG.ViewModel
             {
                 Items loaded_item = model.msn.GetItemByID(item.ItemID);
                 Console.WriteLine(loaded_item.ItemID +" "+ loaded_item.Name +" "+loaded_item.Attack);
+                Console.WriteLine(item.IsEquipped);
 
                 if (item.IsEquipped)
                 {
@@ -79,8 +80,8 @@ namespace JRPG.ViewModel
 
             }
 
-            Eq_items = equipped;
-            Uneq_items = unequipped;
+            Eq_items = model.msn.GetEquippedItems(User_char.CharId);
+            Uneq_items = model.msn.GetUnEquippedItems(User_char.CharId);
 
             foreach(var item in equipped)
             {
