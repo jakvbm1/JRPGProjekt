@@ -22,6 +22,7 @@ namespace JRPG.Model
             foreach (var item in allitems)
             {
                 AllItems.Add(item);
+                Console.WriteLine(item.ItemID);
             }
 
             foreach (var eq in alleq)
@@ -43,13 +44,12 @@ namespace JRPG.Model
             return eq;
         }
 
-        private Items? getItemById(int itemID)
+        public Items GetItemById(int itemID)
         {
             foreach (var item in AllItems) 
             {
                 if(itemID == item.ItemID)
                 {
-
                 return item;
                 }
             }
@@ -65,7 +65,7 @@ namespace JRPG.Model
             {
                 if (item.IsEquipped)
                 {
-                    Items itemToAdd = getItemById(item.ItemID);
+                    Items itemToAdd = GetItemById(item.ItemID);
                     if(itemToAdd != null)
                     items.Add(itemToAdd);
                 }
@@ -82,7 +82,7 @@ namespace JRPG.Model
             {
                 if (!item.IsEquipped)
                 {
-                    Items itemToAdd = getItemById(item.ItemID);
+                    Items itemToAdd = GetItemById(item.ItemID);
                     if (itemToAdd != null)
                         items.Add(itemToAdd);
                 }
@@ -90,6 +90,16 @@ namespace JRPG.Model
             return items;
         }
 
+        public Items GetItemByID(int itemID)
+        {
+            foreach (var item in AllItems)
+            {
+                if (item.ItemID == itemID)
+                { return item; }
+                
+            }
+            return null;
+        }
 
     }
 

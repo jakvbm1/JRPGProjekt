@@ -20,8 +20,9 @@ namespace JRPG.ViewModel
     {
         private MainModel model;
         private Characters user_char;
-        private ObservableCollection<Items> eq_items;
-        private ObservableCollection<Items> uneq_items;
+        private List<Items> eq_items;
+        private List<Items> uneq_items;
+        private ObservableCollection<Equipment> equipment;
         private Classes user_class;
         private int hp, atk, def;
         private string idle_sp, attack_sp, defense_sp, current_username;
@@ -35,50 +36,76 @@ namespace JRPG.ViewModel
         public int HP { get { return hp; } set { hp = value; onPropertyChanged(nameof(HP)); } }
         public int ATK { get { return atk; } set { atk = value; onPropertyChanged(nameof(ATK)); } }
         public int DEF { get { return def; } set { def = value; onPropertyChanged(nameof(DEF)); } }
+        public List<Items> Eq_items { get { return eq_items; } set { eq_items = value; onPropertyChanged(nameof(Eq_items)); } }
+        public List<Items> Uneq_items { get { return uneq_items; } set { uneq_items = value; onPropertyChanged(nameof(Uneq_items)); } }
 
         public CharScreenVM(MainModel model)
         {
             User_char = GlobalVariables.current_user;
             Current_username = GlobalVariables.cur_username;
+            Eq_items = new List<Items>();
+            Uneq_items = new List<Items>();
             this.model = model;
             HP = 0; ATK = 0; DEF = 0;
             if (GlobalVariables.current_user != null)
             {
                 User_class = model.classesModel.getUsersClass(GlobalVariables.current_user.Class_Name);
+                load_equipment();
                 setupStats();
             }
 
 
         }
 
+        private void load_equipment()
+        {
+            equipment = model.msn.GetUsersEquipment(User_char.CharId);
+            List<Items> equipped = new List<Items>();
+            List<Items> unequipped = new List<Items>();
+
+            foreach (var item in equipment) 
+            {
+                Items loaded_item = model.msn.GetItemByID(item.ItemID);
+                Console.WriteLine(loaded_item.ItemID +" "+ loaded_item.Name +" "+loaded_item.Attack);
+
+                if (item.IsEquipped)
+                {
+                    equipped.Add(loaded_item);
+                }
+                else
+                {
+                    unequipped.Add(loaded_item);
+                }
+
+            }
+
+            Eq_items = equipped;
+            Uneq_items = unequipped;
+
+            foreach(var item in equipped)
+            {
+                Console.WriteLine(item.ItemID + " debil");
+            }
+        }
+
         private void setupStats()
         {
+
             Idle_sp = $"/sprites/characters/{user_class.SpriteSet}/idle.png";
             Attack_sp = "/sprites/characters/" + User_class.SpriteSet + "/atack.png";
             Defense_sp = "/sprites/characters/" + User_class.SpriteSet + "/def.png";
 
-            ATK += User_class.Attack;
-            DEF += User_class.Defense;
-            HP += User_class.Health;
-        }
+            ATK = User_class.Attack;
+            DEF = User_class.Defense;
+            HP = User_class.Health;
 
-        private ICommand onLoadSetup;
-
-        public ICommand OnLoadSetup
-        {
-            get
+            foreach (var item in Eq_items)
             {
-                if (onLoadSetup == null)
-                {
-                    onLoadSetup = new RelayCommand(arg =>
-                    {
-                        User_class = model.classesModel.getUsersClass(User_char.Class_Name);
-                        setupStats();
-
-                    }, arg => true);
-                }
-                return onLoadSetup;
+                ATK += item.Attack;
+                DEF += item.Defense;
+                HP += item.Max_hp;
             }
         }
+
     }
 }

@@ -72,6 +72,13 @@
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn x:Name="current_equipment" >
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CSVM.Eq_Items.ItemID}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                            
                             <GridViewColumn.Header>
                                 <TextBlock Text="Założone przedmioty"/>
                             </GridViewColumn.Header>
@@ -86,6 +93,13 @@
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn x:Name="equipment">
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CSVM.Uneq_Items.Name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+
                             <GridViewColumn.Header>
                                 <TextBlock Text="Ekwipunek"/>
                             </GridViewColumn.Header>
@@ -96,7 +110,7 @@
         </ListView>
 
         <UniformGrid Rows="2" Grid.Column="2" Grid.Row="1">
-            <Button Content="Przejdź do sklepu" Command="{Binding CSVM.OnLoadSetup}"/>
+            <Button Content="Przejdź do sklepu"/>
             <Button Content="Przejdź do walki"/>
         </UniformGrid>
         <!--

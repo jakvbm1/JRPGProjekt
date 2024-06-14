@@ -9,12 +9,15 @@ namespace JRPG.Model
     using DAL.Encje;
     using DAL.Repozytoria;
     using System.Collections.ObjectModel;
+    using System.Windows.Interop;
+
     class MainModel
     {
         public UsersModel usersModel;
         public CharactersModel charactersModel;
         public ClassesModel classesModel;
         public ItemsModel itemsModel;
+        public MainScreenModel msn;
     
     public MainModel()
         {
@@ -22,6 +25,7 @@ namespace JRPG.Model
             charactersModel = new CharactersModel();
             classesModel = new ClassesModel();
             itemsModel = new ItemsModel();
+            msn = new MainScreenModel();
         }
     }
 }
