@@ -15,6 +15,8 @@ namespace JRPG.ViewModel
     using System.Windows;
     using JRPG.DAL.Repozytoria;
     using System.Collections.ObjectModel;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
 
     class CharScreenVM : ViewModelBase
     {
@@ -25,10 +27,11 @@ namespace JRPG.ViewModel
         private ObservableCollection<Equipment> equipment;
         private Classes user_class;
         private int hp, atk, def;
-        private string idle_sp, attack_sp, defense_sp, current_username;
-        public string Idle_sp { get {return idle_sp; } set { idle_sp = value; onPropertyChanged(nameof(Idle_sp)); } }
-        public string Attack_sp { get {return attack_sp; } set { attack_sp = value; onPropertyChanged(nameof(Attack_sp)); } }
-        public string Defense_sp { get {return defense_sp; } set { defense_sp = value; onPropertyChanged(nameof(Defense_sp)); } }
+        private Uri idle_sp, attack_sp, defense_sp;
+        private string current_username;
+        public Uri Idle_sp { get {return idle_sp; } set { idle_sp = value; onPropertyChanged(nameof(Idle_sp)); } }
+        public Uri Attack_sp { get {return attack_sp; } set { attack_sp = value; onPropertyChanged(nameof(Attack_sp)); } }
+        public Uri Defense_sp { get {return defense_sp; } set { defense_sp = value; onPropertyChanged(nameof(Defense_sp)); } }
         public string Current_username { get { return current_username; } set { current_username = value; onPropertyChanged(nameof(Current_username)); } }
 
         public Characters User_char { get { return user_char; } set { user_char = value; onPropertyChanged(nameof(User_char)); } }
@@ -93,9 +96,10 @@ namespace JRPG.ViewModel
         private void setupStats()
         {
 
-            Idle_sp = "/sprites/characters/"+user_class.SpriteSet+"/idle.png";
-            Attack_sp = "/sprites/characters/" + User_class.SpriteSet + "/atack.png";
-            Defense_sp = "/sprites/characters/" + User_class.SpriteSet + "/def.png";
+            Idle_sp = new Uri(@"/sprites/characters/" + user_class.SpriteSet + "/idle.png", UriKind.RelativeOrAbsolute);
+                //("/sprites/characters/" + user_class.SpriteSet + "/idle.png");
+            //Attack_sp = ("/sprites/characters/" + user_class.SpriteSet + "/atk.png");
+            //Defense_sp = ("/sprites/characters/" + user_class.SpriteSet + "/def.png");
 
             ATK = User_class.Attack;
             DEF = User_class.Defense;

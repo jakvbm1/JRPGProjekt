@@ -31,10 +31,13 @@
         </Grid.RowDefinitions>
 
         
-        <StackPanel Grid.Row="0" Grid.Column="0" DataContext="{Binding CSVM}">
-            <Image  Source="{Binding Idle_sp}" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
-            <TextBlock Text="{Binding Idle_sp}"/>
-        </StackPanel>
+
+            <Image Grid.Row="0" Grid.Column="0"  RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor">
+                <Image.Source>
+                <BitmapImage UriSource="{Binding CSVM.Idle_sp}"/>
+                </Image.Source>
+            </Image>
+
 
         <Grid Grid.Row="1" Grid.Column="0" Margin="10px">
             <Grid.ColumnDefinitions>
