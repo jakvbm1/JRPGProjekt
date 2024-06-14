@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,14 +30,15 @@ namespace JRPG.DAL.Encje
         public EquipableFor EquipableFor { get; set; }
 
         public string Name { get; set; }
-        public int Attack {  get; set; }
-        public int Defense {  get; set; }
-        public int Max_hp {  get; set; }
-        public int Regen_hp {  get; set; }
+        public int Attack { get; set; }
+        public int Defense { get; set; }
+        public int Max_hp { get; set; }
+        public int Regen_hp { get; set; }
+        public string Sprite { get; set; }
 
         public Items(MySqlDataReader reader)
         {
-            //Name = reader["name"].ToString();
+            Name = reader["name"].ToString();
             ItemID = int.Parse(reader["ItemID"].ToString());
             Cost = int.Parse(reader["Cost"].ToString());
             string _Kind = reader["Kind"].ToString();
@@ -53,8 +55,9 @@ namespace JRPG.DAL.Encje
             Defense = int.Parse(reader["Defense"].ToString());
             Max_hp = int.Parse(reader["Max_hp"].ToString());
             Regen_hp = int.Parse(reader["Regen_hp"].ToString());
+            Sprite = reader["Sprite"].ToString();
         }
-        public Items(int itemID, int cost, Kind kind, EquipableFor equipableFor, string name, int attack, int defense, int max_hp, int regen_hp)
+        public Items(int itemID, int cost, Kind kind, EquipableFor equipableFor, string name, int attack, int defense, int max_hp, int regen_hp, string sprite)
         {
             ItemID = itemID;
             Cost = cost;
@@ -65,6 +68,7 @@ namespace JRPG.DAL.Encje
             Defense = defense;
             Max_hp = max_hp;
             Regen_hp = regen_hp;
+            Sprite = sprite;
         }
 
         public Items(Items items)
@@ -78,6 +82,7 @@ namespace JRPG.DAL.Encje
             Defense = items.Defense;
             Max_hp = items.Max_hp;  
             Regen_hp = items.Regen_hp;
+            Sprite = items.Sprite;
         }
     }
 }

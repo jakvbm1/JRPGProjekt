@@ -46,7 +46,7 @@
                                     Width="50"
                                     RenderOptions.BitmapScalingMode="NearestNeighbor"
                                     RenderOptions.EdgeMode="Aliased"
-                                    Source="/sprites/items/weapons/sword_common.png" />
+                                    Source="{Binding Sprite}"/>
 
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
@@ -57,12 +57,12 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Name" />
+                                        Text="{Binding Name, StringFormat=Nazwa: {0}}" />
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Cost" />
+                                        Text="{Binding Cost, StringFormat=Koszt: {0}}" />
                                 </Grid>
                                 <Grid Grid.Column="2">
                                     <Grid.RowDefinitions>
@@ -73,12 +73,12 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Kind" />
+                                        Text="{Binding Kind, StringFormat=Rodzaj: {0}}" />
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="EquipableFor" />
+                                        Text="{Binding EquipableFor, StringFormat=Dla klasy: {0}}" />
                                 </Grid>
                                 <Grid Grid.Column="3">
                                     <Grid.RowDefinitions>
@@ -91,22 +91,22 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Attack" />
+                                        Text="{Binding Attack, StringFormat=Atak: {0}}" />
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Defense" />
+                                        Text="{Binding Defense, StringFormat=Obrona: {0}}" />
                                     <TextBlock
                                         Grid.Row="2"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Max_hp" />
+                                        Text="{Binding Max_hp, StringFormat=Maksymalne HP: {0}}" />
                                     <TextBlock
                                         Grid.Row="3"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Regen_hp" />
+                                        Text="{Binding Regen_hp, StringFormat=Regeneracja HP: {0}}" />
                                 </Grid>
                                 <CheckBox
                                     Grid.Column="4"
@@ -118,18 +118,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <!--
-        <UniformGrid Rows="2" Columns="4" Grid.Column="1" Grid.Row="0">
-            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/sword_common.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/sword_uncommon.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/sword_rare.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/staff_common.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/staff_uncommon.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/staff_rare.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/bow_common.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-            <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/bow_rare.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-        </UniformGrid>
-        -->
 
         <Grid Grid.Row="0" Grid.Column="1">
 
