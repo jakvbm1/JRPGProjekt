@@ -46,6 +46,7 @@ namespace JRPG.ViewModel
             Eq_items = new List<Items>();
             Uneq_items = new List<Items>();
             this.model = model;
+           
             HP = 0; ATK = 0; DEF = 0;
             if (GlobalVariables.current_user != null)
             {

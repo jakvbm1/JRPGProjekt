@@ -16,14 +16,15 @@ namespace JRPG.Model
         public UsersModel usersModel;
         public CharactersModel charactersModel;
         public ClassesModel classesModel;
+        public EnemiesModel enemiesModel;
         public ItemsModel itemsModel;
-        public MainScreenModel msn;
-    
+        public MainScreenModel msn;    
     public MainModel()
         {
             usersModel = new UsersModel();
             charactersModel = new CharactersModel();
             classesModel = new ClassesModel();
+            enemiesModel = new EnemiesModel();
             itemsModel = new ItemsModel();
             msn = new MainScreenModel();
         }
