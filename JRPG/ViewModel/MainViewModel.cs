@@ -13,16 +13,17 @@ namespace JRPG.ViewModel
 
     class MainViewModel
     {
-    private MainModel mainModel;
-    public Register Registering { get; set; }
-    public CharScreenVM CSVM { get; set; }
-    
+        private MainModel mainModel;
+        public Register Registering { get; set; }
+        public CharScreenVM CSVM { get; set; }
+        public ShopScreenVM ShopVM { get; set; }
 
-    public MainViewModel()
+        public MainViewModel()
         {
             mainModel = new MainModel();
             Registering = new Register(mainModel);
             CSVM = new CharScreenVM(mainModel);
+            ShopVM = new ShopScreenVM(mainModel);
         }
     }
 }

@@ -22,6 +22,7 @@ namespace JRPG.Model
             foreach (var item in allitems)
             {
                 AllItems.Add(item);
+                Console.WriteLine(item.ItemID);
             }
 
             foreach (var eq in alleq)
@@ -43,29 +44,28 @@ namespace JRPG.Model
             return eq;
         }
 
-        private Items? getItemById(int itemID)
+        public Items GetItemById(int itemID)
         {
             foreach (var item in AllItems) 
             {
                 if(itemID == item.ItemID)
                 {
-
                 return item;
                 }
             }
             return null;
         }
 
-        public ObservableCollection<Items> GetEquippedItems(int userId)
+        public List<Items> GetEquippedItems(int userId)
         {
-            var items = new ObservableCollection<Items>();
+            var items = new List<Items>();
             var eq = GetUsersEquipment(userId);
 
             foreach (var item in eq)
             {
                 if (item.IsEquipped)
                 {
-                    Items itemToAdd = getItemById(item.ItemID);
+                    Items itemToAdd = GetItemById(item.ItemID);
                     if(itemToAdd != null)
                     items.Add(itemToAdd);
                 }
@@ -73,16 +73,16 @@ namespace JRPG.Model
             return items;
         }
 
-        public ObservableCollection<Items> GetUnEquippedItems(int userId)
+        public List<Items> GetUnEquippedItems(int userId)
         {
-            var items = new ObservableCollection<Items>();
+            var items = new List<Items>();
             var eq = GetUsersEquipment(userId);
 
             foreach (var item in eq)
             {
                 if (!item.IsEquipped)
                 {
-                    Items itemToAdd = getItemById(item.ItemID);
+                    Items itemToAdd = GetItemById(item.ItemID);
                     if (itemToAdd != null)
                         items.Add(itemToAdd);
                 }
@@ -90,6 +90,16 @@ namespace JRPG.Model
             return items;
         }
 
+        public Items GetItemByID(int itemID)
+        {
+            foreach (var item in AllItems)
+            {
+                if (item.ItemID == itemID)
+                { return item; }
+                
+            }
+            return null;
+        }
 
     }
 

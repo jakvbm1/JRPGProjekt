@@ -5,11 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JRPG.View"
          xmlns:vm ="clr-namespace:JRPG.ViewModel"
+        xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="UserScreen" Height="450" Width="800">
-        <Window.Resources>
+    <Window.Resources>
          <vm:MainViewModel x:Key="mainVM"/>
         </Window.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="ContentRendered">
+            <i:InvokeCommandAction Command="{Binding CSVM.OnLoadSetup}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Grid DataContext="{StaticResource mainVM}">
         <Grid.ColumnDefinitions>
@@ -23,7 +30,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="0" Grid.Column="0" Source="/sprites/characters/mage/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+        <Image Grid.Row="0" Grid.Column="0" Source="{Binding CSVM.Idle_sp}" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
 
         <Grid Grid.Row="1" Grid.Column="0" Margin="10px">
             <Grid.ColumnDefinitions>
@@ -41,7 +48,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Nazwa użytkownika" />
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CSVM.User_char.Usermail}" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CSVM.Current_username}" />
 
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Punkty Życia" />
             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CSVM.HP}" />
@@ -53,20 +60,25 @@
             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CSVM.DEF}" />
 
             <TextBlock Grid.Row="4" Grid.Column="0" Text="Aktualny poziom" />
-            <TextBlock Grid.Row="4" Grid.Column="1" Text="level" />
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding CSVM.User_char.ExpLevel}" />
 
-            <TextBlock Grid.Row="5" Grid.Column="0" Text="Punkty Doświadczenia" />
-            <TextBlock Grid.Row="5" Grid.Column="1" Text="exp" />
 
             <TextBlock Grid.Row="6" Grid.Column="0" Text="Ilość złota" />
-            <TextBlock Grid.Row="6" Grid.Column="1" Text="gold" />
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding CSVM.User_char.Gold}" />
         </Grid>
 
-        <ListView Grid.Row="0" Grid.Column="1">
+        <ListView Grid.Row="0" Grid.Column="1" ItemsSource="{Binding CSVM.Eq_items}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn x:Name="current_equipment" >
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                            
                             <GridViewColumn.Header>
                                 <TextBlock Text="Założone przedmioty"/>
                             </GridViewColumn.Header>
@@ -76,11 +88,18 @@
             </ListView.View>
         </ListView>
 
-        <ListView Grid.Row="1" Grid.Column="1">
+        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding CSVM.Uneq_items}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn x:Name="equipment">
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+
                             <GridViewColumn.Header>
                                 <TextBlock Text="Ekwipunek"/>
                             </GridViewColumn.Header>

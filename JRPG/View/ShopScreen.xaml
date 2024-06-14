@@ -3,10 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm ="clr-namespace:JRPG.ViewModel"
         xmlns:local="clr-namespace:JRPG.View"
         mc:Ignorable="d"
         Title="ShopScreen" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <vm:MainViewModel x:Key="mainVM"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource mainVM}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="2*"/>
@@ -18,6 +23,26 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <ItemsControl Grid.Column="1" Grid.Row="0" ItemsSource="{Binding ShopVM.Items}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" BorderBrush="LightGray" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Text="debil1"/>
+                            <TextBlock Grid.Row="1" Text="debil"/>
+                            <TextBlock Grid.Row="2" Text="debil"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <!--
         <UniformGrid Rows="2" Columns="4" Grid.Column="1" Grid.Row="0">
             <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/sword_common.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
             <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/sword_uncommon.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
@@ -28,7 +53,7 @@
             <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/bow_common.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
             <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/bow_rare.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
         </UniformGrid>
-
+        -->
         <StackPanel Grid.Row="0" Grid.Column="0">
             <TextBlock Text="Opis zaznaczonego itemku"/>
             <TextBlock Text="NAZWA"/>

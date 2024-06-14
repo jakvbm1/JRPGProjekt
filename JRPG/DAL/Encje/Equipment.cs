@@ -12,26 +12,32 @@ namespace JRPG.DAL.Encje
         public int ItemID { get; set; }
         public int Quantity { get; set; }
         public bool IsEquipped { get; set; }
-        public string Username { get; set; }
+
         public int CharID {  get; set; }
 
         public Equipment(MySqlDataReader reader)
         {
             ItemID = int.Parse(reader["ItemID"].ToString());
             Quantity = int.Parse(reader["Quantity"].ToString());
-            string IsEquip = reader["IsEquipped"].ToString();
+            string IsEquip = reader.GetInt32("IsEquipped").ToString();
             if (IsEquip == "1") IsEquipped = true;
-            else if (IsEquip == "0") IsEquipped = false;
-            Username = reader["Username"].ToString();
+            else IsEquipped = false;
             CharID = int.Parse(reader["CharID"].ToString());
         }
-        public Equipment(int itemID, int quantity, bool isEquipped, string username, int charID)
+        public Equipment(int itemID, int quantity, bool isEquipped, int charID)
         {
             ItemID=itemID;
             Quantity = quantity;
             IsEquipped = isEquipped;
-            Username = username;
             CharID = charID;
+        }
+
+        public Equipment(Equipment equipment)
+        {
+            ItemID = equipment.ItemID;
+            Quantity=equipment.Quantity;
+            IsEquipped=equipment.IsEquipped;
+            CharID = equipment.CharID;
         }
     }
 }
