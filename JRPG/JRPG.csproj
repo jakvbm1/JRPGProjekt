@@ -10,18 +10,37 @@
 
   <ItemGroup>
     <None Remove="sprites\characters\mage\atk.png" />
+    <None Remove="sprites\characters\mage\def.png" />
+    <None Remove="sprites\characters\mage\idle.png" />
+    <None Remove="sprites\characters\ranger\atk.png" />
+    <None Remove="sprites\characters\ranger\def.png" />
+    <None Remove="sprites\characters\ranger\idle.png" />
+    <None Remove="sprites\characters\warrior\atk.png" />
+    <None Remove="sprites\characters\warrior\def.png" />
+    <None Remove="sprites\characters\warrior\idle.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="sprites\characters\mage\atk.png">
+    <Resource Include="sprites\characters\mage\atk.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
     <PackageReference Include="MySql.Data" Version="8.4.0" />
     <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="sprites\characters\mage\def.png" />
+    <Resource Include="sprites\characters\mage\idle.png" />
+    <Resource Include="sprites\characters\ranger\atk.png" />
+    <Resource Include="sprites\characters\ranger\def.png" />
+    <Resource Include="sprites\characters\ranger\idle.png" />
+    <Resource Include="sprites\characters\warrior\atk.png" />
+    <Resource Include="sprites\characters\warrior\def.png" />
+    <Resource Include="sprites\characters\warrior\idle.png" />
   </ItemGroup>
 
   <ItemGroup>

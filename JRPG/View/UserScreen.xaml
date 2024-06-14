@@ -32,10 +32,8 @@
 
         
 
-            <Image Grid.Row="0" Grid.Column="0"  RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Image.Source>
-                <BitmapImage UriSource="{Binding CSVM.Idle_sp}"/>
-                </Image.Source>
+            <Image Grid.Row="0" Grid.Column="0"  Source="{Binding CSVM.Idle_sp}" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor">
+
             </Image>
 
 
