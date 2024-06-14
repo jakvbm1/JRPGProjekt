@@ -160,8 +160,8 @@ namespace JRPG.ViewModel
                                 
                                 if (model.usersModel.AddUserToDatabase(user))
                                 {
-                                    model.usersModel.AllUsers.Add(user);   
-                                    
+                                    model.usersModel.AllUsers.Add(user);
+                                    users = model.usersModel.AllUsers;
                                     System.Windows.MessageBox.Show("User was added to database!");
                                     Email = "";
                                     Password = "";
@@ -171,8 +171,9 @@ namespace JRPG.ViewModel
 
                                     if (model.charactersModel.AddCharacterToDatabase(character))
                                     {
-                                        model.charactersModel.AddCharacterToDatabase(character);
-                                       System.Windows.MessageBox.Show("character was added do database!");
+                                        model.charactersModel.AllCharacters.Add(character);
+                                        characters = model.charactersModel.AllCharacters;
+                                        System.Windows.MessageBox.Show("character was added do database!");
                                         
                                     }
                                 }

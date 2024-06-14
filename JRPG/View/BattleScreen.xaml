@@ -4,9 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JRPG.View"
+        xmlns:vm ="clr-namespace:JRPG.ViewModel"
         mc:Ignorable="d"
         Title="BattleScreen" Height="450" Width="800">
-    <Grid Background="AntiqueWhite">
+
+    <Window.Resources>
+        <vm:MainViewModel x:Key="mainVM"/>
+    </Window.Resources>
+
+    <Grid Background="AntiqueWhite" DataContext="{StaticResource mainVM}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -62,7 +68,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Wybierz przeciwnika" Foreground="White"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding BattleVM.Difficult}" Foreground="White"/>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="chlopek 1" Foreground="White"/>
             <TextBlock Grid.Row="2" Grid.Column="0" Text="chlopek 2" Foreground="White"/>
             <TextBlock Grid.Row="3" Grid.Column="0" Text="chlopek 3" Foreground="White"/>

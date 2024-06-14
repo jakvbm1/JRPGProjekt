@@ -14,32 +14,21 @@ using System.Windows.Shapes;
 
 namespace JRPG.View
 {
-    using DAL.Encje;
-    using JRPG.DAL.Repozytoria;
-
     /// <summary>
-    /// Logika interakcji dla klasy UserScreen.xaml
+    /// Interaction logic for SelectEnemy.xaml
     /// </summary>
-    public partial class UserScreen : Window
+    public partial class SelectEnemy : Window
     {
-        public UserScreen()
+        public SelectEnemy()
         {
-            Console.WriteLine(GlobalVariables.current_user.CharId);
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LoginScreen loginScreen = new LoginScreen();
+           BattleScreen battleScreen = new BattleScreen();
             this.Visibility = Visibility.Hidden;
-            loginScreen.Show();
-        }
-        private void Enter_Walka(object sender, RoutedEventArgs e)
-        {
-            SelectEnemy selectEnemy = new SelectEnemy();    
-
-            this.Visibility = Visibility.Hidden;
-            selectEnemy.Show();
+            battleScreen.Show();
         }
     }
 }
