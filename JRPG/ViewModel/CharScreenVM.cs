@@ -38,7 +38,7 @@ namespace JRPG.ViewModel
         {
             User_char = GlobalVariables.current_user;
             this.model = model;
-            //user_class = model.classesModel.getUsersClass(User_char.Class_Name);
+            //  user_class = model.classesModel.getUsersClass(User_char.Class_Name);
             HP = 0; ATK = 0; DEF = 0;
         }
     }
