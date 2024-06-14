@@ -30,7 +30,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="0" Grid.Column="0" Source="{Binding CSVM.Idle_sp}" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+        
+        <StackPanel Grid.Row="0" Grid.Column="0" DataContext="{Binding CSVM}">
+            <Image  Source="{Binding Idle_sp}" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+            <TextBlock Text="{Binding Idle_sp}"/>
+        </StackPanel>
 
         <Grid Grid.Row="1" Grid.Column="0" Margin="10px">
             <Grid.ColumnDefinitions>

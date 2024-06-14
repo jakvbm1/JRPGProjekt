@@ -92,7 +92,7 @@ namespace JRPG.ViewModel
         private void setupStats()
         {
 
-            Idle_sp = $"/sprites/characters/{user_class.SpriteSet}/idle.png";
+            Idle_sp = "/sprites/characters/"+user_class.SpriteSet+"/idle.png";
             Attack_sp = "/sprites/characters/" + User_class.SpriteSet + "/atack.png";
             Defense_sp = "/sprites/characters/" + User_class.SpriteSet + "/def.png";
 
