@@ -36,7 +36,7 @@ namespace JRPG.DAL.Encje
 
         public Items(MySqlDataReader reader)
         {
-            Name = reader["name"].ToString();
+            //Name = reader["name"].ToString();
             ItemID = int.Parse(reader["ItemID"].ToString());
             Cost = int.Parse(reader["Cost"].ToString());
             string _Kind = reader["Kind"].ToString();

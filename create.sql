@@ -2,8 +2,8 @@
 --
 -- Host: localhost    Database: jrpg
 -- ------------------------------------------------------
--- Server version	8.0.37
-
+-- Server version	8.3.0
+use jrpg;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -33,7 +33,7 @@ CREATE TABLE `characters` (
   KEY `userMail` (`userMail`),
   CONSTRAINT `characters_ibfk_1` FOREIGN KEY (`Class_Name`) REFERENCES `classes` (`Class_Name`),
   CONSTRAINT `characters_ibfk_2` FOREIGN KEY (`userMail`) REFERENCES `users` (`Email`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `characters` (
 
 LOCK TABLES `characters` WRITE;
 /*!40000 ALTER TABLE `characters` DISABLE KEYS */;
-INSERT INTO `characters` VALUES (4,'tymek@dybal.pl',1,10,'Warrior'),(6,'damian@knopek.pl',1,10,'Ranger'),(7,'kuba@miarka.pl',1,10,'Mage');
+INSERT INTO `characters` VALUES (4,'tymek@dybal.pl',1,10,'Warrior'),(5,'Kuba@miarka.pl',1,10,'Mage'),(6,'damian@knopek.pl',1,10,'Ranger');
 /*!40000 ALTER TABLE `characters` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,6 +74,7 @@ INSERT INTO `classes` VALUES ('Mage',8,14,'mage',8,'medium'),('Ranger',10,10,'ra
 /*!40000 ALTER TABLE `classes` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
 --
 -- Table structure for table `enemies`
 --
@@ -92,14 +93,12 @@ CREATE TABLE `enemies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `enemies`
---
 
 LOCK TABLES `enemies` WRITE;
 /*!40000 ALTER TABLE `enemies` DISABLE KEYS */;
 /*!40000 ALTER TABLE `enemies` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 --
 -- Table structure for table `equipment`
@@ -117,7 +116,7 @@ CREATE TABLE `equipment` (
   KEY `ItemID` (`ItemID`),
   CONSTRAINT `equipment_ibfk_1` FOREIGN KEY (`CharId`) REFERENCES `characters` (`CharId`),
   CONSTRAINT `equipment_ibfk_2` FOREIGN KEY (`ItemID`) REFERENCES `items` (`ItemID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +125,6 @@ CREATE TABLE `equipment` (
 
 LOCK TABLES `equipment` WRITE;
 /*!40000 ALTER TABLE `equipment` DISABLE KEYS */;
-INSERT INTO `equipment` VALUES (8,1,1,7),(7,1,0,7);
 /*!40000 ALTER TABLE `equipment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +145,6 @@ CREATE TABLE `items` (
   `Defense` int DEFAULT '0',
   `Max_hp` int DEFAULT '0',
   `Regen_hp` int DEFAULT '0',
-  `name` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`ItemID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -158,7 +155,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'weapons/sword_common',10,'weapon','warrior',5,1,1,0,'zwykły miecz'),(2,'weapons/sword_uncommon',25,'weapon','warrior',8,2,2,0,'niezwykły miecz'),(3,'weapons/sword_rare',100,'weapon','warrior',12,4,3,0,'rzadki miecz'),(4,'weapons/bow_common',10,'weapon','ranger',6,0,1,0,'zwykły łuk'),(5,'weapons/bow_uncommon',25,'weapon','ranger',10,1,1,0,'niezwykły łuk'),(6,'weapons/bow_rare',100,'weapon','ranger',15,2,2,0,'rzadki łuk'),(7,'weapons/staff_common',10,'weapon','mage',7,0,0,0,'zwykła różdżka'),(8,'weapons/staff_uncommon',25,'weapon','mage',12,0,1,0,'niezwykła różdżka'),(9,'weapons/staff_rare',100,'weapon','mage',20,0,2,0,'rzadka różdżka');
+INSERT INTO `items` VALUES (1,'weapons/sword_common',10,'weapon','warrior',5,1,1,0),(2,'weapons/sword_uncommon',25,'weapon','warrior',8,2,2,0),(3,'weapons/sword_rare',100,'weapon','warrior',12,4,3,0),(4,'weapons/bow_common',10,'weapon','ranger',6,0,1,0),(5,'weapons/bow_uncommon',25,'weapon','ranger',10,1,1,0),(6,'weapons/bow_rare',100,'weapon','ranger',15,2,2,0),(7,'weapons/staff_common',10,'weapon','mage',7,0,0,0),(8,'weapons/staff_uncommon',25,'weapon','mage',12,0,1,0),(9,'weapons/staff_rare',100,'weapon','mage',20,0,2,0);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +182,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('damian@knopek.pl','haslodamiana','damian',0),('dybtym@gmail.com','123456','Dybson2',0),('kuba@miarka.pl','haslokuby','kuba',0),('tymdyb@gmail.com','123456','Dybson',0),('tymek@dybal.pl','haslotymka','tymek',0);
+INSERT INTO `users` VALUES ('damian@knopek.pl','haslodamiana','damian',0),('kuba@miarka.pl','haslokuby','kuba',0),('tymek@dybal.pl','haslotymka','tymek',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -198,4 +195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-14 11:45:41
+-- Dump completed on 2024-06-12 19:36:41
