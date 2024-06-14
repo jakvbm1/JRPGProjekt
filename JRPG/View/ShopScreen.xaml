@@ -46,7 +46,7 @@
                                     Width="50"
                                     RenderOptions.BitmapScalingMode="NearestNeighbor"
                                     RenderOptions.EdgeMode="Aliased"
-                                    Source="/sprites/items/weapons/sword_common.png" />
+                                    Source="{Binding Sprite}" />
 
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
@@ -57,12 +57,12 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Name" />
+                                        Text="{Binding Name}" />
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Cost" />
+                                        Text="{Binding Cost}" />
                                 </Grid>
                                 <Grid Grid.Column="2">
                                     <Grid.RowDefinitions>
@@ -73,12 +73,12 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Kind" />
+                                        Text="{Binding Kind}" />
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="EquipableFor" />
+                                        Text="{Binding EquipableFor}" />
                                 </Grid>
                                 <Grid Grid.Column="3">
                                     <Grid.RowDefinitions>
@@ -91,22 +91,22 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Attack" />
+                                        Text="{Binding Attack}" />
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Defense" />
+                                        Text="{Binding Defense}" />
                                     <TextBlock
                                         Grid.Row="2"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Max_hp" />
+                                        Text="{Binding Max_hp}" />
                                     <TextBlock
                                         Grid.Row="3"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="Regen_hp" />
+                                        Text="{Binding Regen_hp}" />
                                 </Grid>
                                 <CheckBox
                                     Grid.Column="4"
