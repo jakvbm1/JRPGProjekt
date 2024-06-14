@@ -28,11 +28,11 @@ namespace JRPG.View
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Shop_Button_Click(object sender, RoutedEventArgs e)
         {
-            LoginScreen loginScreen = new LoginScreen();
+            ShopScreen shopScreen = new ShopScreen();
             this.Visibility = Visibility.Hidden;
-            loginScreen.Show();
+            shopScreen.Show();
         }
         private void Enter_Walka(object sender, RoutedEventArgs e)
         {

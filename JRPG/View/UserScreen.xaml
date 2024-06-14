@@ -32,10 +32,8 @@
 
         
 
-            <Image Grid.Row="0" Grid.Column="0"  RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor">
-                <Image.Source>
-                <BitmapImage UriSource="{Binding CSVM.Idle_sp}"/>
-                </Image.Source>
+            <Image Grid.Row="0" Grid.Column="0"  Source="{Binding CSVM.Idle_sp}" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor">
+
             </Image>
 
 
@@ -117,8 +115,12 @@
         </ListView>
 
         <UniformGrid Rows="2" Grid.Column="2" Grid.Row="1">
-            <Button Content="Przejdź do sklepu"/>
-            <Button Content="Przejdź do walki" Click="Enter_Walka"/>
+
+            
+
+            <Button Content="Przejdź do sklepu" Click="Shop_Button_Click"/>
+                <Button Content="Przejdź do walki"   Click="Enter_Walka"/>
+
         </UniformGrid>
         <!--
         <Label Content="Nazwa" HorizontalAlignment="Left" Margin="20,191,0,0" VerticalAlignment="Top"/>
