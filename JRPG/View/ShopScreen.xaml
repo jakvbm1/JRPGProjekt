@@ -1,47 +1,123 @@
-﻿<Window x:Class="JRPG.View.ShopScreen"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm ="clr-namespace:JRPG.ViewModel"
-        xmlns:local="clr-namespace:JRPG.View"
-        mc:Ignorable="d"
-        Title="ShopScreen" Height="450" Width="800">
+﻿<Window
+    x:Class="JRPG.View.ShopScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:JRPG.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:JRPG.ViewModel"
+    Title="ShopScreen"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
     <Window.Resources>
-        <vm:MainViewModel x:Key="mainVM"/>
+        <vm:MainViewModel x:Key="mainVM" />
     </Window.Resources>
 
     <Grid DataContext="{StaticResource mainVM}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="2.5*" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <ScrollViewer
+            Grid.Row="0"
+            Grid.Column="0"
+            VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding ShopVM.Items}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Padding="10"
+                            BorderBrush="LightGray"
+                            BorderThickness="1">
+                            <Grid>
 
-        <ItemsControl Grid.Column="1" Grid.Row="0" ItemsSource="{Binding ShopVM.Items}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border Padding="10" BorderBrush="LightGray" BorderThickness="1">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="2.5*" />
+                                    <ColumnDefinition Width="2.5*" />
+                                    <ColumnDefinition Width="2.5*" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Row="0" Text="debil1"/>
-                            <TextBlock Grid.Row="1" Text="debil"/>
-                            <TextBlock Grid.Row="2" Text="debil"/>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                                <Image
+                                    Grid.Row="0"
+                                    Width="50"
+                                    RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                    RenderOptions.EdgeMode="Aliased"
+                                    Source="/sprites/items/weapons/sword_common.png" />
+
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Text="Name" />
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Text="Cost" />
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Text="Kind" />
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Text="EquipableFor" />
+                                </Grid>
+                                <Grid Grid.Column="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Text="Attack" />
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Text="Defense" />
+                                    <TextBlock
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Text="Max_hp" />
+                                    <TextBlock
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Text="Regen_hp" />
+                                </Grid>
+                                <CheckBox
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
         <!--
         <UniformGrid Rows="2" Columns="4" Grid.Column="1" Grid.Row="0">
             <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/sword_common.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
@@ -54,32 +130,26 @@
             <Image Grid.Row="0" Grid.Column="0" Source="/sprites/items/weapons/bow_rare.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
         </UniformGrid>
         -->
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <TextBlock Text="Opis zaznaczonego itemku"/>
-            <TextBlock Text="NAZWA"/>
-            <TextBlock Text="CENA"/>
-            <TextBlock Text="ATAK"/>
-            <TextBlock Text="OBRONA"/>
-            <TextBlock Text="HP"/>
-            <TextBlock Text="LECZENIE"/>
-        </StackPanel>
 
-        <TextBlock Grid.Row="0" Grid.Column="2" Text="Aktualny stan funduszy: "/>
-
-        <Grid Grid.Row="1" Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="1">
 
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition Height="10*" />
+                <RowDefinition />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
 
-            <Button Grid.Column="1" Grid.Row="1" Content="Zakup wybrany przedmiot"/>
+            <TextBlock Grid.Row="0" Text="Aktualny stan funduszy: 300 złota" />
+
+            <TextBlock Grid.Row="1" Text="Lista wybranych przedmiotów:" />
+
+            <TextBlock Grid.Row="2" Text="Wartość wybranych przedmiotów:" />
+
+            <Button Grid.Row="3" Content="Kup" />
+            <Button Grid.Row="4" Content="Wyjdź ze sklepu" />
+
         </Grid>
     </Grid>
 </Window>
