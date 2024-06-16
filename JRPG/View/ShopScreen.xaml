@@ -24,7 +24,7 @@
             Grid.Row="0"
             Grid.Column="0"
             VerticalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding ShopVM.Items}">
+            <ItemsControl ItemsSource="{Binding ShopVM.ItemsWithCheckBox}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border
@@ -46,7 +46,7 @@
                                     Width="50"
                                     RenderOptions.BitmapScalingMode="NearestNeighbor"
                                     RenderOptions.EdgeMode="Aliased"
-                                    Source="{Binding Sprite}"/>
+                                    Source="{Binding Item.Sprite}"/>
 
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
@@ -57,12 +57,12 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="{Binding Name, StringFormat=Nazwa: {0}}" />
+                                        Text="{Binding Item.Name, StringFormat=Nazwa: {0}}" />
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="{Binding Cost, StringFormat=Koszt: {0}}" />
+                                        Text="{Binding Item.Cost, StringFormat=Koszt: {0}}" />
                                 </Grid>
                                 <Grid Grid.Column="2">
                                     <Grid.RowDefinitions>
@@ -73,12 +73,12 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="{Binding Kind, StringFormat=Rodzaj: {0}}" />
+                                        Text="{Binding Item.Kind, StringFormat=Rodzaj: {0}}" />
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="{Binding EquipableFor, StringFormat=Dla klasy: {0}}" />
+                                        Text="{Binding Item.EquipableFor, StringFormat=Dla klasy: {0}}" />
                                 </Grid>
                                 <Grid Grid.Column="3">
                                     <Grid.RowDefinitions>
@@ -91,27 +91,28 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="{Binding Attack, StringFormat=Atak: {0}}" />
+                                        Text="{Binding Item.Attack, StringFormat=Atak: {0}}" />
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="{Binding Defense, StringFormat=Obrona: {0}}" />
+                                        Text="{Binding Item.Defense, StringFormat=Obrona: {0}}" />
                                     <TextBlock
                                         Grid.Row="2"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="{Binding Max_hp, StringFormat=Maksymalne HP: {0}}" />
+                                        Text="{Binding Item.Max_hp, StringFormat=Maksymalne HP: {0}}" />
                                     <TextBlock
                                         Grid.Row="3"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="{Binding Regen_hp, StringFormat=Regeneracja HP: {0}}" />
+                                        Text="{Binding Item.Regen_hp, StringFormat=Regeneracja HP: {0}}" />
                                 </Grid>
                                 <CheckBox
                                     Grid.Column="4"
                                     HorizontalAlignment="Center"
-                                    VerticalAlignment="Center" />
+                                    VerticalAlignment="Center"
+                                    IsChecked="{Binding IsChecked}"/>
                             </Grid>
                         </Border>
                     </DataTemplate>
@@ -135,7 +136,7 @@
 
             <TextBlock Grid.Row="2" Text="Wartość wybranych przedmiotów:" />
 
-            <Button Grid.Row="3" Content="Kup" />
+            <Button Grid.Row="3" Content="Kup" Command="{Binding ShopVM.ButtonBuy}"/>
             <Button Grid.Row="4" Content="Wyjdź ze sklepu" />
 
         </Grid>
