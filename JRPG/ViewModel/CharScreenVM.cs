@@ -32,12 +32,12 @@ namespace JRPG.ViewModel
         private BitmapImage idle_sp, attack_sp, defense_sp;
         private string current_username, imageurl;
         private Items selected_eq, selected_uneq;
-        private bool can_equip, can_dequip, should_upt=true;
+        private bool can_equip, can_dequip, should_upt = true;
 
 
-        public BitmapImage Idle_sp { get {return idle_sp; } set { idle_sp = value; onPropertyChanged(nameof(Idle_sp)); } }
-        public BitmapImage Attack_sp { get {return attack_sp; } set { attack_sp = value; onPropertyChanged(nameof(Attack_sp)); } }
-        public BitmapImage Defense_sp { get {return defense_sp; } set { defense_sp = value; onPropertyChanged(nameof(Defense_sp)); } }
+        public BitmapImage Idle_sp { get { return idle_sp; } set { idle_sp = value; onPropertyChanged(nameof(Idle_sp)); } }
+        public BitmapImage Attack_sp { get { return attack_sp; } set { attack_sp = value; onPropertyChanged(nameof(Attack_sp)); } }
+        public BitmapImage Defense_sp { get { return defense_sp; } set { defense_sp = value; onPropertyChanged(nameof(Defense_sp)); } }
         public string Current_username { get { return current_username; } set { current_username = value; onPropertyChanged(nameof(Current_username)); } }
         public Characters User_char { get { return user_char; } set { user_char = value; onPropertyChanged(nameof(User_char)); } }
         public Classes User_class { get { return user_class; } set { user_class = value; onPropertyChanged(nameof(User_class)); } }
@@ -50,13 +50,13 @@ namespace JRPG.ViewModel
         public bool Can_equip { get { return can_equip; } set { can_equip = value; onPropertyChanged(nameof(Can_equip)); } }
         public bool Can_dequip { get { return can_dequip; } set { can_dequip = value; onPropertyChanged(nameof(Can_dequip)); } }
 
-        public Items Selected_eq { get { return selected_eq; } set { selected_eq = value;   Can_dequip = true; Can_equip = false;
-                onPropertyChanged(nameof(Selected_eq));  updateImage();
+        public Items Selected_eq { get { return selected_eq; } set { selected_eq = value; Can_dequip = true; Can_equip = false;
+                onPropertyChanged(nameof(Selected_eq)); updateImage();
             } }
-        public Items Selected_uneq { get { return selected_uneq; } set { selected_uneq = value;  Can_dequip = false; Can_equip = true;
+        public Items Selected_uneq { get { return selected_uneq; } set { selected_uneq = value; Can_dequip = false; Can_equip = true;
                 onPropertyChanged(nameof(Selected_uneq)); updateImage(); } }
 
-        public String Imageurl {get {return imageurl;} set { imageurl = value; onPropertyChanged(nameof(Imageurl)); } }
+        public String Imageurl { get { return imageurl; } set { imageurl = value; onPropertyChanged(nameof(Imageurl)); } }
 
         public CharScreenVM(MainModel model)
         {
@@ -66,13 +66,14 @@ namespace JRPG.ViewModel
             Eq_items = new ObservableCollection<Items>();
             Uneq_items = new ObservableCollection<Items>();
             this.model = model;
-           
+
             HP = 0; ATK = 0; DEF = 0;
             if (GlobalVariables.current_user != null)
             {
                 User_class = model.classesModel.getUsersClass(GlobalVariables.current_user.Class_Name);
                 load_equipment();
                 setupSprites();
+                setupStats();
             }
 
 
@@ -84,10 +85,10 @@ namespace JRPG.ViewModel
             List<Items> equipped = new List<Items>();
             List<Items> unequipped = new List<Items>();
 
-            foreach (var item in equipment) 
+            foreach (var item in equipment)
             {
                 Items loaded_item = model.msn.GetItemByID(item.ItemID);
-                Console.WriteLine(loaded_item.ItemID +" "+ loaded_item.Name +" "+loaded_item.Attack);
+                Console.WriteLine(loaded_item.ItemID + " " + loaded_item.Name + " " + loaded_item.Attack);
                 Console.WriteLine(item.IsEquipped);
 
                 if (item.IsEquipped)
@@ -112,15 +113,17 @@ namespace JRPG.ViewModel
         {
             string bitmapuri = "pack://application:,,,/JRPG;component//sprites/characters/" + user_class.ClassName;
 
-            Idle_sp = new BitmapImage(new Uri(bitmapuri+"/idle.png"));
-            Attack_sp = new BitmapImage(new Uri(bitmapuri+"/atk.png"));
-            Defense_sp = new BitmapImage(new Uri(bitmapuri+"/def.png"));
+            Idle_sp = new BitmapImage(new Uri(bitmapuri + "/idle.png"));
+            Attack_sp = new BitmapImage(new Uri(bitmapuri + "/atk.png"));
+            Defense_sp = new BitmapImage(new Uri(bitmapuri + "/def.png"));
 
+        }
 
-
-            ATK = User_class.Attack;
-            DEF = User_class.Defense;
-            HP = User_class.Health;
+        private void setupStats()
+        {
+            ATK = (int)((9 + User_char.ExpLevel) * User_class.Attack / 10);
+            DEF = (int)((9 + User_char.ExpLevel) * User_class.Defense / 10);
+            HP = (int)((9 + User_char.ExpLevel) * User_class.Health / 10);
 
             foreach (var item in Eq_items)
             {
@@ -128,7 +131,7 @@ namespace JRPG.ViewModel
                 DEF += item.Defense;
                 HP += item.Max_hp;
             }
-        }
+        }   
 
         private void updateImage()
         {
@@ -151,10 +154,9 @@ namespace JRPG.ViewModel
                             should_upt = false;
                             Can_dequip = false;
                             Can_equip = false;
-                            Eq_items.Clear();
-                            Uneq_items.Clear();
                             load_equipment();
                             should_upt = true;
+                            setupStats();
                         }
                     }, arg => true);
                 return dequip;
@@ -173,10 +175,9 @@ namespace JRPG.ViewModel
                             should_upt = false;
                             Can_dequip = false;
                             Can_equip = false;
-                            Eq_items.Clear();
-                            Uneq_items.Clear();
                             load_equipment();
                             should_upt = true;
+                            setupStats();
                         }
                     }, arg => true);
                 return equip;

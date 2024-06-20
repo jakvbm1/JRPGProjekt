@@ -104,12 +104,27 @@ namespace JRPG.Model
 
         public bool Dequip_item(int itemID, int userId)
         {
+            if (RepoEquipment.Dequip(itemID, userId))
+            { refresh_eq(); }
             return RepoEquipment.Dequip(itemID, userId);
         }
 
         public bool Equip_item(int itemID, int userID)
         {
+            if (RepoEquipment.Equip(itemID, userID))
+            { refresh_eq(); }
             return RepoEquipment.Equip(itemID, userID);
+        }
+
+        private void refresh_eq()
+        {
+            AllEquipment.Clear();
+            var alleq = RepoEquipment.GetAllEquipment();
+            foreach (var eq in alleq)
+            {
+                AllEquipment.Add(eq);
+            }
+
         }
 
     }
