@@ -53,10 +53,25 @@ namespace JRPG.ViewModel
         public Items Selected_eq { get { return selected_eq; } set { selected_eq = value; Can_dequip = true; Can_equip = false;
                 onPropertyChanged(nameof(Selected_eq)); updateImage();
             } }
-        public Items Selected_uneq { get { return selected_uneq; } set { selected_uneq = value; Can_dequip = false; Can_equip = true;
+        public Items Selected_uneq { get { return selected_uneq; } set { selected_uneq = value; Can_dequip = false; Can_equip = classAllignment();
                 onPropertyChanged(nameof(Selected_uneq)); updateImage(); } }
 
         public String Imageurl { get { return imageurl; } set { imageurl = value; onPropertyChanged(nameof(Imageurl)); } }
+
+        private bool classAllignment()
+        {
+            EquipableFor eqp;
+
+            if(Enum.TryParse(User_class.ClassName.ToLower(), out eqp))
+            {
+            if(Selected_uneq != null && (Selected_uneq.EquipableFor == EquipableFor.everyone || Selected_uneq.EquipableFor == eqp))
+            {
+                return true;
+            }
+            }
+            Console.WriteLine(Enum.TryParse(User_class.ClassName.ToLower(), out eqp));
+            return false;
+        }
 
         public CharScreenVM(MainModel model)
         {
@@ -170,7 +185,17 @@ namespace JRPG.ViewModel
                 if (equip == null)
                     equip = new RelayCommand(arg =>
                     {
-                        if (model.msn.Equip_item(Selected_uneq.ItemID, User_char.CharId))
+                        bool succes = false;
+                        foreach(var item in Eq_items)
+                        {
+                            if(item.Kind == Selected_uneq.Kind)
+                            {
+                                succes = model.msn.Dequip_item(item.ItemID, User_char.CharId);
+                                break;
+                            }
+                        }
+
+                        if (model.msn.Equip_item(Selected_uneq.ItemID, User_char.CharId) )
                         {
                             should_upt = false;
                             Can_dequip = false;
