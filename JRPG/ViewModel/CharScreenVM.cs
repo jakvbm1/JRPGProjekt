@@ -185,7 +185,17 @@ namespace JRPG.ViewModel
                 if (equip == null)
                     equip = new RelayCommand(arg =>
                     {
-                        if (model.msn.Equip_item(Selected_uneq.ItemID, User_char.CharId))
+                        bool succes = false;
+                        foreach(var item in Eq_items)
+                        {
+                            if(item.Kind == Selected_uneq.Kind)
+                            {
+                                succes = model.msn.Dequip_item(item.ItemID, User_char.CharId);
+                                break;
+                            }
+                        }
+
+                        if (model.msn.Equip_item(Selected_uneq.ItemID, User_char.CharId) )
                         {
                             should_upt = false;
                             Can_dequip = false;
