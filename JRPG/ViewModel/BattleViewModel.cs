@@ -34,7 +34,7 @@ namespace JRPG.ViewModel
             model = mainModel;
         }
         
-        public BattleViewModel(MainModel mainModel, string chosen, int hp, int atak, int deff, List<Items> Eq_items)
+        public BattleViewModel(MainModel mainModel, string chosen, int hp, int atak, int deff, ObservableCollection<Items> Eq_items)
         {
             model = mainModel;
             if (chosen == "easy") difficult = Difficulty.easy;

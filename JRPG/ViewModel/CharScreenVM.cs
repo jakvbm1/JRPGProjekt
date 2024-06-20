@@ -24,8 +24,8 @@ namespace JRPG.ViewModel
     {
         private MainModel model;
         private Characters user_char;
-        private List<Items> eq_items;
-        private List<Items> uneq_items;
+        private ObservableCollection<Items> eq_items;
+        private ObservableCollection<Items> uneq_items;
         private ObservableCollection<Equipment> equipment;
         private Classes user_class;
         private int hp, atk, def;
@@ -44,8 +44,8 @@ namespace JRPG.ViewModel
         public int HP { get { return hp; } set { hp = value; onPropertyChanged(nameof(HP)); } }
         public int ATK { get { return atk; } set { atk = value; onPropertyChanged(nameof(ATK)); } }
         public int DEF { get { return def; } set { def = value; onPropertyChanged(nameof(DEF)); } }
-        public List<Items> Eq_items { get { return eq_items; } set { eq_items = value; onPropertyChanged(nameof(Eq_items)); } }
-        public List<Items> Uneq_items { get { return uneq_items; } set { uneq_items = value; onPropertyChanged(nameof(Uneq_items)); } }
+        public ObservableCollection<Items> Eq_items { get { return eq_items; } set { eq_items = value; onPropertyChanged(nameof(Eq_items)); } }
+        public ObservableCollection<Items> Uneq_items { get { return uneq_items; } set { uneq_items = value; onPropertyChanged(nameof(Uneq_items)); } }
 
         public bool Can_equip { get { return can_equip; } set { can_equip = value; onPropertyChanged(nameof(Can_equip)); } }
         public bool Can_dequip { get { return can_dequip; } set { can_dequip = value; onPropertyChanged(nameof(Can_dequip)); } }
@@ -63,8 +63,8 @@ namespace JRPG.ViewModel
             can_equip = false; can_dequip = false;
             User_char = GlobalVariables.current_user;
             Current_username = GlobalVariables.cur_username;
-            Eq_items = new List<Items>();
-            Uneq_items = new List<Items>();
+            Eq_items = new ObservableCollection<Items>();
+            Uneq_items = new ObservableCollection<Items>();
             this.model = model;
            
             HP = 0; ATK = 0; DEF = 0;
