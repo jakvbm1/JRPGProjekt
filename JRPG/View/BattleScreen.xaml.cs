@@ -23,20 +23,18 @@ namespace JRPG.View
         public BattleScreen()
         {
             InitializeComponent();
+            
+           
         }
 
-        private void HiddenBtnClick(object sender, RoutedEventArgs e)
+        
+        private void Opusc(object sender, RoutedEventArgs e)
         {
-
-
             UserScreen userScreen = new UserScreen();
             this.Visibility = Visibility.Hidden;
             userScreen.Show();
-
-
-
+            
         }
-
 
     }
 }

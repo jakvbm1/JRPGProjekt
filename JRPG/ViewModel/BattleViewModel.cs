@@ -27,6 +27,10 @@ namespace JRPG.ViewModel
         private ObservableCollection<Enemies> enemies;
         static Random rnd = new Random();
         private int PLmax_hp, player_curr_hp, PLatk, PLdef, enemy_curr_hp, ENatk, ENdef, ENmax_hp;
+        private Visibility isFinished = Visibility.Hidden;
+        
+        private string message;
+        private bool enableButtons;
 
 
         public BattleViewModel(MainModel mainModel)
@@ -55,12 +59,17 @@ namespace JRPG.ViewModel
             Console.WriteLine(EN_ATK);
             EN_CurrMaxhp();
             PL_ATK -= 1;
+            EnableButtons = true;
+
+
+
             ENname = enemy.EnemyName;
 
             
         }
 
-      
+        public Boolean EnableButtons { get { return enableButtons; } set { enableButtons = value; onPropertyChanged(nameof(EnableButtons)); } }
+        public Visibility IsFinished { get { return isFinished; } set { isFinished = value; onPropertyChanged(nameof(IsFinished)); } }
         public int PL_ATK { get { return PLatk; } set { PLatk = value; onPropertyChanged(nameof(PL_ATK)); } }
         
         public int PL_DEF { get { return PLdef; } set { PLdef = value; onPropertyChanged(nameof(PL_DEF)); } }
@@ -71,20 +80,18 @@ namespace JRPG.ViewModel
         public string EN_CurrMaxHP { get { return EN_currMaxHP; } set { EN_currMaxHP = value; onPropertyChanged(nameof(EN_CurrMaxHP)); } }
         public string EN_NAME { get { return ENname; } set { ENname = value; onPropertyChanged(nameof(EN_NAME)); } }
 
+       
+
         private void PL_CurrMaxhp()
         {
-            // Console.WriteLine(max_hp);
-            //  Console.WriteLine(curr_hp);
-            //   Console.WriteLine("  ");
+            
             PL_CurrMaxHP = player_curr_hp.ToString() + "/" + PLmax_hp.ToString();
 
         }
 
         private void EN_CurrMaxhp()
         {
-            // Console.WriteLine(max_hp);
-            //  Console.WriteLine(curr_hp);
-            //   Console.WriteLine("  ");
+            
             EN_CurrMaxHP = enemy_curr_hp.ToString() + "/" + ENmax_hp.ToString();
 
         }
@@ -101,11 +108,26 @@ namespace JRPG.ViewModel
 
 
         }
+        private bool enemy_attack()
+        {
+            
+            int dif = EN_ATK - PL_DEF;
+            int chance = 50 + 2 * dif;
+            Console.WriteLine("szansa na atak wroga to - " + chance.ToString());
+            int k = rnd.Next(1, 100);
+            if (k <= chance)
+                return true;
+
+            return false;
+
+        }
+
+
         private bool player_attack()
         {
             if (enemies.Count > 0)
             {
-               // Console.WriteLine(enemy.EnemyName);
+              
                 int dif = PL_ATK - EN_DEF;
 
                 int chance = 50 +  4* dif;
@@ -128,14 +150,41 @@ namespace JRPG.ViewModel
                     atakGracza = new RelayCommand(
                       arg =>
                       {
+                          message = "";
                           if (player_attack())
-                          {
+                      {
+                              message += "przeciwnik oberwał!";
                               enemy_curr_hp -= PL_ATK;
-                              EN_CurrMaxhp();
-                              if (enemy_curr_hp <= 0) { MessageBox.Show("ale mu sprzedałeś bombę"); }
-                          }
-                         
+                              if(enemy_curr_hp < 0) enemy_curr_hp = 0;
+                                EN_CurrMaxhp();
+                              
 
+                          if (enemy_curr_hp == 0) { MessageBox.Show("ale mu sprzedałeś bombę");
+                                  IsFinished = Visibility.Visible;
+                                  EnableButtons = false;
+
+
+
+                              }
+
+                          }
+
+                          if (enemy_attack() && enemy_curr_hp!=0)
+                          {
+                              message+=("\nTrafil Cie!");
+                              player_curr_hp -= ENatk;
+                              if (player_curr_hp<0) player_curr_hp = 0;
+                              PL_CurrMaxhp();
+                              if (player_curr_hp == 0) { MessageBox.Show("przegrales :((");
+                                  IsFinished = Visibility.Visible;
+                                  EnableButtons = false;
+
+
+                              }
+
+                          }
+                          if (!string.IsNullOrEmpty(message) && enemy_curr_hp>0 && player_curr_hp>0) MessageBox.Show(message);
+                          if (string.IsNullOrEmpty(message) && enemy_curr_hp > 0 && player_curr_hp > 0)MessageBox.Show("Nikt nikogo nie uderzył");
                       },
                        arg => (1 > 0));
 

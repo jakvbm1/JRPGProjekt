@@ -60,7 +60,7 @@
             <TextBlock Grid.Row="3" Grid.Column="0" Text="OBRONA" Foreground="White"/>
             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding BattleVM.PL_DEF}" Foreground="White"/>
             <TextBlock Grid.Row="4" Grid.Column="0" Text="UŻYJ ATAKU" Foreground="White"/>
-            <Button x:Name="HiddenButton"  Opacity="0" Grid.Row="4" Command="{Binding BattleVM.AtakGracza}" Cursor="Hand" Grid.Column="0"/>
+            <Button x:Name="HiddenButton"  Opacity="0" Grid.Row="4" IsEnabled="{Binding BattleVM.EnableButtons}" Command="{Binding BattleVM.AtakGracza}" Cursor="Hand" Grid.Column="0"/>
             <TextBlock Grid.Row="4" Grid.Column="1" Text="UŻYJ PRZEDMIOTU"  Foreground="White"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Background="Black">
@@ -85,6 +85,7 @@
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BattleVM.EN_ATK}" Foreground="White"/>
             <TextBlock Grid.Row="3" Grid.Column="0" Text="OBRONA" Foreground="White"/>
             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding BattleVM.EN_DEF}" Foreground="White"/>
+            <Button x:Name="zadymiarz"  Grid.Row="4" Grid.Column="0" Visibility="{Binding BattleVM.IsFinished}" Content="Opuść Walkę" Click="Opusc" Cursor="Hand"/>
      
         </Grid>
     </Grid>

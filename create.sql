@@ -96,7 +96,7 @@ CREATE TABLE `enemies` (
 
 LOCK TABLES `enemies` WRITE;
 /*!40000 ALTER TABLE `enemies` DISABLE KEYS */;
-INSERT INTO `enemies` VALUES('Spider',17,5,'', 6,'easy'),('Lizzard',21,4,'',3,'easy'),('Horse',24,2,'',1,'easy');
+INSERT INTO `enemies` VALUES('Spider',17,4,'', 6,'easy'),('Lizzard',21,3,'',3,'easy'),('Horse',24,2,'',1,'easy');
 /*!40000 ALTER TABLE `enemies` ENABLE KEYS */;
 UNLOCK TABLES;
 
