@@ -30,5 +30,57 @@ namespace JRPG.DAL.Repozytoria
 
             return equipment;
         }
+
+        public static bool Dequip(int itemid, int userid)
+        {
+            string upt = $"UPDATE equipment set IsEquipped = 0 where ItemID = {itemid} and CharId = {userid};";
+
+
+            bool check = false;
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command =
+                    new MySqlCommand(upt, connection);
+                connection.Open();
+                try { var n = command.ExecuteNonQuery(); }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
+
+                }
+                check = true;
+
+                connection.Close();
+            }
+            return check;
+        }
+
+        public static bool Equip(int itemid, int userid)
+        {
+            string upt = $"UPDATE equipment set IsEquipped = 1 where ItemID = {itemid} and CharId = {userid} ;";
+
+
+            bool check = false;
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command =
+                    new MySqlCommand(upt, connection);
+                connection.Open();
+                try { var n = command.ExecuteNonQuery(); }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
+
+                }
+                check = true;
+
+                connection.Close();
+            }
+            return check;
+        }
     }
 }

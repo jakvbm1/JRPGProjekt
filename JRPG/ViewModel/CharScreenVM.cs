@@ -30,12 +30,15 @@ namespace JRPG.ViewModel
         private Classes user_class;
         private int hp, atk, def;
         private BitmapImage idle_sp, attack_sp, defense_sp;
-        private string current_username;
+        private string current_username, imageurl;
+        private Items selected_eq, selected_uneq;
+        private bool can_equip, can_dequip, should_upt=true;
+
+
         public BitmapImage Idle_sp { get {return idle_sp; } set { idle_sp = value; onPropertyChanged(nameof(Idle_sp)); } }
         public BitmapImage Attack_sp { get {return attack_sp; } set { attack_sp = value; onPropertyChanged(nameof(Attack_sp)); } }
         public BitmapImage Defense_sp { get {return defense_sp; } set { defense_sp = value; onPropertyChanged(nameof(Defense_sp)); } }
         public string Current_username { get { return current_username; } set { current_username = value; onPropertyChanged(nameof(Current_username)); } }
-
         public Characters User_char { get { return user_char; } set { user_char = value; onPropertyChanged(nameof(User_char)); } }
         public Classes User_class { get { return user_class; } set { user_class = value; onPropertyChanged(nameof(User_class)); } }
         public int HP { get { return hp; } set { hp = value; onPropertyChanged(nameof(HP)); } }
@@ -44,8 +47,20 @@ namespace JRPG.ViewModel
         public List<Items> Eq_items { get { return eq_items; } set { eq_items = value; onPropertyChanged(nameof(Eq_items)); } }
         public List<Items> Uneq_items { get { return uneq_items; } set { uneq_items = value; onPropertyChanged(nameof(Uneq_items)); } }
 
+        public bool Can_equip { get { return can_equip; } set { can_equip = value; onPropertyChanged(nameof(Can_equip)); } }
+        public bool Can_dequip { get { return can_dequip; } set { can_dequip = value; onPropertyChanged(nameof(Can_dequip)); } }
+
+        public Items Selected_eq { get { return selected_eq; } set { selected_eq = value;   Can_dequip = true; Can_equip = false;
+                onPropertyChanged(nameof(Selected_eq));  updateImage();
+            } }
+        public Items Selected_uneq { get { return selected_uneq; } set { selected_uneq = value;  Can_dequip = false; Can_equip = true;
+                onPropertyChanged(nameof(Selected_uneq)); updateImage(); } }
+
+        public String Imageurl {get {return imageurl;} set { imageurl = value; onPropertyChanged(nameof(Imageurl)); } }
+
         public CharScreenVM(MainModel model)
         {
+            can_equip = false; can_dequip = false;
             User_char = GlobalVariables.current_user;
             Current_username = GlobalVariables.cur_username;
             Eq_items = new List<Items>();
@@ -57,7 +72,7 @@ namespace JRPG.ViewModel
             {
                 User_class = model.classesModel.getUsersClass(GlobalVariables.current_user.Class_Name);
                 load_equipment();
-                setupStats();
+                setupSprites();
             }
 
 
@@ -86,16 +101,14 @@ namespace JRPG.ViewModel
 
             }
 
+            Can_equip = false; Can_dequip = false;
+
             Eq_items = model.msn.GetEquippedItems(User_char.CharId);
             Uneq_items = model.msn.GetUnEquippedItems(User_char.CharId);
 
-            foreach(var item in equipped)
-            {
-                Console.WriteLine(item.ItemID + " debil");
-            }
         }
 
-        private void setupStats()
+        private void setupSprites()
         {
             string bitmapuri = "pack://application:,,,/JRPG;component//sprites/characters/" + user_class.ClassName;
 
@@ -114,6 +127,59 @@ namespace JRPG.ViewModel
                 ATK += item.Attack;
                 DEF += item.Defense;
                 HP += item.Max_hp;
+            }
+        }
+
+        private void updateImage()
+        {
+            if (should_upt)
+            {
+                if (Can_dequip)
+                    Imageurl = $"/sprites/items/{Selected_eq.Sprite}.png";
+                else if (Can_equip)
+                    Imageurl = $"/sprites/items/{Selected_uneq.Sprite}.png";
+            }
+        }
+
+        private ICommand dequip;
+        public ICommand Dequip { get { if (dequip == null)
+                    dequip = new RelayCommand(arg =>
+                    {
+                        if (model.msn.Dequip_item(Selected_eq.ItemID, User_char.CharId))
+                        {
+                            
+                            should_upt = false;
+                            Can_dequip = false;
+                            Can_equip = false;
+                            Eq_items.Clear();
+                            Uneq_items.Clear();
+                            load_equipment();
+                            should_upt = true;
+                        }
+                    }, arg => true);
+                return dequip;
+            } }
+
+        private ICommand equip;
+        public ICommand Equip
+        {
+            get
+            {
+                if (equip == null)
+                    equip = new RelayCommand(arg =>
+                    {
+                        if (model.msn.Equip_item(Selected_uneq.ItemID, User_char.CharId))
+                        {
+                            should_upt = false;
+                            Can_dequip = false;
+                            Can_equip = false;
+                            Eq_items.Clear();
+                            Uneq_items.Clear();
+                            load_equipment();
+                            should_upt = true;
+                        }
+                    }, arg => true);
+                return equip;
             }
         }
 

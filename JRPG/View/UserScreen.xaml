@@ -75,11 +75,11 @@
             <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding CSVM.User_char.Gold}" />
         </Grid>
 
-        <ListView Grid.Row="0" Grid.Column="1" ItemsSource="{Binding CSVM.Eq_items}">
+        <ListView Grid.Row="0" Grid.Column="1" ItemsSource="{Binding CSVM.Eq_items}" SelectedItem="{Binding CSVM.Selected_eq}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn x:Name="current_equipment" >
+                        <GridViewColumn x:Name="current_eq_name" >
 
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -91,28 +91,126 @@
                                 <TextBlock Text="Założone przedmioty"/>
                             </GridViewColumn.Header>
                         </GridViewColumn>
+                        <GridViewColumn x:Name="current_eq_atk" >
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Attack}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+
+                            <GridViewColumn.Header>
+                                <TextBlock Text="Atak"/>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="current_eq_def" >
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Defense}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+
+                            <GridViewColumn.Header>
+                                <TextBlock Text="Obrona"/>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="current_eq_hp" >
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Max_hp}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+
+                            <GridViewColumn.Header>
+                                <TextBlock Text="HP"/>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="current_eq_regen" >
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Regen_hp}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+
+                            <GridViewColumn.Header>
+                                <TextBlock Text="Leczenie"/>
+                            </GridViewColumn.Header>
+                        </GridViewColumn>
+
+
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding CSVM.Uneq_items}">
+        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding CSVM.Uneq_items}" SelectedItem="{Binding CSVM.Selected_uneq}">
             <ListView.View>
                 <GridView>
-                    <GridView.Columns>
-                        <GridViewColumn x:Name="equipment">
+                    <GridViewColumn x:Name="eq_name" >
 
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Name}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
 
-                            <GridViewColumn.Header>
-                                <TextBlock Text="Ekwipunek"/>
-                            </GridViewColumn.Header>
-                        </GridViewColumn>
-                    </GridView.Columns>
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Założone przedmioty"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="eq_atk" >
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Attack}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Atak"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="eq_def" >
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Defense}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Obrona"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="eq_hp" >
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Max_hp}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <GridViewColumn.Header>
+                            <TextBlock Text="HP"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="eq_regen" >
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Regen_hp}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Leczenie"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+
                 </GridView>
             </ListView.View>
         </ListView>
@@ -125,18 +223,20 @@
                 <Button Content="Przejdź do walki"   Click="Enter_Walka"/>
 
         </UniformGrid>
-        <!--
-        <Label Content="Nazwa" HorizontalAlignment="Left" Margin="20,191,0,0" VerticalAlignment="Top"/>
-        <Label Content="HP:" HorizontalAlignment="Left" Margin="29,222,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.613,-1.036"/>
-        <Label Content="ATK" HorizontalAlignment="Left" Margin="26,248,0,0" VerticalAlignment="Top"/>
-        <Label Content="DEF" HorizontalAlignment="Left" Margin="26,274,0,0" VerticalAlignment="Top"/>
-        <Button Content="Sklep" HorizontalAlignment="Left" Margin="690,321,0,0" VerticalAlignment="Top" Width="48"/>
-        <Button Content="Walka" HorizontalAlignment="Left" Margin="690,356,0,0" VerticalAlignment="Top" Width="48"/>
-        <Button Content="Wyloguj" HorizontalAlignment="Left" Margin="690,389,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox HorizontalAlignment="Left" Margin="270,141,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="48"/>
-        <TextBox HorizontalAlignment="Left" Margin="251,261,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="96"/>
-        <Label Content="Uzbrojenie" HorizontalAlignment="Left" Margin="290,104,0,0" VerticalAlignment="Top"/>
-        <Label Content="Ekwipunek" HorizontalAlignment="Left" Margin="270,230,0,0" VerticalAlignment="Top"/> -->
+
+        <Grid Grid.Row="0" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="0" Source="{Binding CSVM.Imageurl}" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+
+            <Button Grid.Row="1" Content="Załóż przedmiot" IsEnabled="{Binding CSVM.Can_equip}" Command="{Binding CSVM.Equip}"/>
+            <Button Grid.Row="2" Content="Zdejmij przedmiot" IsEnabled="{Binding CSVM.Can_dequip}" Command="{Binding CSVM.Dequip}"/>
+        </Grid>
+ 
 
     </Grid>
 </Window>

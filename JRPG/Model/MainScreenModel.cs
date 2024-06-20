@@ -11,6 +11,7 @@ namespace JRPG.Model
     using System.Collections.ObjectModel;
     class MainScreenModel
     {
+
         public ObservableCollection<Items> AllItems { get; set; } = new ObservableCollection<Items>();
         public ObservableCollection<Equipment> AllEquipment { get; set; } = new ObservableCollection<Equipment>();
 
@@ -99,6 +100,16 @@ namespace JRPG.Model
                 
             }
             return null;
+        }
+
+        public bool Dequip_item(int itemID, int userId)
+        {
+            return RepoEquipment.Dequip(itemID, userId);
+        }
+
+        public bool Equip_item(int itemID, int userID)
+        {
+            return RepoEquipment.Equip(itemID, userID);
         }
 
     }
