@@ -15,13 +15,18 @@
     </Window.Resources>
 
     <Grid DataContext="{StaticResource mainVM}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2.5*" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="LightGray">
+            <TextBlock FontSize="20" Text="{Binding ShopVM.User_char.Gold, StringFormat=Ilość złota: {0}}" />
+        </Grid>
 
         <ScrollViewer
-            Grid.Row="0"
+            Grid.Row="1"
             Grid.Column="0"
             VerticalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding ShopVM.ItemsWithCheckBox}">
@@ -46,7 +51,7 @@
                                     Width="50"
                                     RenderOptions.BitmapScalingMode="NearestNeighbor"
                                     RenderOptions.EdgeMode="Aliased"
-                                    Source="{Binding Item.Sprite}"/>
+                                    Source="{Binding Item.Sprite}" />
 
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
@@ -112,7 +117,7 @@
                                     Grid.Column="4"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    IsChecked="{Binding IsChecked}"/>
+                                    IsChecked="{Binding IsChecked}" />
                             </Grid>
                         </Border>
                     </DataTemplate>
@@ -120,25 +125,21 @@
             </ItemsControl>
         </ScrollViewer>
 
-        <Grid Grid.Row="0" Grid.Column="1">
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="10*" />
-                <RowDefinition />
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="2*" />
-            </Grid.RowDefinitions>
-
-            <TextBlock Grid.Row="0" Text="Aktualny stan funduszy: 300 złota" />
-
-            <TextBlock Grid.Row="1" Text="Lista wybranych przedmiotów:" />
-
-            <TextBlock Grid.Row="2" Text="Wartość wybranych przedmiotów:" />
-
-            <Button Grid.Row="3" Content="Kup" Command="{Binding ShopVM.ButtonBuy}"/>
-            <Button Grid.Row="4" Content="Wyjdź ze sklepu" />
-
+            <Button
+                Grid.Column="0"
+                Click="Leave"
+                Content="Wyjdź ze sklepu" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding ShopVM.ButtonBuy}"
+                Content="Kup" />
         </Grid>
+
     </Grid>
 </Window>
