@@ -24,7 +24,7 @@ namespace JRPG.View
     {
         public UserScreen()
         {
-            Console.WriteLine(GlobalVariables.current_user.CharId);
+            //Console.WriteLine(GlobalVariables.current_user.CharId);
             InitializeComponent();
         }
 

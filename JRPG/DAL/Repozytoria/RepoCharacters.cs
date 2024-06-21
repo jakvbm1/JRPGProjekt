@@ -12,6 +12,7 @@ namespace JRPG.DAL.Repozytoria
     {
         private const string ALL_CHARACTERS = "SELECT * FROM characters";
         private const string ADD_CHARACTER = "INSERT INTO `characters` VALUES ";
+        private const string UPDATE_TABLE = "UPDATE characters";
        
         public static List<Characters> GetAllCharacters()
         {
@@ -32,13 +33,17 @@ namespace JRPG.DAL.Repozytoria
         }
         public static bool AddCharacterToDatabase(Characters characters)
         {
-            bool check = false;
+         
             using (var connection = DBConnection.Instance.Connection)
             {
                 MySqlCommand command =
                     new MySqlCommand($"{ADD_CHARACTER} ('{characters.CharId}', '{characters.Usermail}', '{characters.ExpLevel}', '{characters.Gold}', '{characters.Class_Name}')", connection);
                 connection.Open();
-                try { var n = command.ExecuteNonQuery(); }
+                try { var n = command.ExecuteNonQuery(); 
+                    connection.Close();
+                    return true;
+                
+                }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
                     System.Windows.MessageBox.Show(ex.ToString());
@@ -46,13 +51,47 @@ namespace JRPG.DAL.Repozytoria
                     return false;
 
                 }
-                check = true;
-
-                connection.Close();
+               
             }
-            return check;
+            
         }    
-    
+        public static bool UpdateGoldAndLevel (string difficulty, Characters characters)
+        {
+
+           
+            int new_level = characters.ExpLevel+1;
+            
+            int new_gold = characters.Gold;
+            if(difficulty == "easy") { new_gold += 10; }
+            if (difficulty == "medium") { new_gold += 30; }
+            if (difficulty == "hard") { new_gold += 100; }
+       
+
+            bool check = false;
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                
+                MySqlCommand command= 
+                    new MySqlCommand($"{UPDATE_TABLE} set Gold ={new_gold}, EXP_Level={new_level} WHERE CharID={characters.CharId}",connection);
+                connection.Open();
+                try { var n = command.ExecuteNonQuery();
+
+                    
+                    connection.Close();
+                  
+                    return true;
+                }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show (ex.ToString());
+                    connection.Close();
+                    return false;
+                }
+                
+            }
+
+                
+        }
     
     }
 }

@@ -15,10 +15,12 @@ namespace JRPG.Model
 
         public CharactersModel()
         {
-            
+            Console.WriteLine("konstruktor");
             var allcharacters = RepoCharacters.GetAllCharacters();
             foreach (var character in allcharacters)
             {
+                if (GlobalVariables.current_user != null && GlobalVariables.current_user.CharId == character.CharId) GlobalVariables.current_user = character;
+                Console.WriteLine(character.ToInsert());
                 AllCharacters.Add(character);
             }
         }
@@ -26,6 +28,10 @@ namespace JRPG.Model
         {
             return RepoCharacters.AddCharacterToDatabase(character);
         }
-    
+        public bool UpdateGoldAndLevel(string Difficulty, Characters character)
+        {
+            return RepoCharacters.UpdateGoldAndLevel(Difficulty, character);
+        }
+       
     }
 }
