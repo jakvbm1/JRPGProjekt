@@ -23,5 +23,12 @@ namespace JRPG.View
         {
             InitializeComponent();
         }
+
+        private void Leave(object sender, RoutedEventArgs e)
+        {
+            UserScreen userScreen = new UserScreen();
+            Visibility = Visibility.Hidden;
+            userScreen.Show();
+        }
     }
 }
