@@ -42,7 +42,7 @@ CREATE TABLE `characters` (
 
 LOCK TABLES `characters` WRITE;
 /*!40000 ALTER TABLE `characters` DISABLE KEYS */;
-INSERT INTO `characters` VALUES (4,'tymek@dybal.pl',1,10,'Warrior'),(6,'damian@knopek.pl',1,10,'Ranger'),(7,'kuba@miarka.pl',1,10,'Mage');
+INSERT INTO `characters` VALUES (4,'tymek@dybal.pl',1,10,'Warrior'),(6,'damian@knopek.pl',1,10,'Ranger'),(7,'kuba@miarka.pl',5,70,'Mage');
 /*!40000 ALTER TABLE `characters` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +150,7 @@ CREATE TABLE `items` (
   `Regen_hp` int DEFAULT '0',
   `name` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`ItemID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,7 +159,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'weapons/sword_common',10,'weapon','warrior',5,1,1,0,'zwykły miecz'),(2,'weapons/sword_uncommon',25,'weapon','warrior',8,2,2,0,'niezwykły miecz'),(3,'weapons/sword_rare',100,'weapon','warrior',12,4,3,0,'rzadki miecz'),(4,'weapons/bow_common',10,'weapon','ranger',6,0,1,0,'zwykły łuk'),(5,'weapons/bow_uncommon',25,'weapon','ranger',10,1,1,0,'niezwykły łuk'),(6,'weapons/bow_rare',100,'weapon','ranger',15,2,2,0,'rzadki łuk'),(7,'weapons/staff_common',10,'weapon','mage',7,0,0,0,'zwykła różdżka'),(8,'weapons/staff_uncommon',25,'weapon','mage',12,0,1,0,'niezwykła różdżka'),(9,'weapons/staff_rare',100,'weapon','mage',20,0,2,0,'rzadka różdżka');
+INSERT INTO `items` VALUES (1,'weapons/sword_common',10,'weapon','warrior',5,1,1,0,'zwykły miecz'),(2,'weapons/sword_uncommon',25,'weapon','warrior',8,2,2,0,'niezwykły miecz'),(3,'weapons/sword_rare',100,'weapon','warrior',12,4,3,0,'rzadki miecz'),(4,'weapons/bow_common',10,'weapon','ranger',6,0,1,0,'zwykły łuk'),(5,'weapons/bow_uncommon',25,'weapon','ranger',10,1,1,0,'niezwykły łuk'),(6,'weapons/bow_rare',100,'weapon','ranger',15,2,2,0,'rzadki łuk'),(7,'weapons/staff_common',10,'weapon','mage',7,0,0,0,'zwykła różdżka'),(8,'weapons/staff_uncommon',25,'weapon','mage',12,0,1,0,'niezwykła różdżka'),(9,'weapons/staff_rare',100,'weapon','mage',20,0,2,0,'rzadka różdżka'),(10,'armors/chestplate_common',30,'armor','warrior',0,8,2,0,'zwykła zbroja'),(11,'armors/chestplate_uncommon',80,'armor','warrior',1,12,2,0,'niezwykła zbroja'),(12,'armors/chestplate_rare',150,'armor','warrior',1,20,3,0,'rzadka zbroja'),(13,'armors/robe_common',30,'armor','mage',2,8,0,0,'zwykła szata'),(14,'armors/robe_uncommon',80,'armor','mage',2,12,1,0,'niezwykła szata'),(15,'armors/robe_rare',150,'armor','mage',3,20,1,0,'rzadka szata'),(16,'armors/cloak_common',30,'armor','ranger',1,8,1,0,'zwykła peleryna'),(17,'armors/cloak_uncommon',80,'armor','ranger',2,12,1,0,'niezwykła peleryna'),(18,'armors/cloak_rare',150,'armor','ranger',2,20,2,0,'rzadka peleryna'),(19,'accessories/ring_atk',100,'accessory','everyone',10,0,0,0,'pierścień mocy'),(20,'accessories/ring_def',100,'accessory','everyone',0,10,0,0,'pierścień trwałości'),(21,'accessories/ring_hp',100,'accessory','everyone',0,0,10,0,'pierścień witalności'),(22,'usable/hp_potion',25,'consumable','everyone',0,0,0,8,'mikstura leczenia'),(23,'usable/hp_potion_big',100,'consumable','everyone',0,0,0,24,'duża mikstura leczenia'),(24,'usable/goblin_food',999,'consumable','everyone',0,0,0,-1,'granulat dla goblina');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-21 13:25:07
+-- Dump completed on 2024-06-21 19:11:33
