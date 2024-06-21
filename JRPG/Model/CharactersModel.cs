@@ -19,7 +19,7 @@ namespace JRPG.Model
             var allcharacters = RepoCharacters.GetAllCharacters();
             foreach (var character in allcharacters)
             {
-               // Console.WriteLine(character.ToInsert());
+               
                 if (GlobalVariables.current_user != null && GlobalVariables.current_user.CharId == character.CharId) GlobalVariables.current_user = character;
                 
 
@@ -34,7 +34,7 @@ namespace JRPG.Model
                 var allcharacters = RepoCharacters.GetAllCharacters();
                 foreach (var zcharacter in allcharacters)
                 {
-                    // Console.WriteLine(character.ToInsert());
+                    
                     if (GlobalVariables.current_user != null && GlobalVariables.current_user.CharId == zcharacter.CharId) GlobalVariables.current_user = zcharacter;
 
 

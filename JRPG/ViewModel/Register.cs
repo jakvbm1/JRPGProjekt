@@ -208,7 +208,7 @@ namespace JRPG.ViewModel
                                     if (user.Password == LoginPassword) {
                                         foreach(var charakt in characters)
                                             {
-                                           Console.WriteLine(charakt.ToInsert());
+                                           
                                             if(charakt.Usermail == LoginEmail)
                                             {
                                                 GlobalVariables.current_user = new Characters(charakt);
@@ -216,7 +216,7 @@ namespace JRPG.ViewModel
                                                // Users.current_user = charakt;
                                             }
                                         }
-                                        Console.WriteLine();
+                                       
                                         GlobalVariables.cur_username = user.Username;
                                         Visible = Visibility.Visible;
 

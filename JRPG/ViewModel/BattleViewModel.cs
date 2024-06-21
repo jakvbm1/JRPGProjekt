@@ -227,12 +227,31 @@ namespace JRPG.ViewModel
                 return atakGracza;
 
 
-
+            
 
             }
         }
 
+        private ICommand obronaGracza = null;
+        public ICommand ObronaGracza { get {
 
+                if (obronaGracza == null)
+                    obronaGracza = new RelayCommand(
+                        arg =>
+                        {
+                            string messaege="";
+                            if (enemy_attack())
+                            {
+                                player_curr_hp -= ENatk/4;
+                                PL_CurrMaxhp();
+                                messaege = "trafil cie ale malo";
+                            }
+                            MessageBox.Show(messaege);  
+                        },
+                        arg => (1 > 0));
+            
+            return obronaGracza;
+            } }
 
 
 
