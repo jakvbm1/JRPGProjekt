@@ -65,9 +65,9 @@ namespace JRPG.DAL.Repozytoria
             if(difficulty == "easy") { new_gold += 10; }
             if (difficulty == "medium") { new_gold += 30; }
             if (difficulty == "hard") { new_gold += 100; }
-       
 
-            bool check = false;
+            Console.WriteLine(characters.ToInsert());
+            
             using (var connection = DBConnection.Instance.Connection)
             {
                 
@@ -75,7 +75,8 @@ namespace JRPG.DAL.Repozytoria
                     new MySqlCommand($"{UPDATE_TABLE} set Gold ={new_gold}, EXP_Level={new_level} WHERE CharID={characters.CharId}",connection);
                 connection.Open();
                 try { var n = command.ExecuteNonQuery();
-
+                    Console.WriteLine("New gold = " + new_gold);
+                    Console.WriteLine("New level = " + new_level);
                     
                     connection.Close();
                   

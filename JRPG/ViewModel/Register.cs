@@ -171,7 +171,7 @@ namespace JRPG.ViewModel
 
                                     if (model.charactersModel.AddCharacterToDatabase(character))
                                     {
-                                        model.charactersModel.AllCharacters.Add(character);
+                                        //model.charactersModel.AllCharacters.Add(character);
                                         characters = model.charactersModel.AllCharacters;
                                         System.Windows.MessageBox.Show("character was added do database!");
                                         
@@ -208,14 +208,15 @@ namespace JRPG.ViewModel
                                     if (user.Password == LoginPassword) {
                                         foreach(var charakt in characters)
                                             {
-                                           if(charakt.Usermail == LoginEmail)
+                                           Console.WriteLine(charakt.ToInsert());
+                                            if(charakt.Usermail == LoginEmail)
                                             {
                                                 GlobalVariables.current_user = new Characters(charakt);
                                                 //GlobalVariables.current_user = charakt;
                                                // Users.current_user = charakt;
                                             }
                                         }
-
+                                        Console.WriteLine();
                                         GlobalVariables.cur_username = user.Username;
                                         Visible = Visibility.Visible;
 
