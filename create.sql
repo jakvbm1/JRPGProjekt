@@ -98,7 +98,7 @@ CREATE TABLE `enemies` (
 
 LOCK TABLES `enemies` WRITE;
 /*!40000 ALTER TABLE `enemies` DISABLE KEYS */;
-INSERT INTO `enemies` VALUES ('Goblin',7,10,'goblin',5,'easy'),('Golem',20,13,'golem',16,'medium');
+INSERT INTO `enemies` VALUES ('drakon',15,16,'dragonborn',8,'medium'),('Goblin',7,10,'goblin',5,'easy'),('Golem',20,13,'golem',16,'medium'),('szkielet',10,5,'skeleton',7,'easy');
 /*!40000 ALTER TABLE `enemies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +127,7 @@ CREATE TABLE `equipment` (
 
 LOCK TABLES `equipment` WRITE;
 /*!40000 ALTER TABLE `equipment` DISABLE KEYS */;
-INSERT INTO `equipment` VALUES (8,1,1,7),(7,1,0,7);
+INSERT INTO `equipment` VALUES (8,1,1,7),(7,1,0,7),(4,1,0,7);
 /*!40000 ALTER TABLE `equipment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-20 20:43:29
+-- Dump completed on 2024-06-21 13:25:07
