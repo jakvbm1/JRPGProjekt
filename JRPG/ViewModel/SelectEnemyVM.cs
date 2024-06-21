@@ -44,15 +44,11 @@ namespace JRPG.ViewModel
                           
                       },
                        arg => (1 > 0));
-
-
                 return easyDifficulty;
-
-
-
-
             }
         }
+
+
         private ICommand mediumDifficulty = null;
         public ICommand MediumDifficulty
         {

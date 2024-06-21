@@ -12,11 +12,12 @@
     </Window.Resources>
 
     <Grid DataContext="{StaticResource mainVM}">
-        <Button Content="Łatwy" HorizontalAlignment="Left" Margin="18,177,0,0" VerticalAlignment="Top" Height="88" Width="176" FontSize="30"  Command="{Binding SelectEnemyVM.EasyDifficulty}"/>
-        <Button Content="Średni" HorizontalAlignment="Left" Margin="303,177,0,0" VerticalAlignment="Top" Height="88" Width="176" FontSize="30" Command="{Binding SelectEnemyVM.MediumDifficulty}"/>
-        <Button Content="Trudny" HorizontalAlignment="Left" Margin="606,177,0,0" VerticalAlignment="Top" Height="88" Width="176" FontSize="30"  Command="{Binding SelectEnemyVM.HardDifficulty}"/>
+
         <Label Content="Wybierz poziom trudności przeciwnika" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" FontSize="45"/>
-        <Button Content="Zatwierdź" HorizontalAlignment="Left" Margin="322,329,0,0" VerticalAlignment="Top" FontSize="30" Height="54" Click="Button_Click" Width="138"/>
+        <Button Content="Zatwierdź" HorizontalAlignment="Left" Margin="341,325,0,0" VerticalAlignment="Top" FontSize="30" Height="54" Click="Button_Click" Width="138"/>
+        <RadioButton Content="Łatwy" FontSize="20" HorizontalAlignment="Left" Command="{Binding SelectEnemyVM.EasyDifficulty}" Margin="131,206,0,0" VerticalAlignment="Top" Height="37" Width="100"/>
+        <RadioButton Content="Średni" FontSize="20" HorizontalAlignment="Left" Command="{Binding SelectEnemyVM.MediumDifficulty}" Margin="341,206,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Trudny" FontSize="20" HorizontalAlignment="Left" Command="{Binding SelectEnemyVM.HardDifficulty}" Margin="561,0,0,0" VerticalAlignment="Center"/>
 
     </Grid>
 </Window>
