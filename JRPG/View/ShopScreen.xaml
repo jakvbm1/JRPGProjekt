@@ -22,7 +22,20 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="LightGray">
-            <TextBlock FontSize="20" Text="{Binding ShopVM.User_char.Gold, StringFormat=Ilość złota: {0}}" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="15*" />
+            </Grid.ColumnDefinitions>
+
+            <Image
+                Width="40"
+                RenderOptions.BitmapScalingMode="NearestNeighbor"
+                RenderOptions.EdgeMode="Aliased"
+                Source="/sprites/ui/coin.png" />
+            <TextBlock
+                Grid.Column="1"
+                FontSize="20"
+                Text="{Binding ShopVM.User_char.Gold, StringFormat=Złoto: {0}}" />
         </Grid>
 
         <ScrollViewer

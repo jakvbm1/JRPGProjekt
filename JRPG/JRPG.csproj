@@ -51,6 +51,8 @@
 
     <None Remove="sprites\characters\mage\idle.png" />
 
+    <None Remove="sprites\ui\coin.png" />
+
   </ItemGroup>
 
   <ItemGroup>
@@ -110,6 +112,7 @@
     <Resource Include="sprites\items\weapons\sword_common.png" />
     <Resource Include="sprites\items\weapons\sword_rare.png" />
     <Resource Include="sprites\items\weapons\sword_uncommon.png" />
+    <Resource Include="sprites\ui\coin.png" />
   </ItemGroup>
 
   <ItemGroup>
