@@ -30,5 +30,6 @@ namespace JRPG.View
             this.Visibility = Visibility.Hidden;
             battleScreen.Show();
         }
+       
     }
 }
