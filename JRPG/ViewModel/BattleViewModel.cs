@@ -56,9 +56,8 @@ namespace JRPG.ViewModel
             ENmax_hp = enemy.Health;
             ENdef = enemy.Defense;
             ENatk = enemy.Attack;
-            Console.WriteLine(EN_ATK);
+            
             EN_CurrMaxhp();
-            PL_ATK -= 1;
             EnableButtons = true;
 
 
@@ -113,7 +112,7 @@ namespace JRPG.ViewModel
             
             int dif = EN_ATK - PL_DEF;
             int chance = 50 + 2 * dif;
-            Console.WriteLine("szansa na atak wroga to - " + chance.ToString());
+            
             int k = rnd.Next(1, 100);
             if (k <= chance)
                 return true;
@@ -131,10 +130,10 @@ namespace JRPG.ViewModel
                 int dif = PL_ATK - EN_DEF;
 
                 int chance = 50 +  4* dif;
-                Console.WriteLine(chance);
+            
 
                 int k = rnd.Next(1, 100);
-                Console.WriteLine(k);
+               
                 if (k <= chance)
                     return true;
                 return false;
@@ -162,6 +161,17 @@ namespace JRPG.ViewModel
                           if (enemy_curr_hp == 0) { MessageBox.Show("ale mu sprzedałeś bombę");
                                   IsFinished = Visibility.Visible;
                                   EnableButtons = false;
+                                  Console.WriteLine(difficult.ToString());
+                                  if (model.charactersModel.UpdateGoldAndLevel(difficult.ToString(), GlobalVariables.current_user))
+                                  { MessageBox.Show("zarobiłeś!");
+                                   
+
+                                  
+                                  }
+
+                                      
+
+                                 
 
 
 

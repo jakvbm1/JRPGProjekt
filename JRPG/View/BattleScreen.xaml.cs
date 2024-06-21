@@ -1,4 +1,6 @@
-﻿using Org.BouncyCastle.Tls;
+﻿using JRPG.Model;
+using JRPG.ViewModel;
+using Org.BouncyCastle.Tls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +32,9 @@ namespace JRPG.View
         
         private void Opusc(object sender, RoutedEventArgs e)
         {
+           
             UserScreen userScreen = new UserScreen();
+            
             this.Visibility = Visibility.Hidden;
             userScreen.Show();
             
