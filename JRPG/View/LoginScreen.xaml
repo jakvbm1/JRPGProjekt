@@ -12,15 +12,61 @@
 
         <Window.Resources>
             <vm:MainViewModel x:Key="mainVM"/>
-        </Window.Resources>
+        <Style TargetType="ListView">
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Opacity" Value="0.5"/>
+            <Setter Property="Background" Value="DimGray"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="Background" Value="DimGray"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="Background" Value="DimGray"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="Background" Value="DimGray"/>
+        </Style>
+    </Window.Resources>
     <Grid DataContext="{StaticResource mainVM}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="\sprites\backgrounds\2.png" AlignmentY="Top" AlignmentX="Center" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+        </Grid.Background>
+
         <UniformGrid Grid.Column="0"  Rows="3" Margin="40px">
-            <TextBlock Text="Logowanie" TextAlignment="Center" FontSize="24"/>
+            <TextBlock Text="Logowanie" TextAlignment="Center" FontSize="48"/>
             <Grid Margin="10px">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -52,7 +98,7 @@
         </UniformGrid>
 
         <UniformGrid Grid.Column="1"  Rows="3" Margin="40px">
-            <TextBlock Text="Rejestracja" TextAlignment="Center" FontSize="24"/>
+            <TextBlock Text="Rejestracja" TextAlignment="Center" FontSize="48"/>
             <Grid Margin="10px">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
