@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JRPG.DAL.Repozytoria
 {
-     class RepoCharacters
+    class RepoCharacters
     {
         private const string ALL_CHARACTERS = "SELECT * FROM characters";
         private const string ADD_CHARACTER = "INSERT INTO `characters` VALUES ";
@@ -93,6 +93,33 @@ namespace JRPG.DAL.Repozytoria
 
                 
         }
-    
+        public static bool UpdateGold(Characters characters, int cost)
+        {
+            int new_gold = characters.Gold - cost;
+
+            using (var connection = DBConnection.Instance.Connection)
+            {
+
+                MySqlCommand command =
+                    new MySqlCommand($"{UPDATE_TABLE} set Gold = {new_gold} WHERE CharID = {characters.CharId}", connection);
+                connection.Open();
+                try
+                {
+                    var n = command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
+                }
+
+            }
+
+
+        }
+
     }
 }

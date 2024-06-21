@@ -20,6 +20,7 @@ namespace JRPG.ViewModel
         private ObservableCollection<ItemWithCheckBox> itemsWithCheckBox = new ObservableCollection<ItemWithCheckBox>();
         private Characters user_char;
         private int cost = 0;
+        private ObservableCollection<Items> checkedItems = new ObservableCollection<Items>();
 
         public ShopScreenVM(MainModel mainModel)
         {
@@ -80,18 +81,28 @@ namespace JRPG.ViewModel
                                 if (ItemsWithCheckBox[i].IsChecked)
                                 {
                                     cost += ItemsWithCheckBox[i].Item.Cost;
+                                    checkedItems.Add(ItemsWithCheckBox[i].Item);
                                 }
                             }
-                            if (cost <= User_char.Gold)
+                            if (cost == 0)
                             {
-                                MessageBox.Show("Zakupiono przedmiot");
-                                cost = 0;
+                                MessageBox.Show("Najpierw wybierz przedmiot.");
+                            }
+                            else if (cost <= User_char.Gold)
+                            {
+                                model.shopScreenModel.UpdateGold(User_char, cost);
+                                foreach (var item in checkedItems)
+                                {
+                                    model.shopScreenModel.AddItem(item.ItemID, User_char.CharId);
+                                }
+                                MessageBox.Show("Zakupiono przedmiot.");
                             }
                             else
                             {
                                 MessageBox.Show("Za mało złota!");
-                                cost = 0;
                             }
+                            cost = 0;
+                            checkedItems.Clear();
                         },
                         arg => true);
                 }
