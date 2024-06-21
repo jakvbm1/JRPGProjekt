@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="sprites\backgrounds\1.png" />
     <None Remove="sprites\characters\mage\atk.png" />
 
     <None Remove="sprites\characters\mage\def.png" />
@@ -19,6 +20,10 @@
     <None Remove="sprites\characters\warrior\atk.png" />
     <None Remove="sprites\characters\warrior\def.png" />
     <None Remove="sprites\characters\warrior\idle.png" />
+    <None Remove="sprites\enemies\goblin\atk.png" />
+    <None Remove="sprites\enemies\goblin\idle.png" />
+    <None Remove="sprites\enemies\golem\atk.png" />
+    <None Remove="sprites\enemies\golem\idle.png" />
     <None Remove="sprites\items\weapons\bow_common.png" />
     <None Remove="sprites\items\weapons\bow_rare.png" />
     <None Remove="sprites\items\weapons\bow_uncommon.png" />
@@ -38,6 +43,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 
     </Resource>
+    <Resource Include="sprites\backgrounds\1.png" />
 
    
     <Content Include="sprites\characters\mage\idle.png">
@@ -61,6 +67,10 @@
     <Resource Include="sprites\characters\warrior\atk.png" />
     <Resource Include="sprites\characters\warrior\def.png" />
     <Resource Include="sprites\characters\warrior\idle.png" />
+    <Resource Include="sprites\enemies\goblin\atk.png" />
+    <Resource Include="sprites\enemies\goblin\idle.png" />
+    <Resource Include="sprites\enemies\golem\atk.png" />
+    <Resource Include="sprites\enemies\golem\idle.png" />
     <Resource Include="sprites\items\weapons\bow_common.png" />
     <Resource Include="sprites\items\weapons\bow_rare.png" />
     <Resource Include="sprites\items\weapons\bow_uncommon.png" />

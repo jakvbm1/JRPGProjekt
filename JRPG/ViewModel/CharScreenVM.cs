@@ -154,7 +154,7 @@ namespace JRPG.ViewModel
             {
                 if (Can_dequip)
                     Imageurl = $"/sprites/items/{Selected_eq.Sprite}.png";
-                else if (Can_equip)
+                else if (Selected_uneq is not null)
                     Imageurl = $"/sprites/items/{Selected_uneq.Sprite}.png";
             }
         }
