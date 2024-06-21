@@ -19,6 +19,7 @@ namespace JRPG.ViewModel
 
     class BattleViewModel : ViewModelBase
     {
+        
         private MainModel model;
         private Characters player;
         private Enemies enemy;
@@ -40,6 +41,7 @@ namespace JRPG.ViewModel
         
         public BattleViewModel(MainModel mainModel, string chosen, int hp, int atak, int deff, ObservableCollection<Items> Eq_items)
         {
+            
             model = mainModel;
             if (chosen == "easy") difficult = Difficulty.easy;
             else if (chosen == "medium") difficult = Difficulty.medium;
@@ -161,7 +163,7 @@ namespace JRPG.ViewModel
                           if (enemy_curr_hp == 0) { MessageBox.Show("ale mu sprzedałeś bombę");
                                   IsFinished = Visibility.Visible;
                                   EnableButtons = false;
-                                  Console.WriteLine(difficult.ToString());
+                                 
                                   if (model.charactersModel.UpdateGoldAndLevel(difficult.ToString(), GlobalVariables.current_user))
                                   { MessageBox.Show("zarobiłeś!");
                                    
