@@ -19,6 +19,7 @@ namespace JRPG.Model
             var allcharacters = RepoCharacters.GetAllCharacters();
             foreach (var character in allcharacters)
             {
+               // Console.WriteLine(character.ToInsert());
                 if (GlobalVariables.current_user != null && GlobalVariables.current_user.CharId == character.CharId) GlobalVariables.current_user = character;
                 
 
@@ -27,7 +28,21 @@ namespace JRPG.Model
         }
         public bool AddCharacterToDatabase(Characters character)
         {
-            return RepoCharacters.AddCharacterToDatabase(character);
+           if(RepoCharacters.AddCharacterToDatabase(character) == true)
+            {
+                AllCharacters.Clear();
+                var allcharacters = RepoCharacters.GetAllCharacters();
+                foreach (var zcharacter in allcharacters)
+                {
+                    // Console.WriteLine(character.ToInsert());
+                    if (GlobalVariables.current_user != null && GlobalVariables.current_user.CharId == zcharacter.CharId) GlobalVariables.current_user = zcharacter;
+
+
+                    AllCharacters.Add(zcharacter);
+                }
+                return true;
+            }
+            return false;
         }
         public bool UpdateGoldAndLevel(string Difficulty, Characters character)
         {

@@ -23,8 +23,9 @@ namespace JRPG.Model
         
     public MainModel()
         {
-            usersModel = new UsersModel();
             charactersModel = new CharactersModel();
+            usersModel = new UsersModel();
+           
             classesModel = new ClassesModel();
             enemiesModel = new EnemiesModel();
            

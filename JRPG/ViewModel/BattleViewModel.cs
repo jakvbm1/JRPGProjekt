@@ -65,7 +65,7 @@ namespace JRPG.ViewModel
             plDeffense = $"/sprites/characters/{player.Class_Name.ToLower()}/def.png";
 
             PlGraf = plIdle;
-            Console.WriteLine(PlGraf);
+           
 
 
             enemies = model.enemiesModel.GetEnemiesByDifficulty(difficult);
