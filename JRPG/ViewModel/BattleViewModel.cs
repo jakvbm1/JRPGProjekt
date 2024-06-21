@@ -27,6 +27,7 @@ namespace JRPG.ViewModel
         private string PL_currMaxHP, EN_currMaxHP, ENname;
         private ObservableCollection<Enemies> enemies;
         static Random rnd = new Random();
+        private string plIdle, plAttack, plDeffense, enIdle, enAttack, plGraf, enGraf;
         private int PLmax_hp, player_curr_hp, PLatk, PLdef, enemy_curr_hp, ENatk, ENdef, ENmax_hp;
         private Visibility isFinished = Visibility.Hidden;
         
@@ -50,8 +51,23 @@ namespace JRPG.ViewModel
             player_curr_hp = hp;
             PLatk = atak;
             PLdef = deff;
+
+            
+
+            
+
             PL_CurrMaxhp();
             player = GlobalVariables.current_user;
+
+
+            plIdle = $"/sprites/characters/{player.Class_Name.ToLower()}/idle.png";
+            plAttack = $"/sprites/characters/{player.Class_Name.ToLower()}/atk.png";
+            plDeffense = $"/sprites/characters/{player.Class_Name.ToLower()}/def.png";
+
+            PlGraf = plIdle;
+            Console.WriteLine(PlGraf);
+
+
             enemies = model.enemiesModel.GetEnemiesByDifficulty(difficult);
             Get_Enemy();
             enemy_curr_hp = enemy.Health;
@@ -68,6 +84,11 @@ namespace JRPG.ViewModel
 
             
         }
+        public string PlGraf { get { return plGraf; } set { plGraf = value; onPropertyChanged(nameof(PlGraf)); } }
+        public string EnGraf { get { return enGraf; } set { enGraf = value; onPropertyChanged(nameof(EnGraf)); } }
+       
+    
+
 
         public Boolean EnableButtons { get { return enableButtons; } set { enableButtons = value; onPropertyChanged(nameof(EnableButtons)); } }
         public Visibility IsFinished { get { return isFinished; } set { isFinished = value; onPropertyChanged(nameof(IsFinished)); } }
@@ -151,6 +172,7 @@ namespace JRPG.ViewModel
                     atakGracza = new RelayCommand(
                       arg =>
                       {
+                          PlGraf = plAttack;
                           message = "";
                           if (player_attack())
                       {
@@ -197,6 +219,7 @@ namespace JRPG.ViewModel
                           }
                           if (!string.IsNullOrEmpty(message) && enemy_curr_hp>0 && player_curr_hp>0) MessageBox.Show(message);
                           if (string.IsNullOrEmpty(message) && enemy_curr_hp > 0 && player_curr_hp > 0)MessageBox.Show("Nikt nikogo nie uderzył");
+                          PlGraf = plIdle;
                       },
                        arg => (1 > 0));
 

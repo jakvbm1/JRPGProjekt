@@ -9,15 +9,41 @@
         Title="SelectEnemy" Height="450" Width="800">
     <Window.Resources>
         <vm:MainViewModel x:Key="mainVM"/>
+        <Style TargetType="RadioButton">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="Background" Value="DimGray"/>
+        </Style>
     </Window.Resources>
 
     <Grid DataContext="{StaticResource mainVM}">
 
-        <Label Content="Wybierz poziom trudności przeciwnika" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" FontSize="45"/>
-        <Button Content="Zatwierdź" HorizontalAlignment="Left" Margin="341,325,0,0" VerticalAlignment="Top" FontSize="30" Height="54" Click="Button_Click" Width="138"/>
-        <RadioButton Content="Łatwy" FontSize="20" HorizontalAlignment="Left" Command="{Binding SelectEnemyVM.EasyDifficulty}" Margin="131,206,0,0" VerticalAlignment="Top" Height="37" Width="100"/>
-        <RadioButton Content="Średni" FontSize="20" HorizontalAlignment="Left" Command="{Binding SelectEnemyVM.MediumDifficulty}" Margin="341,206,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="Trudny" FontSize="20" HorizontalAlignment="Left" Command="{Binding SelectEnemyVM.HardDifficulty}" Margin="561,0,0,0" VerticalAlignment="Center"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Content="Wybierz poziom trudności przeciwnika" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" FontSize="44"/>
+        <Button Grid.Row="2" Content="Zatwierdź" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="30"  Click="Button_Click" />
+        <UniformGrid Grid.Row="1" Columns="3">
+        <RadioButton Content="Łatwy" FontSize="20"  Command="{Binding SelectEnemyVM.EasyDifficulty}"/>
+        <RadioButton Content="Średni" FontSize="20"  Command="{Binding SelectEnemyVM.MediumDifficulty}"/>
+        <RadioButton Content="Trudny" FontSize="20"  Command="{Binding SelectEnemyVM.HardDifficulty}"/>
+        </UniformGrid>
     </Grid>
 </Window>

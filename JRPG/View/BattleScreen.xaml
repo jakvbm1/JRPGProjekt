@@ -28,14 +28,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image Grid.Row="1" Source="/sprites/characters/mage/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-
+            <Image Grid.Row="1" Source="{Binding BattleVM.PlGraf }" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+              
         </Grid>
-
         <UniformGrid Grid.Row="0" Grid.Column="1" Rows="3">
-            <Image Grid.Row="1" Source="/sprites/characters/warrior/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
-            <Image Grid.Row="1" Source="/sprites/characters/ranger/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            
             <Image Grid.Row="1" Source="/sprites/characters/mage/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+
         </UniformGrid>
 
         <Grid Grid.Row="1" Grid.Column="0" Background="Black">
@@ -60,7 +59,9 @@
             <TextBlock Grid.Row="3" Grid.Column="0" Text="OBRONA" Foreground="White"/>
             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding BattleVM.PL_DEF}" Foreground="White"/>
             <TextBlock Grid.Row="4" Grid.Column="0" Text="UŻYJ ATAKU" Foreground="White"/>
+            
             <Button x:Name="HiddenButton"  Opacity="0" Grid.Row="4" IsEnabled="{Binding BattleVM.EnableButtons}" Command="{Binding BattleVM.AtakGracza}" Cursor="Hand" Grid.Column="0"/>
+            
             <TextBlock Grid.Row="4" Grid.Column="1" Text="UŻYJ PRZEDMIOTU"  Foreground="White"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Background="Black">
@@ -85,7 +86,9 @@
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BattleVM.EN_ATK}" Foreground="White"/>
             <TextBlock Grid.Row="3" Grid.Column="0" Text="OBRONA" Foreground="White"/>
             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding BattleVM.EN_DEF}" Foreground="White"/>
-            <Button x:Name="zadymiarz"  Grid.Row="4" Grid.Column="0" Visibility="{Binding BattleVM.IsFinished}" Content="Opuść Walkę" Click="Opusc" Cursor="Hand"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="UŻYJ OBRONY" Foreground="White"/>
+            <Button x:Name="HiddenButton2"  Opacity="0" Grid.Row="4" IsEnabled="{Binding BattleVM.EnableButtons}" Command="{Binding BattleVM.ObronaGracza}" Cursor="Hand" Grid.Column="0"/>
+            <Button x:Name="zadymiarz"  Grid.Row="4" Grid.Column="1" Visibility="{Binding BattleVM.IsFinished}" Content="Opuść Walkę" Click="Opusc" Cursor="Hand"/>
      
         </Grid>
     </Grid>
