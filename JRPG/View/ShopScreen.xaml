@@ -62,7 +62,7 @@
                 Grid.Column="1"
                 VerticalAlignment="Center"
                 FontSize="25"
-                Text="{Binding ShopVM.User_char.Gold, StringFormat=Złoto: {0}}" />
+                Text="{Binding ShopVM.User_gold, StringFormat=Złoto: {0}}" />
         </Grid>
 
         <ScrollViewer

@@ -66,6 +66,15 @@ namespace JRPG.ViewModel
                 onPropertyChanged(nameof(User_char)); 
             } 
         }
+        public int User_gold
+        {
+            get { return user_char.Gold; }
+            set
+            {
+                user_char.Gold = value;
+                onPropertyChanged(nameof(User_gold));
+            }
+        }
 
         private ICommand buttonBuy = null;
         public ICommand ButtonBuy
@@ -102,12 +111,14 @@ namespace JRPG.ViewModel
                                         {
                                             inEqupment = true;
                                             model.shopScreenModel.UpdateQuantity(item.ItemID, User_char.CharId, equipment[i].Quantity);
+                                            equipment[i].Quantity++;
                                             break;
                                         }
                                     }
                                     if (!inEqupment)
                                         model.shopScreenModel.AddItem(item.ItemID, User_char.CharId);
                                 }
+                                User_gold -= cost;
                                 MessageBox.Show("Zakupiono przedmiot.");
                             }
                             else
