@@ -83,20 +83,20 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Nazwa użytkownika" Foreground="White"/>
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CSVM.Current_username}" Foreground="White"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Nazwa użytkownika" Foreground="White" TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CSVM.Current_username}" Foreground="White" TextWrapping="Wrap"/>
 
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Punkty Życia" Foreground="White"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Punkty Życia" Foreground="White" TextWrapping="Wrap"/>
             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CSVM.HP}" Foreground="White"/>
 
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Atak" Foreground="White"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Atak" Foreground="White" TextWrapping="Wrap"/>
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CSVM.ATK}" Foreground="White"/>
 
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Obrona" Foreground="White"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Obrona" Foreground="White" TextWrapping="Wrap"/>
             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CSVM.DEF}" Foreground="White"/>
 
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="Aktualny poziom" Foreground="White"/>
-            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding CSVM.User_char.ExpLevel}" />
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Aktualny poziom" Foreground="White" TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding CSVM.User_char.ExpLevel}" Foreground="White"/>
 
 
             <TextBlock Grid.Row="6" Grid.Column="0" Text="Ilość złota" Foreground="White"/>

@@ -49,8 +49,9 @@
 
         <Grid Grid.Row="0" Background="LightGray">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width=".05*" />
+                <ColumnDefinition Width=".25*" />
+                <ColumnDefinition Width=".5*" />
             </Grid.ColumnDefinitions>
 
             <Image
@@ -63,6 +64,11 @@
                 VerticalAlignment="Center"
                 FontSize="25"
                 Text="{Binding ShopVM.User_gold, StringFormat=Złoto: {0}}" />
+            <TextBlock
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                FontSize="25"
+                Text="Sklep &quot;U Smauga&quot;" />
         </Grid>
 
         <ScrollViewer
@@ -116,7 +122,8 @@
                                         Margin="10,0,0,0"
                                         FontWeight="Bold"
                                         Foreground="GhostWhite"
-                                        Text="{Binding Item.Name, StringFormat=Nazwa: {0}}" />
+                                        Text="{Binding Item.Name, StringFormat=Nazwa: {0}}"
+                                        TextWrapping="Wrap" />
 
                                     <TextBlock
                                         Grid.Row="1"
@@ -143,12 +150,14 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="{Binding Item.Kind, StringFormat=Rodzaj: {0}}" />
+                                        Text="{Binding Item.Kind, StringFormat=Rodzaj: {0}}"
+                                        TextWrapping="Wrap" />
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
-                                        Text="{Binding Item.EquipableFor, StringFormat=Dla klasy: {0}}" />
+                                        Text="{Binding Item.EquipableFor, StringFormat=Dla klasy: {0}}"
+                                        TextWrapping="Wrap" />
                                 </Grid>
                                 <Grid Grid.Column="3">
 

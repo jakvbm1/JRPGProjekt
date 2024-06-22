@@ -66,7 +66,7 @@
         </Grid.Background>
 
         <UniformGrid Grid.Column="0"  Rows="3" Margin="40px">
-            <TextBlock Text="Logowanie" TextAlignment="Center" FontSize="48"/>
+            <TextBlock Text="Logowanie" TextAlignment="Center" FontSize="48" Foreground="White"/>
             <Grid Margin="10px">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -78,10 +78,10 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="Email" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Email" VerticalAlignment="Center" Foreground="White"/>
                 <TextBox Grid.Column="1" Grid.Row="0" x:Name="email_log" Text="{Binding Registering.LoginEmail}" />
 
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="Hasło" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Hasło" VerticalAlignment="Center" Foreground="White"/>
                 <TextBox Grid.Column="1" Grid.Row="1" x:Name="password_log" Text="{Binding Registering.LoginPassword}"/>
 
             </Grid>
@@ -90,7 +90,7 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Content="Zaloguj" Margin="10px"  Command="{Binding Registering.Login}"/>
+                <Button Grid.Row="0" Content="Zaloguj" Margin="5px"  Command="{Binding Registering.Login}"/>
                 <Button Grid.Row="1" Content="Wejdź do gry" Margin="5px"  Click="Button_Click" Visibility="{Binding Registering.Visible}" />
             </Grid>
             
@@ -98,10 +98,10 @@
         </UniformGrid>
 
         <UniformGrid Grid.Column="1"  Rows="3" Margin="40px">
-            <TextBlock Text="Rejestracja" TextAlignment="Center" FontSize="48"/>
+            <TextBlock Text="Rejestracja" TextAlignment="Center" FontSize="48" Foreground="White"/>
             <Grid Margin="10px">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
 
@@ -112,16 +112,16 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="Email" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Email" VerticalAlignment="Center" Foreground="White"/>
                 <TextBox Grid.Column="1" Grid.Row="0" x:Name="email_reg" Text="{Binding Registering.Email}" />
 
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="Hasło" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Hasło" VerticalAlignment="Center" Foreground="White"/>
                 <TextBox Grid.Column="1" Grid.Row="1" x:Name="password_reg" Text="{Binding Registering.Password}"/>
 
-                <TextBlock Grid.Column="0" Grid.Row="2" Text="Nazwa użytkownika" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Nazwa użytkownika" VerticalAlignment="Center" Foreground="White"/>
                 <TextBox Grid.Column="1" Grid.Row="2" x:Name="username_reg" Text="{Binding Registering.Username}"/>
 
-                <TextBlock Grid.Column="0" Grid.Row="3" Text="Klasa postaci" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Klasa postaci" VerticalAlignment="Center" Foreground="White"/>
                 <ComboBox Grid.Column="1" Grid.Row="3" SelectedIndex="0" ItemsSource="{Binding Registering.ClassNames}" SelectedValue="{Binding Registering.SelectedClass}"/>
 
             </Grid>
