@@ -57,9 +57,9 @@ namespace JRPG.Model
             return null;
         }
 
-        public ObservableCollection<Items> GetEquippedItems(int userId)
+        public ObservableCollection<ItemWQ> GetEquippedItems(int userId)
         {
-            var items = new ObservableCollection<Items>();
+            var items = new ObservableCollection<ItemWQ>();
             var eq = GetUsersEquipment(userId);
 
             foreach (var item in eq)
@@ -68,15 +68,15 @@ namespace JRPG.Model
                 {
                     Items itemToAdd = GetItemById(item.ItemID);
                     if(itemToAdd != null)
-                    items.Add(itemToAdd);
+                    items.Add(new ItemWQ(itemToAdd, item.Quantity));
                 }
             }
             return items;
         }
 
-        public ObservableCollection<Items> GetUnEquippedItems(int userId)
+        public ObservableCollection<ItemWQ> GetUnEquippedItems(int userId)
         {
-            var items = new ObservableCollection<Items>();
+            var items = new ObservableCollection<ItemWQ>();
             var eq = GetUsersEquipment(userId);
 
             foreach (var item in eq)
@@ -85,7 +85,7 @@ namespace JRPG.Model
                 {
                     Items itemToAdd = GetItemById(item.ItemID);
                     if (itemToAdd != null)
-                        items.Add(itemToAdd);
+                        items.Add(new ItemWQ(itemToAdd, item.Quantity));
                 }
             }
             return items;

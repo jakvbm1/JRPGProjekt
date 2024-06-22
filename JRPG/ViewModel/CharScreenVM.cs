@@ -24,14 +24,14 @@ namespace JRPG.ViewModel
     {
         private MainModel model;
         private Characters user_char;
-        private ObservableCollection<Items> eq_items;
-        private ObservableCollection<Items> uneq_items;
+        private ObservableCollection<ItemWQ> eq_items;
+        private ObservableCollection<ItemWQ> uneq_items;
         private ObservableCollection<Equipment> equipment;
         private Classes user_class;
         private int hp, atk, def;
         private BitmapImage idle_sp, attack_sp, defense_sp;
         private string current_username, imageurl;
-        private Items selected_eq, selected_uneq;
+        private ItemWQ selected_eq, selected_uneq;
         private bool can_equip, can_dequip, should_upt = true;
 
 
@@ -44,16 +44,16 @@ namespace JRPG.ViewModel
         public int HP { get { return hp; } set { hp = value; onPropertyChanged(nameof(HP)); } }
         public int ATK { get { return atk; } set { atk = value; onPropertyChanged(nameof(ATK)); } }
         public int DEF { get { return def; } set { def = value; onPropertyChanged(nameof(DEF)); } }
-        public ObservableCollection<Items> Eq_items { get { return eq_items; } set { eq_items = value; onPropertyChanged(nameof(Eq_items)); } }
-        public ObservableCollection<Items> Uneq_items { get { return uneq_items; } set { uneq_items = value; onPropertyChanged(nameof(Uneq_items)); } }
+        public ObservableCollection<ItemWQ> Eq_items { get { return eq_items; } set { eq_items = value; onPropertyChanged(nameof(Eq_items)); } }
+        public ObservableCollection<ItemWQ> Uneq_items { get { return uneq_items; } set { uneq_items = value; onPropertyChanged(nameof(Uneq_items)); } }
 
         public bool Can_equip { get { return can_equip; } set { can_equip = value; onPropertyChanged(nameof(Can_equip)); } }
         public bool Can_dequip { get { return can_dequip; } set { can_dequip = value; onPropertyChanged(nameof(Can_dequip)); } }
 
-        public Items Selected_eq { get { return selected_eq; } set { selected_eq = value; Can_dequip = true; Can_equip = false;
+        public ItemWQ Selected_eq { get { return selected_eq; } set { selected_eq = value; Can_dequip = true; Can_equip = false;
                 onPropertyChanged(nameof(Selected_eq)); updateImage();
             } }
-        public Items Selected_uneq { get { return selected_uneq; } set { selected_uneq = value; Can_dequip = false; Can_equip = classAllignment();
+        public ItemWQ Selected_uneq { get { return selected_uneq; } set { selected_uneq = value; Can_dequip = false; Can_equip = classAllignment();
                 onPropertyChanged(nameof(Selected_uneq)); updateImage(); } }
 
         public String Imageurl { get { return imageurl; } set { imageurl = value; onPropertyChanged(nameof(Imageurl)); } }
@@ -64,7 +64,7 @@ namespace JRPG.ViewModel
 
             if(Enum.TryParse(User_class.ClassName.ToLower(), out eqp))
             {
-            if(Selected_uneq != null && (Selected_uneq.EquipableFor == EquipableFor.everyone || Selected_uneq.EquipableFor == eqp))
+            if(Selected_uneq != null && (Selected_uneq.item.EquipableFor == EquipableFor.everyone || Selected_uneq.item.EquipableFor == eqp))
             {
                 return true;
             }
@@ -78,8 +78,8 @@ namespace JRPG.ViewModel
             can_equip = false; can_dequip = false;
             User_char = GlobalVariables.current_user;
             Current_username = GlobalVariables.cur_username;
-            Eq_items = new ObservableCollection<Items>();
-            Uneq_items = new ObservableCollection<Items>();
+            Eq_items = new ObservableCollection<ItemWQ>();
+            Uneq_items = new ObservableCollection<ItemWQ>();
             this.model = model;
 
             HP = 0; ATK = 0; DEF = 0;
@@ -142,9 +142,9 @@ namespace JRPG.ViewModel
 
             foreach (var item in Eq_items)
             {
-                ATK += item.Attack;
-                DEF += item.Defense;
-                HP += item.Max_hp;
+                ATK += item.item.Attack;
+                DEF += item.item.Defense;
+                HP += item.item.Max_hp;
             }
         }   
 
@@ -153,9 +153,9 @@ namespace JRPG.ViewModel
             if (should_upt)
             {
                 if (Can_dequip)
-                    Imageurl = $"/sprites/items/{Selected_eq.Sprite}.png";
+                    Imageurl = $"/sprites/items/{Selected_eq.item.Sprite}.png";
                 else if (Selected_uneq is not null)
-                    Imageurl = $"/sprites/items/{Selected_uneq.Sprite}.png";
+                    Imageurl = $"/sprites/items/{Selected_uneq.item.Sprite}.png";
             }
         }
 
@@ -163,7 +163,7 @@ namespace JRPG.ViewModel
         public ICommand Dequip { get { if (dequip == null)
                     dequip = new RelayCommand(arg =>
                     {
-                        if (model.msn.Dequip_item(Selected_eq.ItemID, User_char.CharId))
+                        if (model.msn.Dequip_item(Selected_eq.item.ItemID, User_char.CharId))
                         {
                             
                             should_upt = false;
@@ -188,14 +188,14 @@ namespace JRPG.ViewModel
                         bool succes = false;
                         foreach(var item in Eq_items)
                         {
-                            if(item.Kind == Selected_uneq.Kind)
+                            if(item.item.Kind == Selected_uneq.item.Kind)
                             {
-                                succes = model.msn.Dequip_item(item.ItemID, User_char.CharId);
+                                succes = model.msn.Dequip_item(item.item.ItemID, User_char.CharId);
                                 break;
                             }
                         }
 
-                        if (model.msn.Equip_item(Selected_uneq.ItemID, User_char.CharId) )
+                        if (model.msn.Equip_item(Selected_uneq.item.ItemID, User_char.CharId) )
                         {
                             should_upt = false;
                             Can_dequip = false;
@@ -209,5 +209,11 @@ namespace JRPG.ViewModel
             }
         }
 
+        public ObservableCollection<Items> GetEquipped()
+        {
+            ObservableCollection<Items> items = new ObservableCollection<Items>();
+            foreach (var item in Eq_items) { items.Add(item.item); }
+            return items;
+        }
     }
 }
