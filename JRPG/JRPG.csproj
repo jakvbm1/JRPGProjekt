@@ -38,6 +38,7 @@
     <None Remove="sprites\items\armors\chestplate_common.png" />
     <None Remove="sprites\items\armors\chestplate_rare.png" />
     <None Remove="sprites\items\armors\chestplate_uncommon.png" />
+    <None Remove="sprites\items\armors\cloak_common.png" />
     <None Remove="sprites\items\armors\cloak_rare.png" />
     <None Remove="sprites\items\armors\cloak_uncommon.png" />
     <None Remove="sprites\items\armors\robe_common.png" />
@@ -71,11 +72,6 @@
     </Resource>
     <Resource Include="sprites\backgrounds\1.png" />
 
-   
-    <Content Include="sprites\characters\mage\idle.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-
   </ItemGroup>
 
   <ItemGroup>
@@ -86,7 +82,9 @@
 
   <ItemGroup>
     <Resource Include="sprites\characters\mage\def.png" />
-    <Resource Include="sprites\characters\mage\idle.png" />
+    <Resource Include="sprites\characters\mage\idle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="sprites\characters\ranger\atk.png" />
     <Resource Include="sprites\characters\ranger\def.png" />
     <Resource Include="sprites\characters\ranger\idle.png" />
@@ -109,6 +107,7 @@
     <Resource Include="sprites\items\armors\chestplate_common.png" />
     <Resource Include="sprites\items\armors\chestplate_rare.png" />
     <Resource Include="sprites\items\armors\chestplate_uncommon.png" />
+    <Resource Include="sprites\items\armors\cloak_common.png" />
     <Resource Include="sprites\items\armors\cloak_rare.png" />
     <Resource Include="sprites\items\armors\cloak_uncommon.png" />
     <Resource Include="sprites\items\armors\robe_common.png" />
