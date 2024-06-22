@@ -14,19 +14,19 @@
         <vm:MainViewModel x:Key="mainVM" />
 
         <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Determination mono web"/>
+            <Setter Property="FontFamily" Value="Determination mono web" />
 
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontSize" Value="14" />
         </Style>
 
         <Style TargetType="Button">
-            <Setter Property="FontFamily" Value="Determination mono web"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="Opacity" Value="0.9"/>
-            <Setter Property="Background" Value="DimGray"/>
+            <Setter Property="FontFamily" Value="Determination mono web" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="Opacity" Value="0.9" />
+            <Setter Property="Background" Value="DimGray" />
         </Style>
     </Window.Resources>
 
@@ -38,7 +38,13 @@
         </Grid.RowDefinitions>
 
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="\sprites\backgrounds\3.png" AlignmentY="Top" AlignmentX="Center" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+            <ImageBrush
+                AlignmentX="Center"
+                AlignmentY="Top"
+                ImageSource="\sprites\backgrounds\3.png"
+                RenderOptions.BitmapScalingMode="NearestNeighbor"
+                RenderOptions.EdgeMode="Aliased"
+                Stretch="Fill" />
         </Grid.Background>
 
         <Grid Grid.Row="0" Background="LightGray">
@@ -54,7 +60,8 @@
                 Source="/sprites/ui/coin.png" />
             <TextBlock
                 Grid.Column="1"
-                FontSize="20"
+                VerticalAlignment="Center"
+                FontSize="25"
                 Text="{Binding ShopVM.User_char.Gold, StringFormat=Złoto: {0}}" />
         </Grid>
 
@@ -63,8 +70,8 @@
             Grid.Column="0"
             VerticalScrollBarVisibility="Auto">
 
-            
-            
+
+
             <ItemsControl ItemsSource="{Binding ShopVM.ItemsWithCheckBox}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -76,10 +83,10 @@
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
+                                    <ColumnDefinition Width="3.5*" />
                                     <ColumnDefinition Width="2.5*" />
                                     <ColumnDefinition Width="2.5*" />
-                                    <ColumnDefinition Width="2.5*" />
-                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="0.3*" />
                                 </Grid.ColumnDefinitions>
 
                                 <Image
@@ -96,39 +103,38 @@
                                     </Grid.RowDefinitions>
 
                                     <Grid.Resources>
-
                                         <Style TargetType="TextBlock">
-                                            <Setter Property="FontFamily" Value="Determination mono web"/>
-
-                                            <Setter Property="FontSize" Value="14"/>
+                                            <Setter Property="FontFamily" Value="Determination mono web" />
+                                            <Setter Property="FontSize" Value="18" />
+                                            <Setter Property="Foreground" Value="White" />
                                         </Style>
-
                                     </Grid.Resources>
-                                    
+
                                     <TextBlock
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
+                                        FontWeight="Bold"
+                                        Foreground="GhostWhite"
                                         Text="{Binding Item.Name, StringFormat=Nazwa: {0}}" />
-                                    
+
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
+                                        Foreground="Yellow"
                                         Text="{Binding Item.Cost, StringFormat=Koszt: {0}}" />
                                 </Grid>
                                 <Grid Grid.Column="2">
 
                                     <Grid.Resources>
-
                                         <Style TargetType="TextBlock">
-                                            <Setter Property="FontFamily" Value="Determination mono web"/>
-
-                                            <Setter Property="FontSize" Value="14"/>
+                                            <Setter Property="FontFamily" Value="Determination mono web" />
+                                            <Setter Property="FontSize" Value="18" />
+                                            <Setter Property="Foreground" Value="White" />
                                         </Style>
-
                                     </Grid.Resources>
-                                    
+
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
                                         <RowDefinition />
@@ -147,13 +153,11 @@
                                 <Grid Grid.Column="3">
 
                                     <Grid.Resources>
-
                                         <Style TargetType="TextBlock">
-                                            <Setter Property="FontFamily" Value="Determination mono web"/>
-
-                                            <Setter Property="FontSize" Value="14"/>
+                                            <Setter Property="FontFamily" Value="Determination mono web" />
+                                            <Setter Property="FontSize" Value="18" />
+                                            <Setter Property="Foreground" Value="White" />
                                         </Style>
-
                                     </Grid.Resources>
 
                                     <Grid.RowDefinitions>

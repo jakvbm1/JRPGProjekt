@@ -107,5 +107,31 @@ namespace JRPG.DAL.Repozytoria
             }
             return check;
         }
+        public static bool UpdateQuantity(int itemid, int userid, int quantity)
+        {
+            string upt = $"UPDATE equipment SET Quantity = {quantity + 1} WHERE CharId = {userid} AND ItemID = {itemid};";
+
+
+            bool check = false;
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command =
+                    new MySqlCommand(upt, connection);
+                connection.Open();
+                try { var n = command.ExecuteNonQuery(); }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
+
+                }
+                check = true;
+
+                connection.Close();
+            }
+            return check;
+        }
+
     }
 }

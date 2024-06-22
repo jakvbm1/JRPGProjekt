@@ -19,5 +19,10 @@ namespace JRPG.Model
         {
             return RepoEquipment.AddItem(itemid, userid);
         }
+
+        public bool UpdateQuantity(int itemid, int userid, int quantity)
+        {
+            return RepoEquipment.UpdateQuantity(itemid, userid, quantity);
+        }
     }
 }

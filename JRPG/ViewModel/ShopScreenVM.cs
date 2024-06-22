@@ -21,6 +21,7 @@ namespace JRPG.ViewModel
         private Characters user_char;
         private int cost = 0;
         private ObservableCollection<Items> checkedItems = new ObservableCollection<Items>();
+        private ObservableCollection<Equipment> equipment = new ObservableCollection<Equipment>();
 
         public ShopScreenVM(MainModel mainModel)
         {
@@ -91,9 +92,21 @@ namespace JRPG.ViewModel
                             else if (cost <= User_char.Gold)
                             {
                                 model.shopScreenModel.UpdateGold(User_char, cost);
+                                equipment = model.msn.GetUsersEquipment(User_char.CharId);
                                 foreach (var item in checkedItems)
                                 {
-                                    model.shopScreenModel.AddItem(item.ItemID, User_char.CharId);
+                                    bool inEqupment = false;
+                                    for (int i = 0; i < equipment.Count; i++)
+                                    {
+                                        if (item.ItemID == equipment[i].ItemID)
+                                        {
+                                            inEqupment = true;
+                                            model.shopScreenModel.UpdateQuantity(item.ItemID, User_char.CharId, equipment[i].Quantity);
+                                            break;
+                                        }
+                                    }
+                                    if (!inEqupment)
+                                        model.shopScreenModel.AddItem(item.ItemID, User_char.CharId);
                                 }
                                 MessageBox.Show("Zakupiono przedmiot.");
                             }
