@@ -24,6 +24,8 @@
     <None Remove="sprites\characters\warrior\idle.png" />
     <None Remove="sprites\enemies\dragonborn\atk.png" />
     <None Remove="sprites\enemies\dragonborn\idle.png" />
+    <None Remove="sprites\enemies\flyingskull\atk.png" />
+    <None Remove="sprites\enemies\flyingskull\idle.png" />
     <None Remove="sprites\enemies\goblin\atk.png" />
     <None Remove="sprites\enemies\goblin\idle.png" />
     <None Remove="sprites\enemies\golem\atk.png" />
@@ -93,6 +95,8 @@
     <Resource Include="sprites\characters\warrior\idle.png" />
     <Resource Include="sprites\enemies\dragonborn\atk.png" />
     <Resource Include="sprites\enemies\dragonborn\idle.png" />
+    <Resource Include="sprites\enemies\flyingskull\atk.png" />
+    <Resource Include="sprites\enemies\flyingskull\idle.png" />
     <Resource Include="sprites\enemies\goblin\atk.png" />
     <Resource Include="sprites\enemies\goblin\idle.png" />
     <Resource Include="sprites\enemies\golem\atk.png" />

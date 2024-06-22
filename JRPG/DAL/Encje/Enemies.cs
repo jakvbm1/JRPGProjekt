@@ -11,7 +11,8 @@ namespace JRPG.DAL.Encje
     {
         easy,
         medium,
-        hard
+        hard,
+        boss
     }
     class Enemies
     {
@@ -33,6 +34,7 @@ namespace JRPG.DAL.Encje
             if (Diff == "easy") Difficulty = Difficulty.easy;
             else if (Diff == "medium") Difficulty = Difficulty.medium;
             else if (Diff == "hard") Difficulty = Difficulty.hard;
+            else if (Diff == "boss") Difficulty = Difficulty.boss;
         }
         public Enemies(string enemyName, int health, int attack, string spriteSet, int defense, Difficulty difficulty)
         {

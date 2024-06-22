@@ -42,7 +42,7 @@ CREATE TABLE `characters` (
 
 LOCK TABLES `characters` WRITE;
 /*!40000 ALTER TABLE `characters` DISABLE KEYS */;
-INSERT INTO `characters` VALUES (4,'tymek@dybal.pl',1,10,'Warrior'),(6,'damian@knopek.pl',1,10,'Ranger'),(7,'kuba@miarka.pl',5,70,'Mage');
+INSERT INTO `characters` VALUES (4,'tymek@dybal.pl',1,10,'Warrior'),(6,'damian@knopek.pl',1,10,'Ranger'),(7,'kuba@miarka.pl',8,35,'Mage');
 /*!40000 ALTER TABLE `characters` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `enemies` (
   `Attack` int unsigned NOT NULL,
   `SpriteSet` varchar(25) DEFAULT NULL,
   `Defense` int unsigned NOT NULL,
-  `Difficulty` enum('easy','medium','hard') DEFAULT NULL,
+  `difficulty` enum('easy','medium','hard','boss') NOT NULL,
   PRIMARY KEY (`Enemy_Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -98,7 +98,7 @@ CREATE TABLE `enemies` (
 
 LOCK TABLES `enemies` WRITE;
 /*!40000 ALTER TABLE `enemies` DISABLE KEYS */;
-INSERT INTO `enemies` VALUES ('drakon',15,16,'dragonborn',8,'medium'),('Goblin',7,10,'goblin',5,'easy'),('Golem',20,13,'golem',16,'medium'),('szkielet',10,5,'skeleton',7,'easy');
+INSERT INTO `enemies` VALUES ('drakon',15,16,'dragonborn',8,'medium'),('Goblin',7,10,'goblin',5,'easy'),('Golem',20,13,'golem',16,'medium'),('latająca czaszka',90,25,'flyingskull',15,'boss'),('szkielet',10,5,'skeleton',7,'easy');
 /*!40000 ALTER TABLE `enemies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +127,7 @@ CREATE TABLE `equipment` (
 
 LOCK TABLES `equipment` WRITE;
 /*!40000 ALTER TABLE `equipment` DISABLE KEYS */;
-INSERT INTO `equipment` VALUES (8,1,1,7),(7,1,0,7),(4,1,0,7);
+INSERT INTO `equipment` VALUES (8,1,1,7),(7,1,0,7),(4,1,0,7),(14,1,1,7),(22,1,0,7),(22,1,0,7);
 /*!40000 ALTER TABLE `equipment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-21 19:11:33
+-- Dump completed on 2024-06-22 12:16:35
