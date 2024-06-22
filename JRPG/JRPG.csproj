@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="sprites\backgrounds\1.png" />
     <None Remove="sprites\backgrounds\2.png" />
+    <None Remove="sprites\backgrounds\3.png" />
     <None Remove="sprites\characters\mage\atk.png" />
 
     <None Remove="sprites\characters\mage\def.png" />
@@ -61,6 +62,7 @@
 
   <ItemGroup>
     <Resource Include="sprites\backgrounds\2.png" />
+    <Resource Include="sprites\backgrounds\3.png" />
     <Resource Include="sprites\characters\mage\atk.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 

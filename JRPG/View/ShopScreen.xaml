@@ -12,6 +12,22 @@
     mc:Ignorable="d">
     <Window.Resources>
         <vm:MainViewModel x:Key="mainVM" />
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="Background" Value="DimGray"/>
+        </Style>
     </Window.Resources>
 
     <Grid DataContext="{StaticResource mainVM}">
@@ -20,6 +36,10 @@
             <RowDefinition Height="10*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="\sprites\backgrounds\3.png" AlignmentY="Top" AlignmentX="Center" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+        </Grid.Background>
 
         <Grid Grid.Row="0" Background="LightGray">
             <Grid.ColumnDefinitions>
@@ -42,6 +62,9 @@
             Grid.Row="1"
             Grid.Column="0"
             VerticalScrollBarVisibility="Auto">
+
+            
+            
             <ItemsControl ItemsSource="{Binding ShopVM.ItemsWithCheckBox}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -71,11 +94,23 @@
                                         <RowDefinition />
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
+
+                                    <Grid.Resources>
+
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="FontFamily" Value="Determination mono web"/>
+
+                                            <Setter Property="FontSize" Value="14"/>
+                                        </Style>
+
+                                    </Grid.Resources>
+                                    
                                     <TextBlock
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
                                         Text="{Binding Item.Name, StringFormat=Nazwa: {0}}" />
+                                    
                                     <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="1"
@@ -83,6 +118,17 @@
                                         Text="{Binding Item.Cost, StringFormat=Koszt: {0}}" />
                                 </Grid>
                                 <Grid Grid.Column="2">
+
+                                    <Grid.Resources>
+
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="FontFamily" Value="Determination mono web"/>
+
+                                            <Setter Property="FontSize" Value="14"/>
+                                        </Style>
+
+                                    </Grid.Resources>
+                                    
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
                                         <RowDefinition />
@@ -99,6 +145,17 @@
                                         Text="{Binding Item.EquipableFor, StringFormat=Dla klasy: {0}}" />
                                 </Grid>
                                 <Grid Grid.Column="3">
+
+                                    <Grid.Resources>
+
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="FontFamily" Value="Determination mono web"/>
+
+                                            <Setter Property="FontSize" Value="14"/>
+                                        </Style>
+
+                                    </Grid.Resources>
+
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
                                         <RowDefinition />
