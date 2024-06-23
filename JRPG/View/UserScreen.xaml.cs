@@ -41,5 +41,17 @@ namespace JRPG.View
             this.Visibility = Visibility.Hidden;
             selectEnemy.Show();
         }
+
+        private void Admin_enter(object sender, RoutedEventArgs e)
+        {
+
+
+            AdminPanel adminPanel = new AdminPanel();
+            this.Visibility = Visibility.Hidden;
+           adminPanel.Show();
+
+
+
+        }
     }
 }

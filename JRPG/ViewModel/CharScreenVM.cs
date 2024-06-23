@@ -32,7 +32,7 @@ namespace JRPG.ViewModel
         private BitmapImage idle_sp, attack_sp, defense_sp;
         private string current_username, imageurl;
         private ItemWQ selected_eq, selected_uneq;
-        private bool can_equip, can_dequip, should_upt = true;
+        private bool can_equip, admin, can_dequip, should_upt = true;
 
 
         public BitmapImage Idle_sp { get { return idle_sp; } set { idle_sp = value; onPropertyChanged(nameof(Idle_sp)); } }
@@ -49,6 +49,8 @@ namespace JRPG.ViewModel
 
         public bool Can_equip { get { return can_equip; } set { can_equip = value; onPropertyChanged(nameof(Can_equip)); } }
         public bool Can_dequip { get { return can_dequip; } set { can_dequip = value; onPropertyChanged(nameof(Can_dequip)); } }
+
+        public bool Admin { get { return admin; } set { admin = value; onPropertyChanged(nameof(Admin)); } }
 
         public ItemWQ Selected_eq { get { return selected_eq; } set { selected_eq = value; Can_dequip = true; Can_equip = false;
                 onPropertyChanged(nameof(Selected_eq)); updateImage();
@@ -78,6 +80,7 @@ namespace JRPG.ViewModel
             can_equip = false; can_dequip = false;
             User_char = GlobalVariables.current_user;
             Current_username = GlobalVariables.cur_username;
+            Admin = GlobalVariables.isadmin;
             Eq_items = new ObservableCollection<ItemWQ>();
             Uneq_items = new ObservableCollection<ItemWQ>();
             this.model = model;

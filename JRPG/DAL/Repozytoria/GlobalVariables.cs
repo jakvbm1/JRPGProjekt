@@ -14,5 +14,7 @@ namespace JRPG.DAL.Repozytoria
         public static Characters current_user {  get; set; }
         public static string cur_username { get; set; }
 
+        public static bool isadmin { get; set; }
+
     }
 }

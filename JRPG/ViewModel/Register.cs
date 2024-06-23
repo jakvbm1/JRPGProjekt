@@ -218,6 +218,7 @@ namespace JRPG.ViewModel
                                         }
                                        
                                         GlobalVariables.cur_username = user.Username;
+                                        GlobalVariables.isadmin = user.IsAdmin;
                                         Visible = Visibility.Visible;
 
                                         break;

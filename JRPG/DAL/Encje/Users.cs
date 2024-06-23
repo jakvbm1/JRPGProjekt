@@ -26,7 +26,10 @@ namespace JRPG.DAL.Encje
             Email = reader.GetString("Email");
             Password = reader.GetString("Password");
             Username = reader.GetString("Username");
-            IsAdmin = reader.GetBoolean("PlayerOrAdmin");
+            string IsEquip = reader.GetInt32("PlayerOrAdmin").ToString();
+            if (IsEquip == "1") IsAdmin = true;
+            else IsAdmin = false;
+            //IsAdmin = reader.GetBoolean("PlayerOrAdmin");
 
         }
         public string ToInsert()

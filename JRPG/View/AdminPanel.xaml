@@ -1,0 +1,531 @@
+﻿<Window x:Class="JRPG.View.AdminPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:JRPG.View"
+        xmlns:vm ="clr-namespace:JRPG.ViewModel"
+        mc:Ignorable="d"
+        Title="AdminPanel" Height="450" Width="800">
+
+    <Window.Resources>
+        <vm:MainViewModel x:Key="mainVM"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource mainVM}">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TabControl>
+            <TabItem Header="Users and characters">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="8*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding AdminVM.Users}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Email}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Email"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Username}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Nazwa użytkownika"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding IsAdmin}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Admin?"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <ListView Grid.Row="0" Grid.Column="2" ItemsSource="{Binding AdminVM.Characters}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding CharId}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="CharID"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Usermail}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Email"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding ExpLevel}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Level"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Gold}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="złoto"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Class_Name}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="nazwa klasy"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <Button Grid.Row="1" Grid.Column="0" Content="Nadaj admina użytkownikowi"/>
+                    <Button Grid.Row="1" Grid.Column="2" Content="Usuń użytkownika"/>
+                </Grid>
+                
+            </TabItem>
+            <TabItem Header="Items and equipment">
+                <Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="8*"/>
+        <RowDefinition />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="8*"/>
+        <ColumnDefinition />
+        <ColumnDefinition Width="8*"/>
+    </Grid.ColumnDefinitions>
+
+                    <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding AdminVM.Items}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Name}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Nazwa przedmiotu"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding EquipableFor}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Klasa przedmiotu"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Kind}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Typ przedmiotu"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Attack}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Atak"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Defense}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Obrona"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Max_hp}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="HP"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Regen_hp}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Regeneracja hp"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Sprite}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Nazwa tekstury"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <ListView Grid.Row="0" Grid.Column="2" ItemsSource="{Binding AdminVM.Equipment}">
+        <ListView.View>
+            <GridView>
+                <GridView.Columns>
+                    <GridViewColumn >
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ItemID}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <GridViewColumn.Header>
+                            <TextBlock Text="ItemID"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn>
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Quantity}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Ilość"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn >
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding IsEquipped}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <GridViewColumn.Header>
+                            <TextBlock Text="IsEquipped"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <GridViewColumn >
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CharID}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <GridViewColumn.Header>
+                            <TextBlock Text="CharID"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                </GridView.Columns>
+            </GridView>
+        </ListView.View>
+    </ListView>
+
+    <Button Grid.Row="1" Grid.Column="0" Content="Usuń przedmiot z gry"/>
+    <Button Grid.Row="1" Grid.Column="2" Content="Usuń wpis o ekwipunku"/>
+</Grid>
+            </TabItem>
+            <TabItem Header="Enemies and classes">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="8*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding AdminVM.Enemies}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding EnemyName}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="nazwa przeciwnika"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Attack}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Atak"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Defense}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Obrona"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Health}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="HP"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Difficulty}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Poziom trudności"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding SpriteSet}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Nazwa tekstur"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <ListView Grid.Row="0" Grid.Column="2" ItemsSource="{Binding AdminVM.Classes}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding ClassName}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Nazwa klasy"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding SpriteSet}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Tekstury"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Health}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Punkty życia"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Attack}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Atak"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Defense}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Obrona"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn >
+
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Difficulty}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Trudność"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <Button Grid.Row="1" Grid.Column="0" Content="Usuń przeciwnika"/>
+                    <Button Grid.Row="1" Grid.Column="2" Content="Usuń klasę"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
