@@ -52,7 +52,28 @@ namespace JRPG.DAL.Repozytoria
             }
             return check;
         }
+        public static bool UpdateAdmin(Users user)
+        {
+            bool check = false;
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command =
+                    new MySqlCommand($"UPDATE users SET PlayerOrAdmin = 1 WHERE Email = \"{user.Email}\"", connection);
+                connection.Open();
+                try { var n = command.ExecuteNonQuery(); }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
 
+                }
+                check = true;
+
+                connection.Close();
+            }
+            return check;
+        }
 
     }
 }

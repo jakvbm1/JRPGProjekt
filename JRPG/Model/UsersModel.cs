@@ -11,10 +11,10 @@ namespace JRPG.Model
     using System.Collections.ObjectModel;
     class UsersModel
     {
-    public ObservableCollection<Users>AllUsers { get; set; } = new ObservableCollection<Users>();
+        public ObservableCollection<Users>AllUsers { get; set; } = new ObservableCollection<Users>();
     
     
-    public UsersModel() { 
+        public UsersModel() { 
         var allusers = RepoUsers.GetAllUsers();
             foreach (var user in allusers)
             {
@@ -23,12 +23,19 @@ namespace JRPG.Model
             }
         
         }
-    public bool AddUserToDatabase(Users user)
+        public bool AddUserToDatabase(Users user)
         {
             if (RepoUsers.AddUserToDatabase(user)) {
                 return true;
             }
         
         return false;}
+
+        public bool UpdateAdmin(Users user)
+        {
+            return RepoUsers.UpdateAdmin(user);
+        }
+
     }
+    
 }

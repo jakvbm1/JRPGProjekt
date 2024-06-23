@@ -10,10 +10,10 @@ namespace JRPG.DAL.Encje
 {
     class Users
     {
-        public string Email;
-        public string Password;
-        public string Username;
-        public bool IsAdmin;
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Username { get; set; }
+        public bool IsAdmin { get; set; }
     
         public Users(string email, string password, string username, bool isAdmin)
         {

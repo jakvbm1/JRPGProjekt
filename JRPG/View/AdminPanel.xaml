@@ -13,12 +13,12 @@
         <vm:MainViewModel x:Key="mainVM"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource mainVM}">
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="9*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
         <TabControl>
             <TabItem Header="Users and characters">
                 <Grid>
@@ -28,12 +28,14 @@
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="8*"/>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="151*"/>
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="185*"/>
+                        <ColumnDefinition Width="47*" />
+                        <ColumnDefinition Width="374*"/>
                     </Grid.ColumnDefinitions>
 
-                    <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding AdminVM.Users}">
+                    <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding AdminVM.Users}" SelectedItem="{Binding AdminVM.SelectedUser}" Grid.ColumnSpan="4" Margin="0,0,46,0">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -80,7 +82,7 @@
                         </ListView.View>
                     </ListView>
 
-                    <ListView Grid.Row="0" Grid.Column="2" ItemsSource="{Binding AdminVM.Characters}">
+                    <ListView Grid.Row="0" Grid.Column="3" ItemsSource="{Binding AdminVM.Characters}" Grid.ColumnSpan="2" Margin="46,0,0,0">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -151,23 +153,23 @@
                         </ListView.View>
                     </ListView>
 
-                    <Button Grid.Row="1" Grid.Column="0" Content="Nadaj admina użytkownikowi"/>
-                    <Button Grid.Row="1" Grid.Column="2" Content="Usuń użytkownika"/>
+                    <Button Grid.Column="0" Content="Nadaj admina użytkownikowi" Command="{Binding AdminVM.SetAdmin}" Grid.ColumnSpan="4" Margin="0,322,46,0" Grid.RowSpan="2"/>
+                    <Button Grid.Column="3" Content="Usuń użytkownika" Grid.ColumnSpan="2" Margin="46,322,0,0" Grid.RowSpan="2"/>
                 </Grid>
-                
+
             </TabItem>
             <TabItem Header="Items and equipment">
                 <Grid>
-    <Grid.RowDefinitions>
-        <RowDefinition Height="8*"/>
-        <RowDefinition />
-    </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="8*"/>
-        <ColumnDefinition />
-        <ColumnDefinition Width="8*"/>
-    </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="8*"/>
+                    </Grid.ColumnDefinitions>
 
                     <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding AdminVM.Items}">
                         <ListView.View>
@@ -279,67 +281,67 @@
                     </ListView>
 
                     <ListView Grid.Row="0" Grid.Column="2" ItemsSource="{Binding AdminVM.Equipment}">
-        <ListView.View>
-            <GridView>
-                <GridView.Columns>
-                    <GridViewColumn >
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn >
 
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding ItemID}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding ItemID}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
 
-                        <GridViewColumn.Header>
-                            <TextBlock Text="ItemID"/>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                    <GridViewColumn>
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="ItemID"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
 
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Quantity}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Quantity}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
 
-                        <GridViewColumn.Header>
-                            <TextBlock Text="Ilość"/>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                    <GridViewColumn >
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="Ilość"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn >
 
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding IsEquipped}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding IsEquipped}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
 
-                        <GridViewColumn.Header>
-                            <TextBlock Text="IsEquipped"/>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="IsEquipped"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
 
-                    <GridViewColumn >
+                                    <GridViewColumn >
 
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding CharID}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding CharID}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
 
-                        <GridViewColumn.Header>
-                            <TextBlock Text="CharID"/>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
+                                        <GridViewColumn.Header>
+                                            <TextBlock Text="CharID"/>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
 
-                </GridView.Columns>
-            </GridView>
-        </ListView.View>
-    </ListView>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
 
-    <Button Grid.Row="1" Grid.Column="0" Content="Usuń przedmiot z gry"/>
-    <Button Grid.Row="1" Grid.Column="2" Content="Usuń wpis o ekwipunku"/>
-</Grid>
+                    <Button Grid.Row="1" Grid.Column="0" Content="Usuń przedmiot z gry"/>
+                    <Button Grid.Row="1" Grid.Column="2" Content="Usuń wpis o ekwipunku"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Enemies and classes">
                 <Grid>

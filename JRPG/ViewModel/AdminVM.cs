@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JRPG.Model;
 
 namespace JRPG.ViewModel
 {
@@ -18,6 +19,8 @@ namespace JRPG.ViewModel
     using System.Windows.Media.Imaging;
     using MySql.Data.MySqlClient;
     using Org.BouncyCastle.Math;
+    using Org.BouncyCastle.Bcpg;
+
     class AdminVM : ViewModelBase
     {
         private MainModel model;
@@ -27,6 +30,7 @@ namespace JRPG.ViewModel
         private ObservableCollection<Enemies> enemies;
         private ObservableCollection<Users> users;
         private ObservableCollection<Characters> characters;
+        private Users selectedUser;
 
         public AdminVM(MainModel model)
         {
@@ -57,5 +61,31 @@ namespace JRPG.ViewModel
         public ObservableCollection<Enemies > Enemies { get { return enemies; } set { enemies = value; onPropertyChanged( nameof(Enemies)); } }
         public ObservableCollection<Users> Users { get { return users; } set { users = value; onPropertyChanged(nameof(Users)); } }
         public ObservableCollection<Characters > Characters { get { return characters; } set { characters = value; onPropertyChanged(nameof (Characters)); } }
+        public Users SelectedUser { get { return selectedUser; } set { selectedUser = value; onPropertyChanged(nameof(SelectedUser)); } }
+
+        private ICommand setAdmin = null;
+        public ICommand SetAdmin
+        {
+            get
+            {
+                if (setAdmin == null)
+                {
+                    setAdmin = new RelayCommand(
+                        arg =>
+                        {
+                            model.usersModel.UpdateAdmin(SelectedUser);
+                            for (int i = 0; i < Users.Count; i++)
+                            {
+                                if (Users[i].Email == selectedUser.Email)
+                                {
+                                    Users[i].IsAdmin = true;
+                                }
+                            }
+                        },
+                        arg => true);
+                }
+                return setAdmin;
+            }
+        }
     }
 }
