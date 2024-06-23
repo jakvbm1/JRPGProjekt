@@ -10,9 +10,30 @@
 
     <Window.Resources>
         <vm:MainViewModel x:Key="mainVM"/>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Determination mono web"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Opacity" Value="0.9"/>
+            <Setter Property="Background" Value="DimGray"/>
+        </Style>
+
     </Window.Resources>
 
-    <Grid Background="AntiqueWhite" DataContext="{StaticResource mainVM}">
+    <Grid  DataContext="{StaticResource mainVM}">
+
+        <Grid.Background>
+            <ImageBrush  ImageSource="\sprites\backgrounds\4.png" AlignmentY="Top" AlignmentX="Center" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+        </Grid.Background>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -31,13 +52,18 @@
             <Image Grid.Row="1" Source="{Binding BattleVM.PlGraf }" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
               
         </Grid>
-        <UniformGrid Grid.Row="0" Grid.Column="1" Rows="3">
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             
             <Image Grid.Row="1" Source="/sprites/characters/mage/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
 
-        </UniformGrid>
+        </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="0" Background="Black">
+        <Grid Grid.Row="1" Grid.Column="0" Background="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -64,7 +90,7 @@
             
             <TextBlock Grid.Row="4" Grid.Column="1" Text="UŻYJ PRZEDMIOTU"  Foreground="White"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="1" Background="Black">
+        <Grid Grid.Row="1" Grid.Column="1" Background="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
