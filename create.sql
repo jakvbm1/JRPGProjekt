@@ -42,7 +42,7 @@ CREATE TABLE `characters` (
 
 LOCK TABLES `characters` WRITE;
 /*!40000 ALTER TABLE `characters` DISABLE KEYS */;
-INSERT INTO `characters` VALUES (4,'tymek@dybal.pl',1,10,'Warrior'),(6,'damian@knopek.pl',1,10,'Ranger'),(7,'kuba@miarka.pl',8,35,'Mage');
+INSERT INTO `characters` VALUES (4,'tymek@dybal.pl',1,10,'Warrior'),(6,'damian@knopek.pl',1,10,'Ranger'),(7,'kuba@miarka.pl',9,20,'Mage');
 /*!40000 ALTER TABLE `characters` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +98,7 @@ CREATE TABLE `enemies` (
 
 LOCK TABLES `enemies` WRITE;
 /*!40000 ALTER TABLE `enemies` DISABLE KEYS */;
-INSERT INTO `enemies` VALUES ('drakon',15,16,'dragonborn',8,'medium'),('Goblin',7,10,'goblin',5,'easy'),('Golem',20,13,'golem',16,'medium'),('latająca czaszka',90,25,'flyingskull',15,'boss'),('szkielet',10,5,'skeleton',7,'easy');
+INSERT INTO `enemies` VALUES ('drakon',15,16,'dragonborn',8,'medium'),('Goblin',7,10,'goblin',5,'easy'),('Golem',20,13,'golem',16,'medium'),('latająca czaszka',90,25,'flyingskull',15,'boss'),('obserwator',50,22,'beholder',20,'hard'),('szkielet',10,5,'skeleton',7,'easy'),('zjawa',45,30,'spirit',10,'hard');
 /*!40000 ALTER TABLE `enemies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +127,7 @@ CREATE TABLE `equipment` (
 
 LOCK TABLES `equipment` WRITE;
 /*!40000 ALTER TABLE `equipment` DISABLE KEYS */;
-INSERT INTO `equipment` VALUES (8,1,1,7),(7,1,0,7),(4,1,0,7),(14,1,1,7),(22,1,0,7),(22,1,0,7);
+INSERT INTO `equipment` VALUES (8,1,1,7),(7,1,0,7),(4,1,0,7),(14,1,1,7),(22,1,1,7),(22,1,1,7),(2,1,0,7);
 /*!40000 ALTER TABLE `equipment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-22 12:16:35
+-- Dump completed on 2024-06-23 12:56:46

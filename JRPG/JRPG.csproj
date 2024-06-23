@@ -23,6 +23,8 @@
     <None Remove="sprites\characters\warrior\atk.png" />
     <None Remove="sprites\characters\warrior\def.png" />
     <None Remove="sprites\characters\warrior\idle.png" />
+    <None Remove="sprites\enemies\beholder\atk.png" />
+    <None Remove="sprites\enemies\beholder\idle.png" />
     <None Remove="sprites\enemies\dragonborn\atk.png" />
     <None Remove="sprites\enemies\dragonborn\idle.png" />
     <None Remove="sprites\enemies\flyingskull\atk.png" />
@@ -33,6 +35,8 @@
     <None Remove="sprites\enemies\golem\idle.png" />
     <None Remove="sprites\enemies\skeleton\atk.png" />
     <None Remove="sprites\enemies\skeleton\idle.png" />
+    <None Remove="sprites\enemies\spirit\atk.png" />
+    <None Remove="sprites\enemies\spirit\idle.png" />
     <None Remove="sprites\items\accessories\ring_atk.png" />
     <None Remove="sprites\items\accessories\ring_def.png" />
     <None Remove="sprites\items\accessories\ring_hp.png" />
@@ -93,6 +97,8 @@
     <Resource Include="sprites\characters\warrior\atk.png" />
     <Resource Include="sprites\characters\warrior\def.png" />
     <Resource Include="sprites\characters\warrior\idle.png" />
+    <Resource Include="sprites\enemies\beholder\atk.png" />
+    <Resource Include="sprites\enemies\beholder\idle.png" />
     <Resource Include="sprites\enemies\dragonborn\atk.png" />
     <Resource Include="sprites\enemies\dragonborn\idle.png" />
     <Resource Include="sprites\enemies\flyingskull\atk.png" />
@@ -103,6 +109,8 @@
     <Resource Include="sprites\enemies\golem\idle.png" />
     <Resource Include="sprites\enemies\skeleton\atk.png" />
     <Resource Include="sprites\enemies\skeleton\idle.png" />
+    <Resource Include="sprites\enemies\spirit\atk.png" />
+    <Resource Include="sprites\enemies\spirit\idle.png" />
     <Resource Include="sprites\items\accessories\ring_atk.png" />
     <Resource Include="sprites\items\accessories\ring_def.png" />
     <Resource Include="sprites\items\accessories\ring_hp.png" />
