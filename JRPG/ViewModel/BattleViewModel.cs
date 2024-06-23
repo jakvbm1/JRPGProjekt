@@ -30,6 +30,7 @@ namespace JRPG.ViewModel
         private string plIdle, plAttack, plDeffense, enIdle, enAttack, plGraf, enGraf;
         private int PLmax_hp, player_curr_hp, PLatk, PLdef, enemy_curr_hp, ENatk, ENdef, ENmax_hp;
         private Visibility isFinished = Visibility.Hidden;
+        private string ensprite;
         
         private string message;
         private bool enableButtons;
@@ -74,7 +75,7 @@ namespace JRPG.ViewModel
             ENmax_hp = enemy.Health;
             ENdef = enemy.Defense;
             ENatk = enemy.Attack;
-            
+            Ensprite = $"/sprites/enemies/{enemy.SpriteSet}/idle.png";
             EN_CurrMaxhp();
             EnableButtons = true;
 
@@ -102,7 +103,7 @@ namespace JRPG.ViewModel
         public string EN_CurrMaxHP { get { return EN_currMaxHP; } set { EN_currMaxHP = value; onPropertyChanged(nameof(EN_CurrMaxHP)); } }
         public string EN_NAME { get { return ENname; } set { ENname = value; onPropertyChanged(nameof(EN_NAME)); } }
 
-       
+       public string Ensprite { get { return ensprite; } set { ensprite = value; onPropertyChanged(nameof(Ensprite)); } } 
 
         private void PL_CurrMaxhp()
         {

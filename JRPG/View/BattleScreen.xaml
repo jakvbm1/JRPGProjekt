@@ -59,7 +59,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             
-            <Image Grid.Row="1" Source="/sprites/characters/mage/idle.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+            <Image Grid.Row="1" Source="{Binding BattleVM.Ensprite}" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
 
         </Grid>
 
