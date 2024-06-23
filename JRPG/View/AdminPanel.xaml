@@ -82,7 +82,7 @@
                         </ListView.View>
                     </ListView>
 
-                    <ListView Grid.Row="0" Grid.Column="3" ItemsSource="{Binding AdminVM.Characters}" Grid.ColumnSpan="2" Margin="46,0,0,0">
+                    <ListView Grid.Row="0" Grid.Column="3" ItemsSource="{Binding AdminVM.Characters}" SelectedItem="{Binding AdminVM.SelectedCharacter}" Grid.ColumnSpan="2" Margin="46,0,0,0">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -154,7 +154,7 @@
                     </ListView>
 
                     <Button Grid.Column="0" Content="Nadaj admina użytkownikowi" Command="{Binding AdminVM.SetAdmin}" Grid.ColumnSpan="4" Margin="0,322,46,0" Grid.RowSpan="2"/>
-                    <Button Grid.Column="3" Content="Usuń użytkownika" Grid.ColumnSpan="2" Margin="46,322,0,0" Grid.RowSpan="2"/>
+                    <Button Grid.Column="3" Content="Usuń użytkownika" Command="{Binding AdminVM.DelUser}" Grid.ColumnSpan="2" Margin="46,322,0,0" Grid.RowSpan="2"/>
                 </Grid>
 
             </TabItem>
@@ -171,7 +171,7 @@
                         <ColumnDefinition Width="8*"/>
                     </Grid.ColumnDefinitions>
 
-                    <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding AdminVM.Items}">
+                    <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding AdminVM.Items}" SelectedItem="{Binding AdminVM.SelectedItem}">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -280,7 +280,7 @@
                         </ListView.View>
                     </ListView>
 
-                    <ListView Grid.Row="0" Grid.Column="2" ItemsSource="{Binding AdminVM.Equipment}">
+                    <ListView Grid.Row="0" Grid.Column="2" ItemsSource="{Binding AdminVM.Equipment}" SelectedItem="{Binding AdminVM.SelectedEquipment}">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -339,8 +339,8 @@
                         </ListView.View>
                     </ListView>
 
-                    <Button Grid.Row="1" Grid.Column="0" Content="Usuń przedmiot z gry"/>
-                    <Button Grid.Row="1" Grid.Column="2" Content="Usuń wpis o ekwipunku"/>
+                    <Button Grid.Row="1" Grid.Column="0" Content="Usuń przedmiot z gry" Command="{Binding AdminVM.DelItem}"/>
+                    <Button Grid.Row="1" Grid.Column="2" Content="Usuń wpis o ekwipunku" Command="{Binding AdminVM.DelEquip}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Enemies and classes">
@@ -356,7 +356,7 @@
                         <ColumnDefinition Width="8*"/>
                     </Grid.ColumnDefinitions>
 
-                    <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding AdminVM.Enemies}">
+                    <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding AdminVM.Enemies}" SelectedItem="{Binding AdminVM.SelectedEnemies}">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -439,7 +439,7 @@
                         </ListView.View>
                     </ListView>
 
-                    <ListView Grid.Row="0" Grid.Column="2" ItemsSource="{Binding AdminVM.Classes}">
+                    <ListView Grid.Row="0" Grid.Column="2" ItemsSource="{Binding AdminVM.Classes}" SelectedItem="{Binding AdminVM.SelectedClasses}">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -524,8 +524,8 @@
                         </ListView.View>
                     </ListView>
 
-                    <Button Grid.Row="1" Grid.Column="0" Content="Usuń przeciwnika"/>
-                    <Button Grid.Row="1" Grid.Column="2" Content="Usuń klasę"/>
+                    <Button Grid.Row="1" Grid.Column="0" Content="Usuń przeciwnika" Command="{Binding AdminVM.DelEnemy}"/>
+                    <Button Grid.Row="1" Grid.Column="2" Content="Usuń klasę" Command="{Binding AdminVM.DelClass}"/>
                 </Grid>
             </TabItem>
         </TabControl>

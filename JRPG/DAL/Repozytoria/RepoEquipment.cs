@@ -132,6 +132,27 @@ namespace JRPG.DAL.Repozytoria
             }
             return check;
         }
+        public static bool RemoveEquipment(Equipment equipment)
+        {
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command =
+                    new MySqlCommand($"DELETE FROM equipment WHERE ItemID = {equipment.ItemID} AND CharID = {equipment.CharID}", connection);
+                connection.Open();
+                try
+                {
+                    var n = command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
+                }
+            }
+        }
 
     }
 }

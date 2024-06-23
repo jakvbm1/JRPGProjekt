@@ -21,6 +21,7 @@ namespace JRPG.Model
         public ItemsModel itemsModel;
         public MainScreenModel msn;
         public ShopScreenModel shopScreenModel;
+        public AdminPanelModel adminPanelModel;
         
     public MainModel()
         {
@@ -33,6 +34,7 @@ namespace JRPG.Model
             itemsModel = new ItemsModel();
             msn = new MainScreenModel();
             shopScreenModel = new ShopScreenModel();
+            adminPanelModel = new AdminPanelModel();
         }
     }
 }

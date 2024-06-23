@@ -119,6 +119,31 @@ namespace JRPG.DAL.Repozytoria
 
 
         }
+        public static bool RemoveCharacter(Characters character)
+        {
+            using (var connection = DBConnection.Instance.Connection)
+            {
+
+                MySqlCommand command =
+                    new MySqlCommand($"DELETE FROM characters WHERE CharId = {character.CharId}", connection);
+                connection.Open();
+                try
+                {
+                    var n = command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
+                }
+
+            }
+
+
+        }
 
     }
 }

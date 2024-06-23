@@ -30,5 +30,26 @@ namespace JRPG.DAL.Repozytoria
 
             return classes;
         }
+        public static bool RemoveClass(Classes _class)
+        {
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command =
+                    new MySqlCommand($"DELETE FROM classes WHERE Class_Name = \"{_class.ClassName}\"", connection);
+                connection.Open();
+                try
+                {
+                    var n = command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
+                }
+            }
+        }
     }
 }

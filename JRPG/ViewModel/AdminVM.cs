@@ -31,6 +31,11 @@ namespace JRPG.ViewModel
         private ObservableCollection<Users> users;
         private ObservableCollection<Characters> characters;
         private Users selectedUser;
+        private Characters selectedCharacter;
+        private Items selectedItem;
+        private Equipment selectedEquipment;
+        private Enemies selectedEnemies;
+        private Classes selectedClasses;
 
         public AdminVM(MainModel model)
         {
@@ -62,6 +67,12 @@ namespace JRPG.ViewModel
         public ObservableCollection<Users> Users { get { return users; } set { users = value; onPropertyChanged(nameof(Users)); } }
         public ObservableCollection<Characters > Characters { get { return characters; } set { characters = value; onPropertyChanged(nameof (Characters)); } }
         public Users SelectedUser { get { return selectedUser; } set { selectedUser = value; onPropertyChanged(nameof(SelectedUser)); } }
+        public Characters SelectedCharacter { get { return selectedCharacter; } set { selectedCharacter = value; onPropertyChanged(nameof(SelectedCharacter)); } }
+        public Items SelectedItem { get { return selectedItem; } set { selectedItem = value; onPropertyChanged(nameof(SelectedItem)); } }
+        public Equipment SelectedEquipment { get { return selectedEquipment; } set { selectedEquipment = value; onPropertyChanged(nameof(SelectedEquipment)); } }
+        public Enemies SelectedEnemies { get { return selectedEnemies; } set { selectedEnemies = value; onPropertyChanged(nameof(SelectedEnemies)); } }
+        public Classes SelectedClasses { get { return selectedClasses; } set { selectedClasses = value; onPropertyChanged(nameof(SelectedClasses)); } }
+
 
         private ICommand setAdmin = null;
         public ICommand SetAdmin
@@ -73,18 +84,130 @@ namespace JRPG.ViewModel
                     setAdmin = new RelayCommand(
                         arg =>
                         {
-                            model.usersModel.UpdateAdmin(SelectedUser);
-                            for (int i = 0; i < Users.Count; i++)
+                            if (selectedUser != null)
                             {
-                                if (Users[i].Email == selectedUser.Email)
+                                if (!SelectedUser.IsAdmin)
                                 {
-                                    Users[i].IsAdmin = true;
+                                    model.usersModel.UpdateAdmin(SelectedUser);
+                                    var user = SelectedUser;
+                                    user.IsAdmin = true;
+                                    Users.Remove(SelectedUser);
+                                    Users.Add(user);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Wybrany użytkownik jest już adminem.");
                                 }
                             }
                         },
                         arg => true);
                 }
                 return setAdmin;
+            }
+        }
+        private ICommand delUser = null;
+        public ICommand DelUser
+        {
+            get
+            {
+                if (delUser == null)
+                {
+                    delUser = new RelayCommand(
+                        arg =>
+                        {
+                            if (SelectedCharacter != null)
+                            {
+                                model.adminPanelModel.RemoveCharacter(SelectedCharacter);
+                                Characters.Remove(SelectedCharacter);
+                            }
+                        },
+                        arg => true);
+                }
+                return delUser;
+            }
+        }
+        private ICommand delItem = null;
+        public ICommand DelItem
+        {
+            get
+            {
+                if (delItem == null)
+                {
+                    delItem = new RelayCommand(
+                        arg =>
+                        {
+                            if (SelectedItem != null)
+                            {
+                                model.adminPanelModel.RemoveItem(SelectedItem);
+                                Items.Remove(SelectedItem);
+                            }
+                        },
+                        arg => true);
+                }
+                return delItem;
+            }
+        }
+        private ICommand delEquip = null;
+        public ICommand DelEquip
+        {
+            get
+            {
+                if (delEquip == null)
+                {
+                    delEquip = new RelayCommand(
+                        arg =>
+                        {
+                            if (SelectedEquipment != null)
+                            {
+                                model.adminPanelModel.RemoveEquipment(SelectedEquipment);
+                                Equipment.Remove(SelectedEquipment);
+                            }
+                        },
+                        arg => true);
+                }
+                return delEquip;
+            }
+        }
+        private ICommand delEnemy = null;
+        public ICommand DelEnemy
+        {
+            get
+            {
+                if (delEnemy == null)
+                {
+                    delEnemy = new RelayCommand(
+                        arg =>
+                        {
+                            if (SelectedEnemies != null)
+                            {
+                                model.adminPanelModel.RemoveEnemy(SelectedEnemies);
+                                Enemies.Remove(SelectedEnemies);
+                            }
+                        },
+                        arg => true);
+                }
+                return delEnemy;
+            }
+        }
+        private ICommand delClass = null;
+        public ICommand DelClass
+        {
+            get
+            {
+                if (delClass == null)
+                {
+                    delClass = new RelayCommand(
+                        arg =>
+                        {
+                            if (SelectedClasses != null)
+                            {
+                                model.adminPanelModel.RemoveClass(SelectedClasses);
+                                Classes.Remove(SelectedClasses);
+                            }
+                        },
+                        arg => true);
+                }
+                return delClass;
             }
         }
     }
