@@ -1,4 +1,5 @@
 ﻿using JRPG.DAL.Encje;
+using JRPG.Model;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -180,6 +181,28 @@ namespace JRPG.DAL.Repozytoria
             {
                 MySqlCommand command =
                     new MySqlCommand($"DELETE FROM equipment WHERE ItemID = {ItemID} AND CharID = {CharID}", connection);
+                connection.Open();
+                try
+                {
+                    var n = command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
+                }
+            }
+        }
+
+        public static bool RemoveEquipmentByCharId(int CharID)
+        {
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command =
+                    new MySqlCommand($"DELETE FROM equipment WHERE CharID = {CharID}", connection);
                 connection.Open();
                 try
                 {

@@ -36,10 +36,12 @@ namespace JRPG.ViewModel
         private Equipment selectedEquipment;
         private Enemies selectedEnemies;
         private Classes selectedClasses;
+        private Characters user_char;
 
         public AdminVM(MainModel model)
         {
             this.model = model;
+            user_char = GlobalVariables.current_user;
             Items = new ObservableCollection<Items>();
             Equipment = new ObservableCollection<Equipment>();
             Classes = new ObservableCollection<Classes>();
@@ -115,10 +117,29 @@ namespace JRPG.ViewModel
                     delUser = new RelayCommand(
                         arg =>
                         {
-                            if (SelectedCharacter != null)
+                            if (SelectedCharacter != null && user_char != SelectedCharacter)
                             {
-                                model.adminPanelModel.RemoveCharacter(SelectedCharacter);
-                                Characters.Remove(SelectedCharacter);
+                                var character = SelectedCharacter;
+                                model.adminPanelModel.RemoveEquipmentByCharId(character.CharId);
+                                model.adminPanelModel.RemoveCharacter(character);
+                                model.adminPanelModel.RemoveUser(character.Usermail);
+                                Characters.Remove(character);
+                                foreach (var user in Users)
+                                {
+                                    if (user.Email == character.Usermail)
+                                    {
+                                        Users.Remove(user);
+                                        break;
+                                    }
+                                }
+                                ObservableCollection<Equipment> remove_equip = new ObservableCollection<Equipment>();
+                                foreach (var eq in Equipment)
+                                {
+                                    if (eq.CharID == character.CharId)
+                                        remove_equip.Add(eq);
+                                }
+                                foreach (var eq in remove_equip)
+                                    Equipment.Remove(eq);
                             }
                         },
                         arg => true);
@@ -138,6 +159,17 @@ namespace JRPG.ViewModel
                         {
                             if (SelectedItem != null)
                             {
+                                ObservableCollection<Equipment> remove_equip = new ObservableCollection<Equipment>();
+                                foreach (var eq in Equipment)
+                                {
+                                    if (eq.ItemID == SelectedItem.ItemID)
+                                        remove_equip.Add(eq);
+                                }
+                                foreach (var eq in remove_equip)
+                                {
+                                    model.adminPanelModel.RemoveEquipment(eq);
+                                    Equipment.Remove(eq);
+                                }
                                 model.adminPanelModel.RemoveItem(SelectedItem);
                                 Items.Remove(SelectedItem);
                             }
@@ -189,26 +221,6 @@ namespace JRPG.ViewModel
                 return delEnemy;
             }
         }
-        private ICommand delClass = null;
-        public ICommand DelClass
-        {
-            get
-            {
-                if (delClass == null)
-                {
-                    delClass = new RelayCommand(
-                        arg =>
-                        {
-                            if (SelectedClasses != null)
-                            {
-                                model.adminPanelModel.RemoveClass(SelectedClasses);
-                                Classes.Remove(SelectedClasses);
-                            }
-                        },
-                        arg => true);
-                }
-                return delClass;
-            }
-        }
+        
     }
 }

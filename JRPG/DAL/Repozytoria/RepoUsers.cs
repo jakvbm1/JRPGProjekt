@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JRPG.DAL.Encje;
+using Google.Protobuf.WellKnownTypes;
 
 namespace JRPG.DAL.Repozytoria
 {
@@ -73,6 +74,27 @@ namespace JRPG.DAL.Repozytoria
                 connection.Close();
             }
             return check;
+        }
+        public static bool RemoveUser(string email)
+        {
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command =
+                    new MySqlCommand($"DELETE FROM users WHERE Email = \"{email}\"", connection);
+                connection.Open();
+                try
+                {
+                    var n = command.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    System.Windows.MessageBox.Show(ex.ToString());
+                    connection.Close();
+                    return false;
+                }
+            }
         }
 
     }

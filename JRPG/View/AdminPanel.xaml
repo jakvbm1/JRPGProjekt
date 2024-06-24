@@ -343,20 +343,14 @@
                     <Button Grid.Row="1" Grid.Column="2" Content="Usuń wpis o ekwipunku" Command="{Binding AdminVM.DelEquip}"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Enemies and classes">
+            <TabItem Header="Enemies">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="8*"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="8*"/>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="8*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding AdminVM.Enemies}" SelectedItem="{Binding AdminVM.SelectedEnemies}">
+                    <ListView Grid.Row="0" ItemsSource="{Binding AdminVM.Enemies}" SelectedItem="{Binding AdminVM.SelectedEnemies}">
                         <ListView.View>
                             <GridView>
                                 <GridView.Columns>
@@ -439,93 +433,7 @@
                         </ListView.View>
                     </ListView>
 
-                    <ListView Grid.Row="0" Grid.Column="2" ItemsSource="{Binding AdminVM.Classes}" SelectedItem="{Binding AdminVM.SelectedClasses}">
-                        <ListView.View>
-                            <GridView>
-                                <GridView.Columns>
-                                    <GridViewColumn >
-
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding ClassName}"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-
-                                        <GridViewColumn.Header>
-                                            <TextBlock Text="Nazwa klasy"/>
-                                        </GridViewColumn.Header>
-                                    </GridViewColumn>
-                                    <GridViewColumn>
-
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding SpriteSet}"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-
-                                        <GridViewColumn.Header>
-                                            <TextBlock Text="Tekstury"/>
-                                        </GridViewColumn.Header>
-                                    </GridViewColumn>
-                                    <GridViewColumn >
-
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Health}"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-
-                                        <GridViewColumn.Header>
-                                            <TextBlock Text="Punkty życia"/>
-                                        </GridViewColumn.Header>
-                                    </GridViewColumn>
-
-                                    <GridViewColumn >
-
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Attack}"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-
-                                        <GridViewColumn.Header>
-                                            <TextBlock Text="Atak"/>
-                                        </GridViewColumn.Header>
-                                    </GridViewColumn>
-
-                                    <GridViewColumn >
-
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Defense}"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-
-                                        <GridViewColumn.Header>
-                                            <TextBlock Text="Obrona"/>
-                                        </GridViewColumn.Header>
-                                    </GridViewColumn>
-
-                                    <GridViewColumn >
-
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Difficulty}"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-
-                                        <GridViewColumn.Header>
-                                            <TextBlock Text="Trudność"/>
-                                        </GridViewColumn.Header>
-                                    </GridViewColumn>
-
-                                </GridView.Columns>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-
-                    <Button Grid.Row="1" Grid.Column="0" Content="Usuń przeciwnika" Command="{Binding AdminVM.DelEnemy}"/>
-                    <Button Grid.Row="1" Grid.Column="2" Content="Usuń klasę" Command="{Binding AdminVM.DelClass}"/>
+                    <Button Grid.Row="1" Content="Usuń przeciwnika" Command="{Binding AdminVM.DelEnemy}"/>
                 </Grid>
             </TabItem>
         </TabControl>

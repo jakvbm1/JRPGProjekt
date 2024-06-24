@@ -10,9 +10,17 @@ namespace JRPG.Model
 {
     class AdminPanelModel
     {
+        public bool RemoveEquipmentByCharId(int CharID)
+        {
+            return RepoEquipment.RemoveEquipmentByCharId(CharID);
+        }
         public bool RemoveCharacter(Characters character)
         {
             return RepoCharacters.RemoveCharacter(character);
+        }
+        public bool RemoveUser(string email)
+        {
+            return RepoUsers.RemoveUser(email);
         }
         public bool RemoveItem(Items item)
         {
