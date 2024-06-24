@@ -2,6 +2,7 @@
 using JRPG.DAL.Repozytoria;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,8 @@ using System.Threading.Tasks;
 namespace JRPG.Model
 {
     class ShopScreenModel
-    {
+    { 
+
         public bool UpdateGold(Characters character, int cost)
         {
             return RepoCharacters.UpdateGold(character, cost);
@@ -23,6 +25,12 @@ namespace JRPG.Model
         public bool UpdateQuantity(int itemid, int userid, int quantity)
         {
             return RepoEquipment.UpdateQuantity(itemid, userid, quantity);
+        }
+
+        public ObservableCollection<Equipment> GetUsersEquipment(int userId)
+        {
+            ObservableCollection<Equipment> equipment = [.. RepoEquipment.GetUsersEquipment(userId)];
+            return equipment;
         }
     }
 }

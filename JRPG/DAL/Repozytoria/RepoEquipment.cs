@@ -30,6 +30,27 @@ namespace JRPG.DAL.Repozytoria
 
             return equipment;
         }
+        public static List<Equipment> GetUsersEquipment(int userId)
+        {
+            List<Equipment> equipment = new List<Equipment>();
+
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                MySqlCommand command = new MySqlCommand(ALL_EQUIPMENTS, connection);
+
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var item = new Equipment(reader);
+                    if (item.CharID == userId)
+                        equipment.Add(item);
+                }
+                connection.Close();
+            }
+
+            return equipment;
+        }
 
         public static bool Dequip(int itemid, int userid)
         {

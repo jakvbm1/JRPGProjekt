@@ -101,7 +101,7 @@ namespace JRPG.ViewModel
                             else if (cost <= User_char.Gold)
                             {
                                 model.shopScreenModel.UpdateGold(User_char, cost);
-                                equipment = model.msn.GetUsersEquipment(User_char.CharId);
+                                equipment = model.shopScreenModel.GetUsersEquipment(User_char.CharId);
                                 foreach (var item in checkedItems)
                                 {
                                     bool inEqupment = false;
@@ -111,12 +111,13 @@ namespace JRPG.ViewModel
                                         {
                                             inEqupment = true;
                                             model.shopScreenModel.UpdateQuantity(item.ItemID, User_char.CharId, equipment[i].Quantity);
-                                            equipment[i].Quantity++;
                                             break;
                                         }
                                     }
                                     if (!inEqupment)
+                                    {
                                         model.shopScreenModel.AddItem(item.ItemID, User_char.CharId);
+                                    }
                                 }
                                 User_gold -= cost;
                                 MessageBox.Show("Zakupiono przedmiot.");
