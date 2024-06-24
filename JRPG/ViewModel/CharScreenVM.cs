@@ -106,8 +106,8 @@ namespace JRPG.ViewModel
             foreach (var item in equipment)
             {
                 Items loaded_item = model.msn.GetItemByID(item.ItemID);
-                Console.WriteLine(loaded_item.ItemID + " " + loaded_item.Name + " " + loaded_item.Attack);
-                Console.WriteLine(item.IsEquipped);
+               // Console.WriteLine(loaded_item.ItemID + " " + loaded_item.Name + " " + loaded_item.Attack);
+                //Console.WriteLine(item.IsEquipped);
 
                 if (item.IsEquipped)
                 {

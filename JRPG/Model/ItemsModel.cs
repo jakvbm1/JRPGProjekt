@@ -22,6 +22,12 @@ namespace JRPG.Model
                 AllItems.Add(c);
             }
         }
-
+        public int? GetIdFromName (string name)
+        {
+            foreach (var c in AllItems) {
+                if (c.Name == name) return c.ItemID;
+            }
+            return null;
+        }
     }
 }

@@ -27,13 +27,15 @@ namespace JRPG.ViewModel
         private string PL_currMaxHP, EN_currMaxHP, ENname;
         private ObservableCollection<Enemies> enemies;
         static Random rnd = new Random();
+        private ItemWQ usedItem;
+        private ObservableCollection<ItemWQ> Eq_items;
         private string plIdle, plAttack, plDeffense, enIdle, enAttack, plGraf, enGraf;
         private int PLmax_hp, player_curr_hp, PLatk, PLdef, enemy_curr_hp, ENatk, ENdef, ENmax_hp;
         private Visibility isFinished = Visibility.Hidden;
         private string ensprite;
         
-        private string message;
-        private bool enableButtons;
+        private string plmessage, enmessage;
+        private bool enableButtons, fight;
 
 
         public BattleViewModel(MainModel mainModel)
@@ -41,7 +43,7 @@ namespace JRPG.ViewModel
             model = mainModel;
         }
         
-        public BattleViewModel(MainModel mainModel, string chosen, int hp, int atak, int deff, ObservableCollection<Items> Eq_items)
+        public BattleViewModel(MainModel mainModel, string chosen, int hp, int atak, int deff, ObservableCollection<ItemWQ> eq_items)
         {
             
             model = mainModel;
@@ -52,6 +54,8 @@ namespace JRPG.ViewModel
             player_curr_hp = hp;
             PLatk = atak;
             PLdef = deff;
+            Eq_items = eq_items;
+            foreach (ItemWQ eq_item in Eq_items) //Console.WriteLine(eq_item.quantity);
 
             
 
@@ -65,17 +69,22 @@ namespace JRPG.ViewModel
             plAttack = $"/sprites/characters/{player.Class_Name.ToLower()}/atk.png";
             plDeffense = $"/sprites/characters/{player.Class_Name.ToLower()}/def.png";
 
+
+
             PlGraf = plIdle;
            
 
 
             enemies = model.enemiesModel.GetEnemiesByDifficulty(difficult);
             Get_Enemy();
+
             enemy_curr_hp = enemy.Health;
             ENmax_hp = enemy.Health;
             ENdef = enemy.Defense;
             ENatk = enemy.Attack;
-            Ensprite = $"/sprites/enemies/{enemy.SpriteSet}/idle.png";
+            enIdle = $"/sprites/enemies/{enemy.SpriteSet}/idle.png";
+            enAttack = $"/sprites/enemies/{enemy.SpriteSet}/atk.png";
+            EnGraf = enIdle;
             EN_CurrMaxhp();
             EnableButtons = true;
 
@@ -135,7 +144,7 @@ namespace JRPG.ViewModel
         {
             
             int dif = EN_ATK - PL_DEF;
-            int chance = 50 + 2 * dif;
+            int chance = 60 + 2 * dif;
             
             int k = rnd.Next(1, 100);
             if (k <= chance)
@@ -153,7 +162,7 @@ namespace JRPG.ViewModel
               
                 int dif = PL_ATK - EN_DEF;
 
-                int chance = 50 +  4* dif;
+                int chance = 65 +  4* dif;
             
 
                 int k = rnd.Next(1, 100);
@@ -173,65 +182,135 @@ namespace JRPG.ViewModel
                     atakGracza = new RelayCommand(
                       arg =>
                       {
-                          PlGraf = plAttack;
-                          message = "";
+                          fight = true;
+                          plmessage = "";
+                          enmessage = "";
+                          
                           if (player_attack())
                       {
-                              message += "przeciwnik oberwał!";
-                              enemy_curr_hp -= PL_ATK;
-                              if(enemy_curr_hp < 0) enemy_curr_hp = 0;
-                                EN_CurrMaxhp();
-                              
+                             fight = false;
+                              PlGraf = plAttack;
 
-                          if (enemy_curr_hp == 0) { MessageBox.Show("ale mu sprzedałeś bombę");
+                              enemy_curr_hp -= PL_ATK;
+
+
+                              if (enemy_curr_hp < 0) {
+                                  enemy_curr_hp = 0;
+                                  EN_CurrMaxhp();
+                                  MessageBox.Show("ale mu sprzedałeś bombę");
+                                  PlGraf = plIdle;
                                   IsFinished = Visibility.Visible;
                                   EnableButtons = false;
-                                 
-                                  if (model.charactersModel.UpdateGoldAndLevel(difficult.ToString(), GlobalVariables.current_user))
-                                  { MessageBox.Show("zarobiłeś!");
-                                   
-
-                                  
+                                  if (usedItem != null) {
+                                      if (usedItem.quantity == 0 && model.msn.RemoveEquipmentByCharIdAndItemId(usedItem.item.ItemID, GlobalVariables.current_user.CharId)) { }
+                                      if (usedItem.quantity != 0 && model.shopScreenModel.UpdateQuantity(usedItem.item.ItemID, GlobalVariables.current_user.CharId, usedItem.quantity - 1)) { }
                                   }
 
-                                      
 
-                                 
-
-
+                                  if (model.charactersModel.UpdateGoldAndLevel(difficult.ToString(), GlobalVariables.current_user)) { }
+                                  
 
                               }
-
+                              else
+                              {
+                                  MessageBox.Show("przeciwnik oberwał!");
+                                  EN_CurrMaxhp();
+                                  PlGraf = plIdle;
+                              }
                           }
 
                           if (enemy_attack() && enemy_curr_hp!=0)
                           {
-                              message+=("\nTrafil Cie!");
+                              EnGraf = enAttack;
                               player_curr_hp -= ENatk;
-                              if (player_curr_hp<0) player_curr_hp = 0;
-                              PL_CurrMaxhp();
-                              if (player_curr_hp == 0) { MessageBox.Show("przegrales :((");
+                              fight = false;
+                              if (player_curr_hp <= 0)
+                              {
+                                  player_curr_hp = 0;
+                                  PL_CurrMaxhp();
+                                  MessageBox.Show("przegrales :((");
+                                  if (usedItem != null)
+                                  {
+                                      if (usedItem.quantity == 0 && model.msn.RemoveEquipmentByCharIdAndItemId(usedItem.item.ItemID, GlobalVariables.current_user.CharId)) { }
+                                      if (usedItem.quantity != 0 && model.shopScreenModel.UpdateQuantity(usedItem.item.ItemID, GlobalVariables.current_user.CharId, usedItem.quantity - 1)) { }
+                                  }
                                   IsFinished = Visibility.Visible;
                                   EnableButtons = false;
-
-
+                                  EnGraf = enIdle;
+                                  
+                              }
+                              else {
+                                  MessageBox.Show ("Trafil Cie!");
+                                  PL_CurrMaxhp();
+                                  EnGraf = enIdle;
                               }
 
                           }
-                          if (!string.IsNullOrEmpty(message) && enemy_curr_hp>0 && player_curr_hp>0) MessageBox.Show(message);
-                          if (string.IsNullOrEmpty(message) && enemy_curr_hp > 0 && player_curr_hp > 0)MessageBox.Show("Nikt nikogo nie uderzył");
-                          PlGraf = plIdle;
+                          
+                          if (fight)MessageBox.Show("Nikt nikogo nie uderzył");
+                          
                       },
                        arg => (1 > 0));
 
 
                 return atakGracza;
-
-
-            
-
-            }
+          }
         }
+        private ICommand uzyjPrzedmiotu = null;
+        public ICommand UzyjPrzedmiotu { get
+            {
+
+                if (uzyjPrzedmiotu == null)
+                    uzyjPrzedmiotu = new RelayCommand(
+                        arg => {
+                        foreach (var it in Eq_items)
+                            {
+                                fight = true;
+                                if (it.quantity>0 && it.item.Kind == Kind.consumable)
+                                {
+                                    usedItem = it;
+                                    it.quantity--;
+                                    player_curr_hp += it.item.Regen_hp;
+                                    if(player_curr_hp>PLmax_hp)player_curr_hp = PLmax_hp;
+                                    PL_CurrMaxhp();
+                                    if (enemy_attack() && enemy_curr_hp != 0)
+                                    {
+                                        EnGraf = enAttack;
+                                        player_curr_hp -= ENatk;
+                                        fight = false;
+                                        if (player_curr_hp <= 0)
+                                        {
+                                            player_curr_hp = 0;
+                                            PL_CurrMaxhp();
+                                            MessageBox.Show("przegrales :((");
+                                            if (usedItem != null)
+                                            {
+                                                if (usedItem.quantity == 0 && model.msn.RemoveEquipmentByCharIdAndItemId(usedItem.item.ItemID, GlobalVariables.current_user.CharId)) { }
+                                                if (usedItem.quantity != 0 && model.shopScreenModel.UpdateQuantity(usedItem.item.ItemID, GlobalVariables.current_user.CharId, usedItem.quantity - 1)) { }
+                                            }
+                                            IsFinished = Visibility.Visible;
+                                            EnableButtons = false;
+                                            EnGraf = enIdle;
+
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Trafil Cie!");
+                                            PL_CurrMaxhp();
+                                            EnGraf = enIdle;
+                                        }
+                                    }
+                                    }
+                            }
+                        
+                        
+                        }, arg => (1 > 0)
+                        );
+
+                return uzyjPrzedmiotu;  
+            } }
+
+
 
         private ICommand obronaGracza = null;
         public ICommand ObronaGracza { get {
@@ -240,14 +319,38 @@ namespace JRPG.ViewModel
                     obronaGracza = new RelayCommand(
                         arg =>
                         {
-                            string messaege="";
+                            fight = true;
+                            PlGraf = plDeffense;
+                       
                             if (enemy_attack())
                             {
-                                player_curr_hp -= ENatk/4;
-                                PL_CurrMaxhp();
-                                messaege = "trafil cie ale malo";
+                                EnGraf = enAttack;
+                                player_curr_hp -= ENatk/5;
+                                fight = false;
+                                if (player_curr_hp <= 0)
+                                {
+                                    player_curr_hp = 0;
+                                    PL_CurrMaxhp();
+                                    MessageBox.Show("przegrales :((");
+                                    if (usedItem != null)
+                                    {
+                                        if (usedItem.quantity == 0 && model.msn.RemoveEquipmentByCharIdAndItemId(usedItem.item.ItemID, GlobalVariables.current_user.CharId)) { }
+                                        if (usedItem.quantity != 0 && model.shopScreenModel.UpdateQuantity(usedItem.item.ItemID, GlobalVariables.current_user.CharId, usedItem.quantity - 1)) { }
+                                    }
+                                    IsFinished = Visibility.Visible;
+                                    EnableButtons = false;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Trafil Cie, ale zadał niewiele!");
+                                    PL_CurrMaxhp();
+                                   
+                                }       
                             }
-                            MessageBox.Show(messaege);  
+                            if (fight) MessageBox.Show("nie trafił Cię!");
+
+                            EnGraf = enIdle;
+                            PlGraf = plIdle;
                         },
                         arg => (1 > 0));
             

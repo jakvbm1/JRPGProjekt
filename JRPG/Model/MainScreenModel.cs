@@ -45,6 +45,9 @@ namespace JRPG.Model
             return eq;
         }
 
+
+
+
         public Items GetItemById(int itemID)
         {
             foreach (var item in AllItems) 
@@ -122,11 +125,21 @@ namespace JRPG.Model
             var alleq = RepoEquipment.GetAllEquipment();
             foreach (var eq in alleq)
             {
+        
                 AllEquipment.Add(eq);
             }
-
+            
         }
+        public bool RemoveEquipmentByCharIdAndItemId(int ItemID, int CharID)
+        {
+            if(RepoEquipment.RemoveEquipmentByCharIdAndItemId(ItemID, CharID)){
+                refresh_eq();
+                return true;
 
+            }
+            return false;
+            
+        }
     }
 
     

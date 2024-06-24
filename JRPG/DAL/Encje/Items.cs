@@ -84,5 +84,10 @@ namespace JRPG.DAL.Encje
             Regen_hp = items.Regen_hp;
             Sprite = items.Sprite;
         }
+        public String toInsert()
+        {
+            return Name + " " + Regen_hp.ToString();
+        }
+       
     }
 }
