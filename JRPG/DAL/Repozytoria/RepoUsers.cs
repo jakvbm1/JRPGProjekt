@@ -41,7 +41,7 @@ namespace JRPG.DAL.Repozytoria
                 try { var n = command.ExecuteNonQuery(); }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
-                    System.Windows.MessageBox.Show(ex.ToString());
+                    System.Windows.MessageBox.Show(ex.ToString().Substring(51, 49));
                     connection.Close();
                     return false;
                     

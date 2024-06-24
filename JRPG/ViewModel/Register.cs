@@ -15,6 +15,7 @@ namespace JRPG.ViewModel
     using System.Runtime.CompilerServices;
     using System.Windows;
     using JRPG.DAL.Repozytoria;
+    using System.Text.RegularExpressions;
 
     class Register: ViewModelBase
     {
@@ -151,32 +152,40 @@ namespace JRPG.ViewModel
 
                             if (!string.IsNullOrEmpty(Email) & !string.IsNullOrEmpty(Password) & !string.IsNullOrEmpty(Username))
                             {
-                                Users user = new Users(Email, Password, Username, false);
-                                
-                                
+                                string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                                Regex emailRegex = new Regex(emailPattern);
+
+                                if (emailRegex.IsMatch(email)) {
+                                    Users user = new Users(Email, Password, Username, false);
+
+
                                     var character = new Characters(Email, 1, 10, selectedClass);
-                                
-                               
-                                
-                                if (model.usersModel.AddUserToDatabase(user))
-                                {
-                                    model.usersModel.AllUsers.Add(user);
-                                    users = model.usersModel.AllUsers;
-                                    System.Windows.MessageBox.Show("User was added to database!");
-                                    Email = "";
-                                    Password = "";
-                                    Username = "";
-                                    IsAdmin = "";
 
 
-                                    if (model.charactersModel.AddCharacterToDatabase(character))
+
+                                    if (model.usersModel.AddUserToDatabase(user))
                                     {
-                                        //model.charactersModel.AllCharacters.Add(character);
-                                        characters = model.charactersModel.AllCharacters;
-                                        System.Windows.MessageBox.Show("character was added do database!");
-                                        
+                                        model.usersModel.AllUsers.Add(user);
+                                        users = model.usersModel.AllUsers;
+                                        System.Windows.MessageBox.Show("User was added to database!");
+                                        Email = "";
+                                        Password = "";
+                                        Username = "";
+                                        IsAdmin = "";
+
+
+                                        if (model.charactersModel.AddCharacterToDatabase(character))
+                                        {
+                                            //model.charactersModel.AllCharacters.Add(character);
+                                            characters = model.charactersModel.AllCharacters;
+                                            System.Windows.MessageBox.Show("character was added do database!");
+
+                                        }
                                     }
                                 }
+                                else { MessageBox.Show("use correct Email!"); }
+
+                                   
                             }
                             else {
                                 

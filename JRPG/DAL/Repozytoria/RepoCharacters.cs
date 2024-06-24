@@ -46,7 +46,7 @@ namespace JRPG.DAL.Repozytoria
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
-                    System.Windows.MessageBox.Show(ex.ToString());
+                    System.Windows.MessageBox.Show("1111111");
                     connection.Close();
                     return false;
 
@@ -83,7 +83,7 @@ namespace JRPG.DAL.Repozytoria
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
-                    System.Windows.MessageBox.Show (ex.ToString());
+                    System.Windows.MessageBox.Show (ex.ToString().Substring(0,20));
                     connection.Close();
                     return false;
                 }
