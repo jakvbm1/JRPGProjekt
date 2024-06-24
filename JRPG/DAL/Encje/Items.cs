@@ -48,7 +48,7 @@ namespace JRPG.DAL.Encje
             else if (_Kind == "consumable") Kind = Kind.consumable;
             string Equip = reader["EquipableFor"].ToString();
             if (Equip == "mage") EquipableFor = EquipableFor.mage;
-            else if (Equip == "warrior") EquipableFor = EquipableFor.mage;
+            else if (Equip == "warrior") EquipableFor = EquipableFor.warrior;
             else if (Equip == "ranger") EquipableFor = EquipableFor.ranger;
             else if (Equip == "everyone") EquipableFor = EquipableFor.everyone;
             Attack = int.Parse(reader["Attack"].ToString());
