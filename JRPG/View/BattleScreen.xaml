@@ -78,7 +78,7 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Gracz" Foreground="White"/>
             <TextBlock Grid.Row="0" Grid.Column="1" Text="Wartość" Foreground="White"/>
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="CUR_HP/MAX_HP" Foreground="White"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Zdrowie:" Foreground="White"/>
             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding BattleVM.PL_CurrMaxHP}" Foreground="White"/>
             <TextBlock Grid.Row="2" Grid.Column="0" Text="ATAK" Foreground="White"/>
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BattleVM.PL_ATK}" Foreground="White"/>
@@ -106,7 +106,7 @@
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Przeciwnik" Foreground="White"/>
             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding BattleVM.EN_NAME }" Foreground="White"/>
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="CUR_HP/MAX_HP" Foreground="White"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Zdrowie: " Foreground="White"/>
             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding BattleVM.EN_CurrMaxHP }" Foreground="White"/>
             <TextBlock Grid.Row="2" Grid.Column="0" Text="ATAK" Foreground="White"/>
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BattleVM.EN_ATK}" Foreground="White"/>
