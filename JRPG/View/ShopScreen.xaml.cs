@@ -29,6 +29,7 @@ namespace JRPG.View
             UserScreen userScreen = new UserScreen();
             Visibility = Visibility.Hidden;
             userScreen.Show();
+            this.Close();
         }
     }
 }

@@ -33,6 +33,7 @@ namespace JRPG.View
             ShopScreen shopScreen = new ShopScreen();
             this.Visibility = Visibility.Hidden;
             shopScreen.Show();
+            this.Close();
         }
         private void Enter_Walka(object sender, RoutedEventArgs e)
         {
@@ -40,6 +41,7 @@ namespace JRPG.View
 
             this.Visibility = Visibility.Hidden;
             selectEnemy.Show();
+            this.Close();
         }
 
         private void Admin_enter(object sender, RoutedEventArgs e)
@@ -49,7 +51,7 @@ namespace JRPG.View
             AdminPanel adminPanel = new AdminPanel();
             this.Visibility = Visibility.Hidden;
            adminPanel.Show();
-
+            this.Close();
 
 
         }

@@ -29,6 +29,7 @@ namespace JRPG.View
            BattleScreen battleScreen = new BattleScreen();
             this.Visibility = Visibility.Hidden;
             battleScreen.Show();
+            this.Close();
         }
        
     }

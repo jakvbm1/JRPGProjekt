@@ -37,7 +37,8 @@ namespace JRPG.View
             
             this.Visibility = Visibility.Hidden;
             userScreen.Show();
-            
+            this.Close();
+
         }
 
     }
