@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JRPG.Model
+﻿namespace JRPG.Model
 {
     using DAL.Encje;
     using DAL.Repozytoria;
@@ -23,7 +17,6 @@ namespace JRPG.Model
             foreach (var item in allitems)
             {
                 AllItems.Add(item);
-                //Console.WriteLine(item.ItemID);
             }
 
             foreach (var eq in alleq)
@@ -141,6 +134,4 @@ namespace JRPG.Model
             
         }
     }
-
-    
 }

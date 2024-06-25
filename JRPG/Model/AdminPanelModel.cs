@@ -1,10 +1,5 @@
 ﻿using JRPG.DAL.Encje;
 using JRPG.DAL.Repozytoria;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JRPG.Model
 {

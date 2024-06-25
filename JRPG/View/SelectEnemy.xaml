@@ -1,55 +1,90 @@
-﻿<Window x:Class="JRPG.View.SelectEnemy"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:JRPG.View"
-        xmlns:vm ="clr-namespace:JRPG.ViewModel"
-        mc:Ignorable="d"
-        Title="SelectEnemy" Height="450" Width="800">
-    
-    
+﻿<Window
+    x:Class="JRPG.View.SelectEnemy"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:JRPG.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:JRPG.ViewModel"
+    Title="SelectEnemy"
+    Width="1200"
+    Height="675"
+    mc:Ignorable="d">
+
+
     <Window.Resources>
-        <vm:MainViewModel x:Key="mainVM"/>
+        <vm:MainViewModel x:Key="mainVM" />
         <Style TargetType="RadioButton">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="FontFamily" Value="Determination mono web"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Determination mono web" />
         </Style>
         <Style TargetType="Label">
-            <Setter Property="FontFamily" Value="Determination mono web"/>
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Determination mono web" />
+            <Setter Property="Foreground" Value="Black" />
         </Style>
 
         <Style TargetType="Button">
-            <Setter Property="FontFamily" Value="Determination mono web"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontSize" Value="28"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="Opacity" Value="0.9"/>
-            <Setter Property="Background" Value="DimGray"/>
+            <Setter Property="FontFamily" Value="Determination mono web" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="Opacity" Value="0.9" />
+            <Setter Property="Background" Value="DimGray" />
         </Style>
     </Window.Resources>
 
     <Grid DataContext="{StaticResource mainVM}">
 
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="\sprites\backgrounds\1.png" AlignmentY="Top" AlignmentX="Center" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+            <ImageBrush
+                AlignmentX="Center"
+                AlignmentY="Top"
+                ImageSource="\sprites\backgrounds\1.png"
+                RenderOptions.BitmapScalingMode="NearestNeighbor"
+                RenderOptions.EdgeMode="Aliased"
+                Stretch="Fill" />
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        
-        <Label Grid.Row="0" Content="Wybierz poziom trudności przeciwnika" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" FontSize="44"/>
-        <Button Grid.Row="2" Content="Zatwierdź" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="30"  Click="Button_Click" />
+
+        <Label
+            Grid.Row="0"
+            Margin="0,29,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Wybierz poziom trudności przeciwnika"
+            FontSize="45"
+            Foreground="White" />
+        <Button
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Click="Button_Click"
+            Content="Zatwierdź"
+            FontSize="30"
+            Foreground="White" />
         <UniformGrid Grid.Row="1" Columns="3">
-        <RadioButton Content="Łatwy" FontSize="20"  Command="{Binding SelectEnemyVM.EasyDifficulty}"/>
-        <RadioButton Content="Średni" FontSize="20"  Command="{Binding SelectEnemyVM.MediumDifficulty}"/>
-        <RadioButton Content="Trudny" FontSize="20"  Command="{Binding SelectEnemyVM.HardDifficulty}"/>
+            <RadioButton
+                Command="{Binding SelectEnemyVM.EasyDifficulty}"
+                Content="Łatwy"
+                FontSize="20"
+                Foreground="White" />
+            <RadioButton
+                Command="{Binding SelectEnemyVM.MediumDifficulty}"
+                Content="Średni"
+                FontSize="20"
+                Foreground="White" />
+            <RadioButton
+                Command="{Binding SelectEnemyVM.HardDifficulty}"
+                Content="Trudny"
+                FontSize="20"
+                Foreground="White" />
         </UniformGrid>
     </Grid>
 </Window>

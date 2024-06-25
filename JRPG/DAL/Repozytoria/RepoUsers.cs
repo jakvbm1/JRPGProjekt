@@ -1,11 +1,5 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JRPG.DAL.Encje;
-using Google.Protobuf.WellKnownTypes;
+﻿using JRPG.DAL.Encje;
+using MySql.Data.MySqlClient;
 
 namespace JRPG.DAL.Repozytoria
 {

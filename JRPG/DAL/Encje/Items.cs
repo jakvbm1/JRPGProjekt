@@ -1,10 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JRPG.DAL.Encje
 {
@@ -28,7 +22,6 @@ namespace JRPG.DAL.Encje
         public int Cost { get; set; }
         public Kind Kind { get; set; }
         public EquipableFor EquipableFor { get; set; }
-
         public string Name { get; set; }
         public int Attack { get; set; }
         public int Defense { get; set; }

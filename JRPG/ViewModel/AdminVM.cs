@@ -1,25 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JRPG.Model;
-
-namespace JRPG.ViewModel
+﻿namespace JRPG.ViewModel
 {
-    using DAL.Encje;
-    using Model;
     using BaseClass;
-    using System.Windows.Input;
-    using System.Runtime.CompilerServices;
-    using System.Windows;
+    using DAL.Encje;
     using JRPG.DAL.Repozytoria;
+    using Model;
     using System.Collections.ObjectModel;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
-    using MySql.Data.MySqlClient;
-    using Org.BouncyCastle.Math;
-    using Org.BouncyCastle.Bcpg;
+    using System.Windows;
+    using System.Windows.Input;
 
     class AdminVM : ViewModelBase
     {

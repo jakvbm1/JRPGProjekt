@@ -1,15 +1,10 @@
 ﻿using JRPG.DAL.Encje;
+using JRPG.DAL.Repozytoria;
 using JRPG.Model;
 using JRPG.ViewModel.BaseClass;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using System.Windows;
-using JRPG.DAL.Repozytoria;
+using System.Windows.Input;
 
 namespace JRPG.ViewModel
 {

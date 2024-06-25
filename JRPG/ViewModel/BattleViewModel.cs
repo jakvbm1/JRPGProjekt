@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JRPG.ViewModel
+﻿namespace JRPG.ViewModel
 {
-    using DAL.Encje;
-    using Model;
     using BaseClass;
-    using System.Windows.Input;
-    using System.Runtime.CompilerServices;
-    using System.Windows;
+    using DAL.Encje;
     using JRPG.DAL.Repozytoria;
-    using System.Windows.Media;
+    using Model;
     using System.Collections.ObjectModel;
-    using System.Windows.Documents;
+    using System.Windows;
+    using System.Windows.Input;
 
     class BattleViewModel : ViewModelBase
     {
@@ -55,7 +46,7 @@ namespace JRPG.ViewModel
             PLatk = atak;
             PLdef = deff;
             Eq_items = eq_items;
-            foreach (ItemWQ eq_item in Eq_items) //Console.WriteLine(eq_item.quantity);
+            foreach (ItemWQ eq_item in Eq_items)
 
             
 
@@ -197,7 +188,7 @@ namespace JRPG.ViewModel
                               if (enemy_curr_hp < 0) {
                                   enemy_curr_hp = 0;
                                   EN_CurrMaxhp();
-                                  MessageBox.Show("ale mu sprzedałeś bombę");
+                                  MessageBox.Show("Wygrałeś!");
                                   PlGraf = plIdle;
                                   IsFinished = Visibility.Visible;
                                   EnableButtons = false;
@@ -213,7 +204,7 @@ namespace JRPG.ViewModel
                               }
                               else
                               {
-                                  MessageBox.Show("przeciwnik oberwał!");
+                                  MessageBox.Show("Przeciwnik oberwał!");
                                   EN_CurrMaxhp();
                                   PlGraf = plIdle;
                               }
@@ -228,7 +219,7 @@ namespace JRPG.ViewModel
                               {
                                   player_curr_hp = 0;
                                   PL_CurrMaxhp();
-                                  MessageBox.Show("przegrales :((");
+                                  MessageBox.Show("Przegrałeś");
                                   if (usedItem != null)
                                   {
                                       if (usedItem.quantity == 0 && model.msn.RemoveEquipmentByCharIdAndItemId(usedItem.item.ItemID, GlobalVariables.current_user.CharId)) { }
@@ -240,7 +231,7 @@ namespace JRPG.ViewModel
                                   
                               }
                               else {
-                                  MessageBox.Show ("Trafil Cie!");
+                                  MessageBox.Show ("Trafił Cię!");
                                   PL_CurrMaxhp();
                                   EnGraf = enIdle;
                               }
@@ -282,7 +273,7 @@ namespace JRPG.ViewModel
                                         {
                                             player_curr_hp = 0;
                                             PL_CurrMaxhp();
-                                            MessageBox.Show("przegrales :((");
+                                            MessageBox.Show("Przegrałeś.");
                                             if (usedItem != null)
                                             {
                                                 if (usedItem.quantity == 0 && model.msn.RemoveEquipmentByCharIdAndItemId(usedItem.item.ItemID, GlobalVariables.current_user.CharId)) { }
@@ -295,7 +286,7 @@ namespace JRPG.ViewModel
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Trafil Cie!");
+                                            MessageBox.Show("Trafił Cię!");
                                             PL_CurrMaxhp();
                                             EnGraf = enIdle;
                                         }
@@ -331,7 +322,7 @@ namespace JRPG.ViewModel
                                 {
                                     player_curr_hp = 0;
                                     PL_CurrMaxhp();
-                                    MessageBox.Show("przegrales :((");
+                                    MessageBox.Show("Przegrałeś.");
                                     if (usedItem != null)
                                     {
                                         if (usedItem.quantity == 0 && model.msn.RemoveEquipmentByCharIdAndItemId(usedItem.item.ItemID, GlobalVariables.current_user.CharId)) { }
@@ -342,12 +333,12 @@ namespace JRPG.ViewModel
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Trafil Cie, ale zadał niewiele!");
+                                    MessageBox.Show("Trafił Cię, ale zadał niewiele!");
                                     PL_CurrMaxhp();
                                    
                                 }       
                             }
-                            if (fight) MessageBox.Show("nie trafił Cię!");
+                            if (fight) MessageBox.Show("Nie trafił Cię!");
 
                             EnGraf = enIdle;
                             PlGraf = plIdle;

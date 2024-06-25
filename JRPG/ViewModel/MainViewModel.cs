@@ -1,21 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JRPG.ViewModel
+﻿namespace JRPG.ViewModel
 {
-    using DAL.Encje;
-    using Model;
     using BaseClass;
-    using System.Windows.Input;
-    using System.Runtime.CompilerServices;
-    using System.Windows;
-    using JRPG.DAL.Repozytoria;
-    using System.Windows.Media;
-    using System.Collections.ObjectModel;
-    using System.Windows.Documents;
+    using Model;
 
     class MainViewModel : ViewModelBase
     {

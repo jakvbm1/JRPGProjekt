@@ -1,24 +1,12 @@
-﻿using JRPG.ViewModel.BaseClass;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JRPG.ViewModel
+﻿namespace JRPG.ViewModel
 {
-    using DAL.Encje;
-    using Model;
     using BaseClass;
-    using System.Windows.Input;
-    using System.Runtime.CompilerServices;
-    using System.Windows;
+    using DAL.Encje;
     using JRPG.DAL.Repozytoria;
+    using Model;
     using System.Collections.ObjectModel;
-    using System.Windows.Media;
+    using System.Windows.Input;
     using System.Windows.Media.Imaging;
-    using MySql.Data.MySqlClient;
-    using Org.BouncyCastle.Math;
 
     class CharScreenVM : ViewModelBase
     {

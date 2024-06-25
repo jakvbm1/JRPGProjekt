@@ -42,7 +42,7 @@ CREATE TABLE `characters` (
 
 LOCK TABLES `characters` WRITE;
 /*!40000 ALTER TABLE `characters` DISABLE KEYS */;
-INSERT INTO `characters` VALUES (4,'tymek@dybal.pl',1,10,'Warrior'),(6,'damian@knopek.pl',1,10,'Ranger'),(7,'kuba@miarka.pl',9,20,'Mage');
+INSERT INTO `characters` VALUES (1,'admin@admin.pl',100,1000,'Mage'),(2,'tymek@dybal.pl',1,10,'Warrior'),(3,'damian@knopek.pl',1,10,'Ranger'),(4,'kuba@miarka.pl',1,10,'Mage');
 /*!40000 ALTER TABLE `characters` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,7 +186,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('damian@knopek.pl','haslodamiana','damian',0),('dybtym@gmail.com','123456','Dybson2',0),('kuba@miarka.pl','haslokuby','kuba',0),('tymdyb@gmail.com','123456','Dybson',0),('tymek@dybal.pl','haslotymka','tymek',0);
+INSERT INTO `users` VALUES ('admin@admin.pl','admin','admin',1),('damian@knopek.pl','haslodamiana','damian',0),('kuba@miarka.pl','haslokuby','kuba',0),('tymek@dybal.pl','haslotymka','tymek',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

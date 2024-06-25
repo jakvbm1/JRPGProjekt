@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JRPG.Model
+﻿namespace JRPG.Model
 {
-    using DAL.Encje;
-    using DAL.Repozytoria;
-    using JRPG.ViewModel;
-    using System.Collections.ObjectModel;
-    using System.Windows.Interop;
-
     class MainModel
     {
         public UsersModel usersModel;
@@ -27,10 +15,8 @@ namespace JRPG.Model
         {
             charactersModel = new CharactersModel();
             usersModel = new UsersModel();
-           
             classesModel = new ClassesModel();
             enemiesModel = new EnemiesModel();
-           
             itemsModel = new ItemsModel();
             msn = new MainScreenModel();
             shopScreenModel = new ShopScreenModel();

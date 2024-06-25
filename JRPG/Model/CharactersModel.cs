@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JRPG.Model
+﻿namespace JRPG.Model
 {
-    using JRPG.DAL.Encje;
     using DAL.Repozytoria;
+    using JRPG.DAL.Encje;
     using System.Collections.ObjectModel;
     class CharactersModel
     {
