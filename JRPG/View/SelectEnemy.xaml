@@ -9,6 +9,7 @@
     Title="SelectEnemy"
     Width="1200"
     Height="675"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
 
